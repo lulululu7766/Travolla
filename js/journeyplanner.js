@@ -1,11 +1,138 @@
 window.onload = function() {
-	addButtons()
+	getActivites()
 }
 
+var activityDict = {"DNUI":2, "Dalian Modern Museum":3, "Salmon Restaurant":2, "Wanda Plaza":4};
+
+var currentActivities = [];
+
+// Get list of all activities in area
+function getActivites() {
+	// Get activites from DB and add to activityDict
+	drawButtons(activityDict);
+}
+
+// Draw buttons of all activities
+function drawButtons(activityList) {
+	// Get div to place buttons in
+	var activityDiv = document.getElementById('activityDiv');
+	
+	// Create buttons
+	for (var activity in activityDict) {
+		var activityBtn = document.createElement('button');
+		activityBtn.className = "activityBtn btn btn-secondary";
+		activityBtn.innerText = activity;
+		activityBtn.onclick = function() {
+			addActivity(this.innerText);
+		}
+		activityDiv.appendChild(activityBtn);
+	}
+}
+
+// Add activity
+function addActivity(activityName) {
+	// Add to current activities
+	currentActivities.push(activityName);
+	deactivateButton(activityName);
+	drawActivities();
+}
+
+// Remove activity
+function removeActivity(activityName) {
+	var activityIndex = currentActivities.indexOf(activityName);
+	console.log(activityIndex);
+	if (activityIndex !== -1) {
+    	currentActivities.splice(activityIndex, 1);
+	}
+	activateButton(activityName);
+	drawActivities();
+}
+
+function drawActivities() {
+	// Create Bootstrap for card
+	var cardsDiv = document.getElementById('cardsDiv');
+	// Clear div
+	cardsDiv.innerHTML = "";
+	
+	for (i = 0; i < currentActivities.length; i++) {
+		var activityName = currentActivities[i];
+		var activityDuration = activityDict[activityName];
+		console.log("Name: " + activityName + ", Duration: " + activityDuration);
+		// Create new card
+		var card = document.createElement('div');
+		card.className = "card md-3";
+		
+		// Image (TODO)
+		// Card body
+		var cardBody = document.createElement('div');
+		cardBody.className = "card-body";
+		// Title
+		var cardTitle = document.createElement('h4');
+		cardTitle.className = "card-title";
+		cardTitle.innerText = activityName;
+		// Text
+		var cardText = document.createElement('p');
+		cardText.className = "card-text";
+		cardText.innerText = "Text that describes this activity."
+		// Time
+		var cardTimeList = document.createElement('ul');
+		cardTimeList.className = "list-group list-group-flush";
+		var cardTimeElement = document.createElement('li');
+		cardTimeElement.className = "list-group-item";
+		cardTimeElement.innerText = "Duration: " + activityDuration + " hours.";
+		cardTimeList.appendChild(cardTimeElement);
+		// Remove Button
+		var removeBtn = document.createElement('button');
+		removeBtn.className = "removeBtn btn btn-danger";
+		removeBtn.innerText = "Remove " + activityName;
+		removeBtn.onclick = function() {
+			removeActivity(this.innerText.substr(7));
+		}
+		// Append all
+		cardBody.appendChild(cardTitle);
+		cardBody.appendChild(cardText);
+		cardBody.appendChild(cardTimeList);
+		cardBody.appendChild(removeBtn);
+		card.appendChild(cardBody);
+		cardsDiv.append(card);
+	}
+	
+	
+}
+
+// Activate activity button
+function activateButton(activityName) {
+	var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
+	for (i = 0; i < buttonList.length; i++) {
+		if (buttonList[i].innerText === activityName) {
+			buttonList[i].disabled = false;
+		}
+	}
+}
+
+// Deactivate activity button
+function deactivateButton(activityName) {
+	var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
+	for (i = 0; i < buttonList.length; i++) {
+		if (buttonList[i].innerText === activityName) {
+			buttonList[i].disabled = true;
+		}
+	}
+}
+
+function trim(s) { 
+  return ( s || '' ).replace( /^\s+|\s+$/g, '' ); 
+}
+
+/**
+// Add activity buttons
 function addButtons() {
+	var locationDiv = document.getElementById('locationDiv');
+	var locationText = document.createElement('h4');
+	locationText.innerText = "Events near *location*";
+	locationDiv.appendChild(locationText);
 	var locations = ["DNUI", "Dalian Modern Museum", "Salmon Restaurant", "Wanda Plaza"];
-	var btnDiv = document.getElementById('activityButtons');
-	var getBtn = document.getElementById('getBtn');
+	var btnDiv = document.getElementById('activityDiv');
 	for (x = 0; x < locations.length; x++) {
 		var btn = document.createElement("button");
 		btn.className = "btn btn-primary";
@@ -15,22 +142,15 @@ function addButtons() {
 		};
 		btnDiv.appendChild(btn);
 	}
-	getBtn.disabled = true;
 }
+**/
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("closable");
-for (z = 0; z < close.length; z++) {
-	close[i].onclick = function() {
-		var div = this.parentElement;
-		div.style.display = "none";
-  	}
-}
-
+/**
 // Function to add a new activity.
 function addActivity(text) {
 	var buttonList = document.getElementsByClassName("btn btn-primary");
 	var cardDiv = document.createElement("div");
+	var activityDiv = document.getElementById("cardsDiv");
 	cardDiv.className = "card bg-light mb-4";
 	cardDiv.setAttribute("style","max-width:100%;");
 
@@ -49,7 +169,7 @@ function addActivity(text) {
 	contentDiv.appendChild(t);
 	cardDiv.appendChild(contentDiv);
 	cardDiv.appendChild(contentText);
-	document.getElementById("activityList").appendChild(cardDiv);
+	activityDiv.appendChild(cardDiv);
 	
 	var closeDiv = document.createElement("div");
 	closeDiv.className = "closable";
@@ -98,7 +218,7 @@ function enableButton(btnName) {
 
 function updateTime() {
 	var totalTime = 0;
-	var timeDiv = document.getElementById("totalTime");
+	var timeDiv = document.getElementById("timeDiv");
 	timeDiv.innerHTML = "<h5>Total Time:</h5>";
 	var timeText = document.createElement("p");
 	var activityCards = document.getElementsByClassName("card bg-light mb-4");
@@ -190,6 +310,5 @@ function drawTimetable(fullDict) {
 	
 }
 
-function trim(s) { 
-  return ( s || '' ).replace( /^\s+|\s+$/g, '' ); 
-}
+
+**/
