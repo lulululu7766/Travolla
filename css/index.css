@@ -1,0 +1,51 @@
+.cover-container{
+    /* The image used */
+    /*background-image: url("images/bg.jpg");*/
+
+    /* Full height */
+    height: 100%; 
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#title{
+    color: white;
+    font-size: 5em;
+    font-family: serif;
+    text-align: center;
+    padding-top:14%;
+}
+
+.ct-btn-scroll {
+  width: 49px;
+  height: 49px;
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 100;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+}
+
+.landing{
+    height: 794px;
+}
+
+#container-fluid h2{
+    color: darkgoldenrod;
+    margin-bottom: 5%;
+}
+
+.row{
+    margin-bottom: 5%;
+}
+
+.row h3{
+    color: orange;
+}
