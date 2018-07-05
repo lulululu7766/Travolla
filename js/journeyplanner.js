@@ -15,7 +15,7 @@ function addButtons() {
 }
 
 // Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
+var close = document.getElementsByClassName("closable");
 for (z = 0; z < close.length; z++) {
 	close[i].onclick = function() {
 		var div = this.parentElement;
@@ -26,22 +26,40 @@ for (z = 0; z < close.length; z++) {
 // Function to add a new activity.
 function addActivity(text) {
 	var buttonList = document.getElementsByClassName("btn btn-primary");
-	var li = document.createElement("li");
-	var t = document.createTextNode(text);
-	var txtDiv = document.createElement("div");
-	txtDiv.appendChild(t);
-	li.appendChild(txtDiv);
-	document.getElementById("activityList").appendChild(li);
+	var cardDiv = document.createElement("div");
+	cardDiv.className = "card bg-light mb-4";
+	cardDiv.setAttribute("style","max-width:100%;");
+
+	var contentDiv = document.createElement("div");
+	contentDiv.className = "card-header";
 	
-	var span = document.createElement("span");
+	var t = document.createElement("h5");
+	t.innerText = text;
+	
+	var contentText = document.createElement("div");
+	contentText.className = "card-body text-dark";
+	var description = document.createElement("p");
+	description.innerText = "Lorem Ipsum Dipsum";
+	contentText.appendChild(description);
+	
+	contentDiv.appendChild(t);
+	cardDiv.appendChild(contentDiv);
+	cardDiv.appendChild(contentText);
+	document.getElementById("activityList").appendChild(cardDiv);
+	
+	var closeDiv = document.createElement("div");
+	closeDiv.className = "closable";
+	closeDiv.setAttribute("style", "padding: 10px; width: 100%; text-align: right;")
+	
 	var removeButton = document.createElement("button");
 	removeButton.className = "btn btn-danger";
 	removeButton.innerText = "Remove";
-	span.className = "close";
-	span.appendChild(removeButton);
-	li.appendChild(span);
-	li.className = "list-group-item";
 	
+	closeDiv.appendChild(removeButton);
+	
+	cardDiv.appendChild(closeDiv);
+	
+
 	for (b = 0; b < buttonList.length; b++) {
 		if (buttonList[b].innerText === text) {
 			buttonList[b].disabled = true;
@@ -53,9 +71,7 @@ function addActivity(text) {
 			var div = this.parentElement;
 			div.style.display = "none";
 			var elementList = this.parentElement.children;
-			enableButton(elementList[0].innerText);
-			//console.log();
-			
+			enableButton(elementList[0].innerText);			
 		}
 	}
 }
