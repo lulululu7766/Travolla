@@ -1,3 +1,7 @@
+window.onload = function() {
+	addButtons()
+}
+
 function addButtons() {
 	var locations = ["DNUI", "Dalian Modern Museum", "Salmon Restaurant", "Wanda Plaza"];
 	var btnDiv = document.getElementById('activityButtons');
@@ -112,25 +116,38 @@ function getDays() {
 	return days;
 }
 
-function getActivitiesLength() {
+function makeActivitiesDict() {
 	var dict = {};
 	var activityCards = document.getElementsByClassName("card bg-light mb-4");
 	for (c = 0; c < activityCards.length; c++) {
 		dict[trim((activityCards[c].children)[0].innerText)] = parseInt((activityCards[c].children)[3].innerText);
+		dict["Travel Time " + c] = 1;
 	}
+	console.log(dict);
 	return dict;
+}
+
+function getActivities(dict) {
+	var activityList = [];
+	for (var activity in dict) {
+		activityList.push(activity);
+	}
+	console.log(activityList);
+	return activityList;
 }
 
 function optimise() {
 	// Check if too many activities for number of days
-	var activitiesLength = getActivitiesLength();
+	var activitiesDict = makeActivitiesDict();
 	var numDays = getDays();
 	var totalTime = 0;
 	var avgDay = 0;
 	
-	for (var actName in activitiesLength) {
-		totalTime += activitiesLength[actName];
+	for (var actName in activitiesDict) {
+		totalTime += activitiesDict[actName];
 	}
+	
+	console.log(totalTime);
 	
 	avgDay = totalTime / numDays;
 	
@@ -138,6 +155,39 @@ function optimise() {
 		console.log("Days are too long.")
 		alert("Days are too long!");
 	}
+	
+	drawTimetable(activitiesDict);
+}
+
+function drawTimetable(fullDict) {
+	var timetableDiv = document.getElementById('timetableParent');
+	timetableDiv.innerHTML = '<h2>Your Timetable</h2><ul id="timetable" class="list-group"></ul>';
+	
+	var activityDict = fullDict;
+	var activityList = getActivities(activityDict);
+	var dict = fullDict;
+	var timetableList = document.getElementById('timetable');
+	var dictLength = 0;
+	for (var i in dict) {
+		if (dict.hasOwnProperty(i)) {
+			dictLength++;
+		}
+	}
+	console.log(dictLength);
+	for (i = 0; i < dictLength; i++) {
+		var timetableEvent = document.createElement("li");
+		timetableEvent.className = "list-group-item";
+		var activityName = document.createElement("h5");
+		var activityTime = document.createElement("p");
+		activityName.innerText = activityList[i];
+		var activityTxt = activityList[i];
+		activityTime.innerText = dict[activityTxt];
+		
+		timetableEvent.append(activityName);
+		timetableEvent.append(activityTime);
+		timetableList.append(timetableEvent);
+	}
+	
 }
 
 function trim(s) { 

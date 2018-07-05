@@ -13,22 +13,43 @@
         <title>Travello - Optimised Journey Planner</title>
     </head>
     <body>
-		<h2>My Activities</h2>
-		<button onclick="addButtons()" class="addBtn btn btn-primary" id="getBtn">Get Buttons</button>
-		<input id="daysInput" type="number" class="form-control" placeholder="Duration in Days" aria-label="Username" aria-describedby="Days">
-        <div id="activityButtons" class="btn-group">
+		<div id="heading" class="container">
+			<h2>My Journey</h2>
+		</div>
+		
+		<div id="journeyPlanner" class="container">
+			<h4>How long do you plan to stay?</h4>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">Days</span>
+				</div>
+				<input id="daysInput" type="number" class="form-control" placeholder="Duration in Days" aria-label="Days" aria-describedby="Days">
+			</div>
+			
+			<div id="activityButtons" class="btn-group">
+			
+			</div>
+			
+			<div id="activityList" class="container">
+			
+			</div>
+			
+			<div id="totalTime" class="container">
+		
+			</div>
+			
+			<br>
+			
+			<button onclick="optimise()" class="optBtn btn btn-success" id="optBtn">Optimise Journey!</button>
 			
 		</div>
 		
-		<div id="activityList" class="container">
+		<br>
+		
+		<div id="timetableParent" class="container">
 			
 		</div>
 		
-		<div id="totalTime" class="container">
-		
-		</div>
-		
-		<button onclick="optimise()" class="opt btn btn-primary" id="getBtn">Optimise</button>
 		
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
