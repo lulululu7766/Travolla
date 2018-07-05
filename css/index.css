@@ -49,3 +49,36 @@
 .row h3{
     color: orange;
 }
+
+/*Footer*/
+
+footer{
+    background-color: #f4f4f4;
+    height: 100%;
+}
+
+.container-fluid h3{
+    margin-top: 10%;
+}
+
+footer img{
+    height: 3vh;
+}
+
+#contactus{
+    float: center;
+}
+
+#contactus ul, #address {
+    text-align: left;
+    padding-left: 20%;
+ }
+
+footer .socialm img{
+    margin-right: 4%;
+}
+
+footer li{
+    list-style-type: none;
+}
+
