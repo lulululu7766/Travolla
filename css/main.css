@@ -1,0 +1,60 @@
+.navbar{
+    font-family: 'Patua One',cursive;
+}
+
+
+
+.navbar a {
+    color: white;
+    font-size: 1em;
+}
+
+/*Logo */
+.navbar-brand img{
+    height: 5vh;
+}
+
+/*.container-fluid {
+    margin-top: 7%;
+}*/
+
+
+/*Footer*/
+
+footer{
+    background-color: #f4f4f4;
+    height: 100%;
+}
+
+.container-fluid h3{
+    margin-top: 10%;
+}
+
+#loginpanel{
+    display: none;
+}
+
+footer img{
+    height: 3vh;
+}
+
+/*#team {
+    height: 15vh;
+}*/
+
+#contactus{
+    float: center;
+}
+
+#contactus ul, #address {
+    text-align: left;
+    padding-left: 20%;
+ }
+
+footer .socialm img{
+    margin-right: 4%;
+}
+
+footer li{
+    list-style-type: none;
+}
