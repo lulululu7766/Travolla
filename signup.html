@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Travolla </title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="shortcut icon" href="css/images/weblogo.png"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css\main.css">
+    <link rel="stylesheet" type="text/css" href="css\signup.css">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <script src="js\scroll.js"></script>
+
+
+</head>
+
+<body  onload="displayWindowSize()" onresize="displayWindowSize()">	  
+    
+    <nav class="navbar navbar-expand-md fixed-top bg-dark">
+      <a class="navbar-brand" href="index.html"><img src="css/images/teamlogo.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Journey Planner</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">  Heat Map </a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " >
+            <h1 id="title"> Sign Up </h1>
+            
+            <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%"></div>
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                    <form id="signupform">
+                        
+                        <div id="pers">
+                            <h2> <img src="css/images/downarrow.png" alt="downarrow"> Personal details </h2>
+                        </div>
+                        
+                        <div id="signup1">
+                        <label for="inputname" class="sr-only">Full Name</label>
+                        <input type="text" id="inputName" class="form-control" placeholder="Full Name" required autofocus>
+                        
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom: 4%;">
+                          <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked > Male
+                          </label>
+                          <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Female
+                          </label>
+
+                        </div>
+                        
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        
+                        <div class="form-group" style="margin-bottom: 4%;">
+                          <select id="inputflang" class="form-control">
+                            <option selected>First Language</option>
+                            <option>English</option>
+                            <option>French</option>
+                            <option>Chinese</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: 4%;">
+                          <select id="inputflang" class="form-control">
+                            <option selected>Second Language</option>
+                            <option>English</option>
+                            <option>French</option>
+                            <option>Chinese</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked > Tourist
+                          </label>
+                          <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Guide
+                          </label>
+                          <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="option3" autocomplete="off"> Both
+                          </label>
+                        </div>
+                    </div>
+                        
+                        <div id="pref">
+                             <h2><img src="css/images/downarrow.png" alt="downarrow"> Preferences </h2>
+                        </div>
+                        
+                            <div id="signup2" >
+                             
+                               	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                  <label class="btn btn-secondary active">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked > Lazy
+                                  </label>
+                                  <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option2" autocomplete="off"> Active
+                                  </label>
+                                  <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option3" autocomplete="off"> Hyper Active
+                                  </label>
+                                </div><br>
+                             
+                              <label id="mobility">Mobility</label> 
+                            <img class="mobicons" src="css/images/wheelchair.png" alt="disabled">
+                            <img class="mobicons" src="css/images/turtle.png" alt="slow">
+                            <img class="mobicons" src="css/images/rabbit.png" alt="fast">
+                                
+                            <h3>What I like </h3>
+            <div class="row q1">
+
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\science1.jpg" >
+                    <div class="subtitle">
+                         <p> Science</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\health.jpg" >
+                    <div class="subtitle">
+                         <p> Health </p>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\english.jpg" >
+                    <div class="subtitle">
+                         <p> English</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\languages.jpg" >
+                    <div class="subtitle">
+                         <p> Languages </p>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                    <img src="css\images\interest\it.jpg" >
+                    <div class="subtitle">
+                         <p> I.T </p>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                </div>
+                
+          </div>
+                        
+            <div class="row q2">
+
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\science1.jpg" >
+                    <div class="subtitle">
+                         <p> Science</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\health.jpg" >
+                    <div class="subtitle">
+                         <p> Health </p>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\english.jpg" >
+                    <div class="subtitle">
+                         <p> English</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                    <img src="css\images\interest\languages.jpg" >
+                    <div class="subtitle">
+                         <p> Languages </p>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                    <img src="css\images\interest\it.jpg" >
+                    <div class="subtitle">
+                         <p> I.T </p>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                </div>
+                
+          </div>
+        
+                                
+                            </div>
+            
+            
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+                        
+                        
+    </form>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                </div>
+                
+            </div>
+            <a class="ct-btn-scroll ct-js-btn-scroll" href="#container-fluid" style="margin-top: 10%;"><img id="arrow" alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
+        </div>
+    </div>
+
+	  <footer class="container-fluid text-center">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 socialm">
+                    <h3>Social Media</h3>
+
+					<br>
+
+					<a href = "http://www.facebook.com"><img src="css\images\facebook.svg" alt = "fb"></a>
+					<a href = "http://www.twitter.com"><img src="css\images\twitter.svg" alt = "twitter"></a>
+					<a href = "http://www.instagram.com"><img src="css\images\instagram.svg" alt = "instagram"></a><br>
+                     <!--<img id="team" src="css\images\teamlogo.png" alt = "teamlogo">-->
+				</div>
+
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+					<h3>Contact Us</h3>
+					<br>
+                    <div id="contactus">
+                        <ul>
+                            <li>
+                                <img src="css\images\tel.svg" alt = "tel">
+                                <a href="tel:+61123456789">
+                                    +(61) 123 456 789 </a>
+                            </li>
+                            <li>
+                                <img src="css\images\email.svg" alt = "email"> 
+                                <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top"> travolla@innstation.com </a>
+                            </li>
+                            <li>&#9400; Travolla, Designed by innStation, 2018</li>
+                           
+                        </ul>
+                    </div>
+				</div>
+
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<h3>Address</h3>
+					<br>
+                    <div id="address">
+
+                        <ul>
+                            <li>
+                                <img src="css\images\adress.svg" alt = "address"> The University Of Queensland
+                            </li>
+                            <li> St Lucia, Brisbane, QLD 4067, Australia</li>
+                            <li>
+                                <img src="css\images\adress.svg" alt = "address"> The Dalian Neusoft University of Information 
+                            </li>
+                            <li> Dalian, Liyaoning, China </li>
+                        </ul>
+                    </div>
+				</div>
+			</div>
+	  </footer>
+    
+    <!--Responsiveness--> 
+    
+    <script>
+        function displayWindowSize() {
+            
+            //Retrieve the screen height of the user
+
+            var screenheight = window.innerHeight;
+            console.log(screenheight);
+            //Adapt the landing container to have the screenheight minus 100px
+            $('.container-fluid').css('margin-top',"7%");
+        };
+    </script>
+    
+    <!-- Optional JavaScript-->
+    
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+</html>
