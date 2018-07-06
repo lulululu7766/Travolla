@@ -1,3 +1,62 @@
+<?php
+    //include('session.php');
+    require('encryption1.php');
+    $output = NULL;
+ 	$output2 = NULL;
+    session_start(); 
+
+ 	if(isset($_POST['submit'])){
+
+ 		//Connect to the database
+ 		$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
+        
+		//Get the string of the inputs in the form
+		$fullname = $mysqli->real_escape_string($_POST['fullname']);
+	 	$email = $mysqli->real_escape_string($_POST['email']);
+		$password = $mysqli->real_escape_string($_POST['password']);
+        $plang = $mysqli->real_escape_string($_POST['plang']);
+		$slang = $mysqli->real_escape_string($_POST['slang']);
+        
+        
+
+		//Query the email string of the input in the database
+
+	  	$query = $mysqli->query("SELECT * FROM users WHERE email = '$email' ");
+        
+	  	//Check if the email already exists in the database
+	  	
+		if($query->num_rows != 0) {
+	    	$output = "Sorry, this email address is already registered";
+  		}else{
+
+  			//Encrypts the password
+	    	$encrypted = encryption1($password);
+	    	$password = $encrypted["password"];
+
+	    	$salt = $encrypted['salt'];
+
+	    	//Insert the record
+	    	$insert = $mysqli->query("INSERT INTO users (email, name, password, salt) VALUES ('$email','$fullname','$password', '$salt')");
+			if($insert != TRUE){
+				$output = "There was a problem <br />";
+				$output .= $mysqli->error;
+			}else{
+        		//Display Welcome to the specific customer + Logout button
+        		//header('Location: index.html');
+				$output = "You have been successfully registered!";
+			}
+		}
+        
+            echo $output;
+            echo $output2;
+            // Check connection
+            if ($mysqli->connect_error) {
+                die("Connection failed: " . $mysqli->connect_error);
+            } else{echo "Connected successfully";}
+            echo $fullname;
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +111,7 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
-                    <form id="signupform">
+                    <form id="signupform" method = "post" action="">
                         
                         <div id="pers">
                             <h2> <img src="css/images/downarrow.png" alt="downarrow"> Personal details </h2>
@@ -60,7 +119,7 @@
                         
                         <div id="signup1">
                         <label for="inputname" class="sr-only">Full Name</label>
-                        <input type="text" id="inputName" class="form-control" placeholder="Full Name" required autofocus>
+                        <input type="text" id="inputName" class="form-control" placeholder="Full Name" name="fullname"  required autofocus>
                         
                         <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom: 4%;">
                           <label class="btn btn-secondary active">
@@ -73,13 +132,13 @@
                         </div>
                         
                         <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required>
 
                         <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                         
                         <div class="form-group" style="margin-bottom: 4%;">
-                          <select id="inputflang" class="form-control">
+                          <select id="inputflang" class="form-control" name="plang" >
                             <option selected>First Language</option>
                             <option>English</option>
                             <option>French</option>
@@ -89,7 +148,7 @@
                         </div>
                         
                         <div class="form-group" style="margin-bottom: 4%;">
-                          <select id="inputflang" class="form-control">
+                          <select id="inputflang" class="form-control" name="slang" >
                             <option selected>Second Language</option>
                             <option>English</option>
                             <option>French</option>
@@ -218,7 +277,7 @@
                 </div>
             
             
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>                    
+                <input class="btn btn-lg btn-primary btn-block" type="submit" name ="submit" value = " Create">                    
             </form>
         </div>
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
@@ -226,6 +285,10 @@
         </div>
             <a class="ct-btn-scroll ct-js-btn-scroll" href="#container-fluid" style="margin-top: 10%;"><img id="arrow" alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
         </div>
+        <?php
+            
+        
+        ?>
     </div>
 
 	  <footer class="container-fluid text-center">
@@ -276,6 +339,7 @@
                             </li>
                             <li> Dalian, Liyaoning, China </li>
                         </ul>
+                        
                     </div>
 				</div>
 			</div>
