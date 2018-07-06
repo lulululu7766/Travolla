@@ -1,3 +1,70 @@
+<?php
+    //include('session.php');
+    require('encryption1.php');
+    $output = NULL;
+ 	$output2 = NULL;
+    $output3 = NULL;
+
+    session_start(); 
+
+    
+    //Check form
+
+    if (isset($_POST['submit'])) {
+
+ 		//Connect to the database
+ 		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+        
+        //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
+        
+        //Retrieve the string of email and password inputs
+
+        $email=$mysqli->real_escape_string($_POST['email']);
+        $password=$mysqli->real_escape_string($_POST['password']);
+        
+        //Query the email in the database
+        $query = $mysqli->query ("SELECT * FROM users WHERE email='$email'");
+
+        if($query->num_rows == 0){
+            echo "<script>alert('The email you have entered is invalid')</script>"; 
+            //$output = "The email you've entered is invalid";
+
+        }else{
+        	while($row = mysqli_fetch_assoc($query)) {
+                $db_salt = $row['salt'];
+                $db_password = $row['password'];
+                echo $db_password;
+
+            }if(function_exists('hash_equals')){
+                $output2 = "it exists";
+            }else{
+                $output2 = "it doesn't";
+            }
+            $input = crypt($password, $db_salt); 
+			if(hash_equals($db_password, $input)){
+				$output = $_SESSION;
+				$_SESSION['loggedin'] = TRUE;
+				$user_query = $mysqli->query ("SELECT name FROM users WHERE email='$email'");
+				while($row = mysqli_fetch_assoc($user_query)) {
+					$db_fullname = $row['name'];
+					//header("Location: index_loggedin.php");
+				}
+			    $_SESSION['user'] = $db_fullname;
+			}else{
+				echo "<script>alert('Sorry, your password is incorrect')</script>"; 
+			    $output = "Sorry your password is incorrect";
+			}         
+		  }  
+	}else{
+		$output3 = "It is true: you have successfully logged in";
+		//header("Location: index_loggedin.php");
+	}
+
+    print_r($output);
+	echo $output2;
+	echo $output3;
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,26 +92,26 @@
             <div class="row">
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                    
                 </div>
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
-                    <form id="homeform">
+                    <form id="homeform" method ="post" action="">
                         
                         <!--Buttons-->
-                        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='signup.html';">Sign in </button>
+                        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='signup.php';">Sign Up</button>
                         
                             <button id="loginbutton" class="btn btn-lg btn-primary btn-block" >Log in</button>                        
                             <!--Login panel that will appear when Login button clicked-->
 
                             <div id="loginpanel">
                                 <label for="inputEmail" class="sr-only">Email address</label>
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required >
 
                                 <label for="inputPassword" class="sr-only">Password</label>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                                <a href="index.html">
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                                <input type="submit" name ="submit" >
                                     <img src="css\images\loginarrow.png" alt = "loginarrow">
-                                </a>
                             </div>
                     </form>
                 </div>
@@ -66,6 +133,7 @@
 	  	<div class="row">
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
       			<h3> Match with a local guide to take you around </h3>
+                
       			<p> Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles.</p>
     		</div>
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
