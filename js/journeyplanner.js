@@ -59,6 +59,12 @@ function addActivity(text) {
 	
 	cardDiv.appendChild(closeDiv);
 	
+	var activityCost = document.createElement("div");
+	activityCost.className = "card-footer";
+	var timeCost = document.createElement("b");
+	timeCost.innerText = 3;
+	activityCost.appendChild(timeCost);
+	cardDiv.appendChild(activityCost);
 
 	for (b = 0; b < buttonList.length; b++) {
 		if (buttonList[b].innerText === text) {
@@ -74,6 +80,7 @@ function addActivity(text) {
 			enableButton(elementList[0].innerText);			
 		}
 	}
+	updateTime();
 }
 
 function enableButton(btnName) {
@@ -83,4 +90,56 @@ function enableButton(btnName) {
 			buttonList[b].disabled = false;
 		}
 	}
+}
+
+function updateTime() {
+	var totalTime = 0;
+	var timeDiv = document.getElementById("totalTime");
+	timeDiv.innerHTML = "<h5>Total Time:</h5>";
+	var timeText = document.createElement("p");
+	var activityCards = document.getElementsByClassName("card bg-light mb-4");
+	for (c = 0; c < activityCards.length; c++) {	
+		totalTime += parseInt((activityCards[c].children)[3].innerText);
+	}
+	timeText.append(totalTime);
+	timeDiv.append(timeText)
+	console.log(totalTime);
+}
+
+function getDays() {
+	var days = parseInt(document.getElementById('daysInput').value);
+	console.log(days);
+	return days;
+}
+
+function getActivitiesLength() {
+	var dict = {};
+	var activityCards = document.getElementsByClassName("card bg-light mb-4");
+	for (c = 0; c < activityCards.length; c++) {
+		dict[trim((activityCards[c].children)[0].innerText)] = parseInt((activityCards[c].children)[3].innerText);
+	}
+	return dict;
+}
+
+function optimise() {
+	// Check if too many activities for number of days
+	var activitiesLength = getActivitiesLength();
+	var numDays = getDays();
+	var totalTime = 0;
+	var avgDay = 0;
+	
+	for (var actName in activitiesLength) {
+		totalTime += activitiesLength[actName];
+	}
+	
+	avgDay = totalTime / numDays;
+	
+	if (avgDay > 8) {
+		console.log("Days are too long.")
+		alert("Days are too long!");
+	}
+}
+
+function trim(s) { 
+  return ( s || '' ).replace( /^\s+|\s+$/g, '' ); 
 }
