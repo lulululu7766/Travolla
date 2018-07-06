@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="shortcut icon" href="css/images/bg.jpg"/>
+    <link rel="shortcut icon" href="css/images/weblogo.png"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css\index.css">
@@ -19,7 +19,39 @@
     <div class="cover-container" >
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 landing" >
             <h1 id="title"> Welcome to Travolla </h1>
-            <a class="ct-btn-scroll ct-js-btn-scroll" href="#container-fluid"><img id="arrow" alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
+            
+            <div class="row">
+                
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                    <form id="homeform">
+                        
+                        <!--Buttons-->
+                        <a href="signup.html"><button class="btn btn-lg btn-primary btn-block" >Sign in </button></a>
+                        
+                            <button id="loginbutton" class="btn btn-lg btn-primary btn-block" >Log in</button>                        
+                            <!--Login panel that will appear when Login button clicked-->
+
+                            <div id="loginpanel">
+                                <label for="inputEmail" class="sr-only">Email address</label>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+
+                                <label for="inputPassword" class="sr-only">Password</label>
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                <a href="index.html">
+                                    <img src="css\images\loginarrow.png" alt = "loginarrow">
+                                </a>
+                            </div>
+                    </form>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+                </div>
+                
+            </div>
+            <a class="ct-btn-scroll ct-js-btn-scroll" href="#container-fluid" style="margin-top: 10%;"><img id="arrow" alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
         </div>
     </div>
 	  

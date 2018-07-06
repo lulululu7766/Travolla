@@ -1,7 +1,7 @@
 $(document).ready(function(){
     console.log("Scroll is ready!");
     
-    $('a').on('click', function(event) {
+    $('.ct-js-btn-scroll').on('click', function(event) {
         var target = $(this.getAttribute('href'));
         console.log(target);
         if( target.length ) {
@@ -13,6 +13,9 @@ $(document).ready(function(){
         }
     });
     
-   
+    $('#loginbutton').click(function(){
+        $("#loginpanel").slideToggle("fast");
+    });   
+    
 });
 

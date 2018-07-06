@@ -1,3 +1,5 @@
+/*Landing top container*/
+
 .cover-container{
     /* The image used */
     background-image: url("images/bg.jpg");
@@ -23,19 +25,57 @@
   width: 49px;
   height: 49px;
   position: absolute;
-  bottom: 15%;
   left: 0;
   right: 0;
   margin: auto;
   z-index: 100;
   border-radius: 50%;
-  -webkit-transition: background-color 0.25s ease-in-out;
-  transition: background-color 0.25s ease-in-out;
+    -webkit-animation: 3s arrow infinite ease;
+	animation: 3s arrow infinite ease;
+}
+
+.ct-btn-scroll img{
+    width: 3vw;
+    height: 5.5vh;
 }
 
 .landing{
     height: 794px;
 }
+
+#homeform{
+    padding-left: 20%;
+    
+}
+
+#homeform button{
+    width: 20vw;
+    background-color: #F47820;
+    border: none;
+    margin-top: 10%;
+}
+
+#homeform a:first-of-type:hover{
+    text-decoration: none;
+}
+
+#loginpanel{
+    background-color: lightgray;
+    text-align: center;
+}
+
+#loginpanel input, #loginpanel{
+    width: 20vw;
+}
+
+#loginpanel img:last-of-type{
+    background-color: #F47820;
+    float: right;
+    position: relative;
+    width: 1.5vw;
+}
+
+/*Landing content */
 
 #container-fluid h2{
     color: darkgoldenrod;
@@ -47,7 +87,7 @@
 }
 
 .row h3{
-    color: orange;
+    color: #F47820;
 }
 
 /*Footer*/
@@ -59,6 +99,10 @@ footer{
 
 .container-fluid h3{
     margin-top: 10%;
+}
+
+#loginpanel{
+    display: none;
 }
 
 footer img{
@@ -84,5 +128,17 @@ footer .socialm img{
 
 footer li{
     list-style-type: none;
+}
+
+
+/*Webkits*/
+
+@keyframes arrow{
+	0%, 100%{
+		bottom : 10%;
+	}
+	50%{
+		bottom:5%;
+	}
 }
 
