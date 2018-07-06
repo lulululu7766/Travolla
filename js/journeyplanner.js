@@ -140,33 +140,37 @@ function optimiseJourney() {
 	}
 	for (i = 0; i < currentActivities.length; i++) {
 		if (activityDict[currentActivities[i]] > maxLength - 1) {
-			console.log(totalTime);
 			alert("One activity is too long.");
 		}
 	}
+	if (totalTime / totalDays > maxLength) {
+		alert("Too many activities per day.");
+	}
 	
 	var timetableDict = {};
-	console.log(totalDays);
 	var filledTime = 0;
 	var day = 1;
 	var activitiesPerDay = [];
-	for (i = 0; i < timetableTodo.length; i++) {
-		var activityName = timetableTodo[i];
-		var activityDuration = 1 + activityDict[activityName];
-		if (filledTime + activityDuration <= maxLength) {
-			activitiesPerDay.push("Transit");
-			activitiesPerDay.push(activityName);
+	while (day <= totalDays) {
+		while (filledTime < maxLength) {
+			if (timetableTodo.length === 0) {
+				break;
+			}
+			var activityName = timetableTodo[timetableTodo.length-1];
+			var activityDuration = 1 + activityDict[activityName];
 			filledTime += activityDuration;
-			timetableDict[i] = activitiesPerDay;
-		} else {
-			day++;
-			activitiesPerDay = [];
-			filledTime = 0;
+			if (filledTime <= maxLength) {
+				activitiesPerDay.push("Transit");
+				activitiesPerDay.push(activityName);
+				timetableTodo.pop();
+			}
 		}
+		timetableDict[day] = activitiesPerDay;
+		day++;
+		filledTime = 0;
+		activitiesPerDay = [];
 	}
-		
 	console.log(timetableDict);
-	
 }
 
 // Reset journey
