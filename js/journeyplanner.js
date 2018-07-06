@@ -82,18 +82,21 @@ function drawActivities() {
 		cardTimeElement.innerText = "Duration: " + activityDuration + " hours.";
 		cardTimeList.appendChild(cardTimeElement);
 		// Remove Button
+		var buttonDiv = document.createElement('div');
+		buttonDiv.className = "card-body";
 		var removeBtn = document.createElement('button');
 		removeBtn.className = "removeBtn btn btn-danger";
 		removeBtn.innerText = "Remove " + activityName;
 		removeBtn.onclick = function() {
 			removeActivity(this.innerText.substr(7));
 		}
+		buttonDiv.appendChild(removeBtn);
 		// Append all
 		cardBody.appendChild(cardTitle);
 		cardBody.appendChild(cardText);
-		cardBody.appendChild(cardTimeList);
-		cardBody.appendChild(removeBtn);
 		card.appendChild(cardBody);
+		card.appendChild(cardTimeList);
+		card.appendChild(buttonDiv);
 		cardsDiv.append(card);
 	}
 }
