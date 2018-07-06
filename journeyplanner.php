@@ -17,12 +17,16 @@
 			</div>
 			
 			<div id="journeyPlanner" class="container">
-				<h4>How long do you plan to stay?</h4>
+				<h4>When are you visiting?</h4>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">Days</span>
+						<span class="input-group-text" id="basic-addon1">Start</span>
 					</div>
-					<input id="daysInput" type="number" class="form-control" placeholder="Number of Days" aria-label="Days" aria-describedby="Days">
+					<input id="startDate" type="date" name="datePicker">
+					<div class="input-group-append">
+						<span class="input-group-text" id="basic-addon1">End</span>
+					</div>
+					<input id="endDate" type="date" name="datePicker">
 				</div>
 				
 				<div id="locationDiv">
@@ -71,7 +75,7 @@
 		<br>
 		
 		<div id="timetableParent" class="container">
-			
+			<h4>Your Timetable</h4>
 		</div>
 		
 		
