@@ -50,7 +50,6 @@ $(document).ready(function(){
     $('.mobicons').on('click', function(event) {
         $(event.target).css('border', 'solid #F47820 1px');
         $(event.target).css('border-radius', '25px 25px 25px 25px');
-
         }
     ); 
     

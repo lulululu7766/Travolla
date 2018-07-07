@@ -1,21 +1,18 @@
 <?php
-    //include('session.php');
+    include('session.php');
     require('encryption1.php');
     $output = NULL;
  	$output2 = NULL;
     $output3 = NULL;
-
-    session_start(); 
-
     
     //Check form
 
     if (isset($_POST['submit'])) {
 
  		//Connect to the database
- 		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+ 		//$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
         
-        //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
+        $mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
         
         //Retrieve the string of email and password inputs
 
@@ -26,7 +23,7 @@
         $query = $mysqli->query ("SELECT * FROM users WHERE email='$email'");
 
         if($query->num_rows == 0){
-            echo "<script>alert('The email you have entered is invalid')</script>"; 
+            echo "<script>alert('The email you have entered is invalid');</script>"; 
             //$output = "The email you've entered is invalid";
 
         }else{
@@ -51,18 +48,16 @@
 				}
 			    $_SESSION['user'] = $db_fullname;
 			}else{
-				echo "<script>alert('Sorry, your password is incorrect')</script>"; 
+				echo "<script>alert('Sorry, your password is incorrect');</script>"; 
 			    $output = "Sorry your password is incorrect";
 			}         
 		  }  
-	}else{
-		$output3 = "It is true: you have successfully logged in";
-		//header("Location: index_loggedin.php");
 	}
 
     print_r($output);
 	echo $output2;
 	echo $output3;
+
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +95,7 @@
                         
                         <!--Buttons-->
                         <button class="btn btn-lg btn-primary btn-block" onclick="location.href='signup.php';">Sign Up</button>
-                        
+                        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='logout1.php'">Log out</button>
                             <button id="loginbutton" class="btn btn-lg btn-primary btn-block" >Log in</button>                        
                             <!--Login panel that will appear when Login button clicked-->
 

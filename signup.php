@@ -1,5 +1,5 @@
 <?php
-    //include('session.php');
+    include('session.php');
     require('encryption1.php');
     $output = NULL;
  	$output2 = NULL;
