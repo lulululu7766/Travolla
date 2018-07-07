@@ -73,6 +73,7 @@
 	<link rel="stylesheet" type="text/css" href="css\index.css">
     <link rel="stylesheet" type="text/css" href="css\main.css">
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="js\scroll.js"></script>
 
 

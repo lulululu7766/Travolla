@@ -59,6 +59,6 @@ $(document).ready(function(){
         $(event.target).css('border', 'solid #F47820 4px');
         }
     ); 
-    
+
 });
 

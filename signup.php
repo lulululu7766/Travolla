@@ -13,11 +13,12 @@
 		//Get the string of the inputs in the form
 		$fullname = $mysqli->real_escape_string($_POST['fullname']);
 	 	$email = $mysqli->real_escape_string($_POST['email']);
+        $gender = $mysqli->real_escape_string($_POST['gender']);        
+        $type = $mysqli->real_escape_string($_POST['type']);        
+        $activity = $mysqli->real_escape_string($_POST['activity']);        
 		$password = $mysqli->real_escape_string($_POST['password']);
         $plang = $mysqli->real_escape_string($_POST['plang']);
-		$slang = $mysqli->real_escape_string($_POST['slang']);
-        
-        
+		$slang = $mysqli->real_escape_string($_POST['slang']);        
 
 		//Query the email string of the input in the database
 
@@ -36,7 +37,7 @@
 	    	$salt = $encrypted['salt'];
 
 	    	//Insert the record
-	    	$insert = $mysqli->query("INSERT INTO users (email, name, password, salt) VALUES ('$email','$fullname','$password', '$salt')");
+	    	$insert = $mysqli->query("INSERT INTO users (email, name, password, salt, pri_lang, sec_lang, activity_level, user_mode) VALUES ('$email','$fullname','$password', '$salt', '$plang', '$slang', '$activity', '$type')");
 			if($insert != TRUE){
 				$output = "There was a problem <br />";
 				$output .= $mysqli->error;
@@ -70,6 +71,7 @@
 	<link rel="stylesheet" type="text/css" href="css\main.css">
     <link rel="stylesheet" type="text/css" href="css\signup.css">
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="js\scroll.js"></script>
 
 
@@ -121,15 +123,23 @@
                         <label for="inputname" class="sr-only">Full Name</label>
                         <input type="text" id="inputName" class="form-control" placeholder="Full Name" name="fullname"  required autofocus>
                         
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom: 4%;">
+                        <!--<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom: 4%;">
                           <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked > Male
+                            <input type="radio" name="options" id="option1" autocomplete="off" > Male
                           </label>
                           <label class="btn btn-secondary">
                             <input type="radio" name="options" id="option2" autocomplete="off"> Female
                           </label>
 
-                        </div>
+                        </div>-->
+                            
+                        <div class="form-group" style="margin-bottom: 4%;">
+                                  <select id="inputgender" class="form-control" name="gender" >
+                                    <option selected>Gender</option>
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                  </select>
+                                </div>
                         
                         <label for="inputEmail" class="sr-only">Email address</label>
                         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required>
@@ -157,7 +167,7 @@
                           </select>
                         </div>
                         
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
                           <label class="btn btn-secondary active">
                             <input type="radio" name="options" id="option1" autocomplete="off" checked > Tourist
                           </label>
@@ -167,7 +177,16 @@
                           <label class="btn btn-secondary">
                             <input type="radio" name="options" id="option3" autocomplete="off"> Both
                           </label>
-                        </div>
+                        </div>-->
+                            
+                            <div class="form-group" style="margin-bottom: 4%;">
+                              <select id="inputtype" class="form-control" name="type" >
+                                <option selected> Type of Account </option>
+                                <option>Tourist</option>
+                                <option>Guide</option>
+                                <option>Both</option>
+                              </select>
+                            </div>
                     </div>
                         
                         <div id="pref">
@@ -176,7 +195,7 @@
                         
                             <div id="signup2" >
                              
-                               	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+                               	<!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
                                   <label class="btn btn-secondary active">
                                     <input type="radio" name="options" id="option1" autocomplete="off" checked > Lazy
                                   </label>
@@ -186,9 +205,18 @@
                                   <label class="btn btn-secondary">
                                     <input type="radio" name="options" id="option3" autocomplete="off"> Hyper Active
                                   </label>
-                                </div><br>
+                                </div><br>--> 
+                                
+                                <div class="form-group" style="margin-bottom: 4%;">
+                                  <select id="inputactivity" class="form-control" name="activity" >
+                                    <option selected>Activity Level</option>
+                                    <option>Lazy</option>
+                                    <option>Active</option>
+                                    <option>Hyper Active</option>
+                                  </select>
+                                </div>
                              
-                              <label id="mobility">Mobility</label> 
+                              <h3 id="mobility">Mobility</h3> 
                             <img class="mobicons" src="css/images/wheelchair.png" alt="disabled">
                             <img class="mobicons" src="css/images/turtle.png" alt="slow">
                             <img class="mobicons" src="css/images/rabbit.png" alt="fast">
@@ -216,64 +244,58 @@
                                 </div>
                             </div>
 
-                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
-                                <img src="css\images\interest\food.jpg" >
-                                <div class="subtitle">
-                                     <p> Food</p>
-                                </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >    
                             </div>
-                           
-
-                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                                <img src="css\images\interest\museum.jpg" >
-                                <div class="subtitle">
-                                     <p> Museums </p>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                            </div>
-
                       </div>
                         
                       <div class="row q2">
                           <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
-                            <img src="css\images\interest\science1.jpg" >
+                            <img src="css\images\interest\nature.jpg" >
                             <div class="subtitle">
-                                 <p> Science</p>
+                                 <p> Nature</p>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
-                            <img src="css\images\interest\health.jpg" >
+                            <img src="css\images\interest\museum.jpg" >
                             <div class="subtitle">
-                                 <p> Health </p>
+                                <p> Museums </p>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
-                            <img src="css\images\interest\english.jpg" >
+                            <img src="css\images\interest\food.jpg" >
                             <div class="subtitle">
-                                 <p> English</p>
+                                <p> Food</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+                        </div>
+                    </div>
+                                
+                    <div class="row q3">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+                            <img src="css\images\interest\archi.jpg" >
+                            <div class="subtitle">
+                                 <p> Architectural </p>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
-                            <img src="css\images\interest\languages.jpg" >
+                            <img src="css\images\interest\animal.jpg" >
                             <div class="subtitle">
-                                 <p> Languages </p>
+                                 <p> Animal </p>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                            <img src="css\images\interest\it.jpg" >
+                            <img src="css\images\interest\park.jpg" >
                             <div class="subtitle">
-                                 <p> I.T </p>
+                                 <p> Events </p>
                             </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         </div>
-
-                  </div>
+                    </div>            
                 </div>
             
             
@@ -346,7 +368,7 @@
 	  </footer>
     
     <!--Responsiveness--> 
-    
+
     <script>
         function displayWindowSize() {
             
