@@ -16,7 +16,7 @@
 	if ($mysqli->connect_error) {
 	    die("Connection failed: " . $mysqli->connect_error);
 	} 
-	echo "Connected successfully";
+	//echo "Connected successfully";
 	session_start();
 
 	if(isset($_SESSION['loggedin'])){
