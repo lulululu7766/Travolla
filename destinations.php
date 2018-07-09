@@ -105,7 +105,8 @@
                             
                             <div class="row">
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-                                <div class="card mb-4 box-shadow ">
+                                <a href="journeyplanner.php">
+                                  <div class="card mb-4 box-shadow ">
                                     <img class="card-img-top thumbpic" src="css/images/newtrip.png" alt="Card image cap">
                                     <div class="card-body">
                                       <p class="card-text">New Trip</p>
@@ -116,11 +117,12 @@
                                       </div>
                                     </div>
                                   </div>
+                                </a>
                               </div>
                                 
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="card mb-4 box-shadow">
-                                    <img class="card-img-top" src="css/images/bg.jpg" alt="Card image cap">
+                                    <img class="card-img-top thumbpic" src="css/images/bg.jpg" alt="Card image cap">
                                     <div class="card-body">
                                       <p class="card-text">Dalian Trip</p>
                                       <div class="d-flex justify-content-between align-items-center">
@@ -135,7 +137,7 @@
                               </div>
                                 
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <div class="card mb-4 box-shadow">
+                                <div class="card mb-4 box-shadow thumbpic">
                                     <img class="card-img-top" src="css/images/bg.jpg" alt="Card image cap">
                                     <div class="card-body">
                                       <p class="card-text">Brisbane Trip</p>
@@ -173,13 +175,12 @@
                         <div class="row">
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="card mb-4 box-shadow">
-                                    <img class="card-img-top" src="css/images/bg.jpg" alt="Card image cap">
+                                    <img class="card-img-top thumbpic" src="css/images/bg.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                      <p class="card-text">Paris Trip</p>
                                       <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                                         </div>
                                         <small class="text-muted">9 mins</small>
                                       </div>
@@ -188,10 +189,10 @@
                               </div>
                                 
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <div class="card mb-4 box-shadow">
+                                <div class="card mb-4 box-shadow thumbpic">
                                     <img class="card-img-top" src="css/images/bg.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                      <p class="card-text"> New York Trip </p>
                                       <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
