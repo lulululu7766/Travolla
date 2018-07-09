@@ -1,0 +1,27 @@
+.fa-hotjar:hover {
+    color: lightcoral;
+}
+
+.fa-location-arrow:hover {
+    color: lightgrey;
+}
+
+.fa-search:hover {
+    color: lightblue;
+}
+
+#myPageTop {
+    width: fit-content;
+    background-color:rgba(0,0,0,0.5);
+    border-radius: 10px;
+    
+}
+
+#myPageTop {
+    visibility: hidden;
+}
+
+/* .fa-road {}
+.fa-video {}
+.fa-info-circle{}
+.fa-compass{} */

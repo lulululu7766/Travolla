@@ -7,111 +7,45 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <title>❤️ Heat Map ❤️</title>
     <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css" />
+    <link rel="stylesheet" type="text/css" href="./css/heatmap.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
 
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=6c6ef0e9f9454edf59b97a1c958c746e"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=6c6ef0e9f9454edf59b97a1c958c746e&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
     <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
-    <!-- <script type="text/javascript" src="//a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script> -->
     <script type="text/javascript" src="/js/heatmapData.js"></script>
 </head>
 
 <body>
     <div id="container" class="map" tabindex="0"></div>
-    <div class="button-group" style="margin-right: 50px">
-        <input type="button" class="button" value="Show Heatmap" onclick="heatmap.show()" />
-        <input type="button" class="button" value="Hide Heatmap" onclick="heatmap.hide()" />
+    <div class="button-group" style="width: fit-content; background-color:rgba(0,0,0,0.5); border-radius: 10px">
+        <i class="fab fa-hotjar fa-2x" style="color: lightcoral; margin: 3px"></i>
+        <i class="fas fa-location-arrow fa-2x" style="margin: 3px"></i>
+        <i class="fas fa-search fa-2x" style="margin: 3px"></i>
+        <i class="fas fa-road fa-2x" style="margin: 3px"></i>
+        <i class="fas fa-video fa-2x" style="margin: 3px"></i>
+        <i class="fas fa-info-circle fa-2x" style="margin: 3px"></i>
+        <i class="far fa-compass fa-2x" style="margin: 3px"></i>
     </div>
-    <div id="tip"></div>
+    <!-- <div id="tip"></div> -->
+    <div id="myPageTop">
+        <table>
+            <tr>
+                <td>
+                    <label style="color: whitesmoke">G'Day! Tell me some places~</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="border-radius: 5px; border: 0px; background-color: grey" id="tipinput" />
+                </td>
+            </tr>
+        </table>
+    </div>
 
-    <script>
-        var map, geolocation;
-        // Load Maps with "macaron" style
-        map = new AMap.Map('container', {
-            mapStyle: 'amap://styles/macaron',
-            resizeEnable: true
-        });
-
-        // Add Toolbar Plugin to the map
-        map.plugin(['AMap.ToolBar'], function () {
-            // Set self-defined mark
-            var toolBar = new AMap.ToolBar();
-            map.addControl(toolBar);
-        });
-
-        map.plugin('AMap.Geolocation', function () {
-            geolocation = new AMap.Geolocation({
-                enableHighAccuracy: true,
-                timeout: 10000, //超过10秒后停止定位，默认：无穷大
-                buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-                zoomToAccuracy: true, //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
-                buttonPosition: 'RB'
-            });
-            map.addControl(geolocation);
-            geolocation.getCurrentPosition();
-            AMap.event.addListener(geolocation, 'complete', onComplete);
-            AMap.event.addListener(geolocation, 'error', onError);
-        });
-        // Analyze Results
-        function onComplete(data) {
-            var str = ['Located Succeed!'];
-            str.push('Lng: ' + data.position.getLng());
-            str.push('Lat: ' + data.position.getLat());
-            if (data.accuracy) {
-                str.push('Accuracy:' + data.accuracy + ' m');
-            } //如为IP精确定位结果则没有精度信息
-            str.push('Offset: ' + (data.isConverted ? 'Yes' : 'No'));
-            document.getElementById('tip').innerHTML = str.join('<br>');
-        }
-        // Analyze Error
-        function onError(data) {
-            document.getElementById('tip').innerHTML = 'Located Failed';
-        }
-
-        if (!isSupportCanvas()) {
-            alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
-        }
-        //详细的参数,可以查看heatmap.js的文档 https://www.patrick-wied.at/static/heatmapjs/docs.html
-        //参数说明如下:
-        /* visible 热力图是否显示,默认为true
-         * opacity 热力图的透明度,分别对应heatmap.js的minOpacity和maxOpacity
-         * radius 势力图的每个点的半径大小   
-         * gradient  {JSON} 热力图的渐变区间 . gradient如下所示
-         *  {
-         .2:'rgb(0, 255, 255)',
-         .5:'rgb(0, 110, 255)',
-         .8:'rgb(100, 0, 255)'
-         }
-         其中 key 表示插值的位置, 0-1 
-         value 为颜色值 
-         */
-        var heatmap;
-        map.plugin(["AMap.Heatmap"], function () {
-            //初始化heatmap对象
-            //Init heatmap Object
-            heatmap = new AMap.Heatmap(map, {
-                radius: 25, //给定半径 Set radius
-                opacity: [0, 0.8]
-                /*,gradient:{
-                 0.5: 'blue',
-                 0.65: 'rgb(117,211,248)',
-                 0.7: 'rgb(0, 255, 0)',
-                 0.9: '#ffea00',
-                 1.0: 'red'
-                 }*/
-            });
-            //设置数据集：该数据为中国所有美食餐厅
-            //Data: Restraunts in China
-            heatmap.setDataSet({
-                data: heatmapData,
-                max: 100
-            });
-        });
-        // 判断浏览区是否支持canvas
-        // Check the browser if it supports canvas
-        function isSupportCanvas() {
-            var elem = document.createElement('canvas');
-            return !!(elem.getContext && elem.getContext('2d'));
-        }
-    </script>
+    <script type="text/javascript" src="./js/heatmap/map.js"></script>
+    <script type="text/javascript" src="./js/heatmap/menuBar.js"></script>
 </body>
 
 </html>
