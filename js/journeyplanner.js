@@ -152,6 +152,7 @@ function getDays() {
 
 // The big boy.
 function optimiseJourney() {
+    var timetableDict = {};
     var timetableTodo = currentActivities;
     var maxLength;
     // Initialise totalTime as 1 hour for each activity
@@ -175,7 +176,7 @@ function optimiseJourney() {
         alert("Invalid range.");
     }
     for (i = 0; i < currentActivities.length; i++) {
-        if (activityDict[currentActivities[i]] > maxLength - 1) {
+        if (parseFloat(activityDict[currentActivities[i]][0]) > maxLength - 1) {
             alert("One activity is too long.");
         }
     }
@@ -183,7 +184,6 @@ function optimiseJourney() {
         alert("Too many activities per day.");
     }
 
-    var timetableDict = {};
     var filledTime = 0;
     var day = 1;
     var activitiesPerDay = [];
@@ -193,7 +193,7 @@ function optimiseJourney() {
                 break;
             }
             var activityName = timetableTodo[timetableTodo.length - 1];
-            var activityDuration = 1 + activityDict[activityName];
+            var activityDuration = 1 + parseFloat(activityDict[activityName][0]);
             filledTime += activityDuration;
             if (filledTime <= maxLength) {
                 activitiesPerDay.push("Transit");
@@ -223,7 +223,7 @@ function drawTimetable(timetableDict) {
             if (activityList[i] === "Transit") {
                 totalTime += 1;
             } else {
-                totalTime += activityDict[activityList[i]];
+                totalTime += parseFloat(activityDict[activityList[i]][0]);
             }
         }
         var dayContainer = document.createElement('div');
@@ -246,7 +246,7 @@ function drawTimetable(timetableDict) {
             activityInformation.className = "list-group list-group-flush";
 
             if (activityName !== "Transit") {
-                activityDuration = activityDict[activityName];
+                activityDuration = activityDict[activityName][0];
             } else {
                 activityDuration = 1;
             }
@@ -269,6 +269,7 @@ function drawTimetable(timetableDict) {
 // Reset journey
 function resetJourney() {
     currentActivities = [];
+    activityDict = {};
     document.getElementById('startDate').value = "";
     document.getElementById('endDate').value = "";
     resetButtons();
@@ -276,9 +277,13 @@ function resetJourney() {
     document.getElementById('timetableParent').innerHTML = "<h4>Your Timetable</h4>";
 }
 
-// Enable all buttons
+// Reset status of all buttons
 function resetButtons() {
     var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
+    var activityBtn = document.getElementById('activityBtn');
+    var btnList = document.getElementById('activityDiv');
+    activityBtn.disabled = false;
+    btnList.innerHTML = "";
     for (i = 0; i < buttonList.length; i++) {
         buttonList[i].disabled = false;
     }

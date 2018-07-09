@@ -34,6 +34,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#" onclick="getActivities(5120)">Dalian, China</a>
+                        <a class="dropdown-item" href="#" onclick="getActivities(8120)">Brisbane, Australia</a>
                     </div>
                 </div>
 
