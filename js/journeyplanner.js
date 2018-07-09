@@ -1,24 +1,32 @@
 window.onload = function() {
+    // Disable the 'Find Activities!' button.
     document.getElementById('getActivitiesBtn').disabled = true;
+    // Disable the 'Print Timetable' button.
     document.getElementById('printBtn').disabled = true;
 }
 
+// Stores activities in the format Activity Name : [Array of Activity attributes]
 var activityDict = {};
 
+// An array containing the current selected activities.
 var currentActivities = [];
 
+// Stores the destination of the traveller.
 var tripDestination;
 
 // Get list of all activities in area
 function getActivities(cityId) {
     // Get activities from DB and add to activityDict
     $.ajax({
+        // Using a POST request
         type:"POST",
+        // Pass through the cityId parameter
         url:"./js/helpers/journeyplannerhelper.php?cityid=" + cityId,
         success:function(data) {
-
+            // Parse data in JSON format
             var object = JSON.parse(data);
             for (var i = 0; i < object["ACTIVITIES"].length; i++) {
+                // Array format: [Name, Duration, Short description, Long description, Category, Cost, Rating]
                 var activityName = object["ACTIVITIES"][i]['name'];
                 var activityDuration = parseInt(object["ACTIVITIES"][i]['estimated_time']);
                 var activitySubtitle = object["ACTIVITIES"][i]['subtitle'];
@@ -31,6 +39,7 @@ function getActivities(cityId) {
             }
         }
     });
+    // Handle different cityIds
     if (cityId === 5120) {
         document.getElementById('locationH4').innerText = "Dalian, China";
         tripDestination = "Dalian, China";
@@ -38,7 +47,7 @@ function getActivities(cityId) {
         document.getElementById('locationH4').innerText = "Brisbane, Australia";
         tripDestination = "Brisbane, Australia";
     }
-
+    // Enable the 'Find Activities!' button after query is complete.
     document.getElementById('getActivitiesBtn').disabled = false;
 
 }
@@ -48,10 +57,10 @@ function drawButtons() {
     // Get div to place buttons in
     console.log(activityDict);
     var activityDiv = document.getElementById('activityDiv');
-
-    // Create buttons
+    // Create buttons by iterating over the activity dictionary, using the key as the button text.
     for (var activity in activityDict) {
         var activityBtn = document.createElement('button');
+        // BOOTSTRAP Create a BootStrap btn-secondary button.
         activityBtn.className = "activityBtn btn btn-secondary";
         activityBtn.innerText = activity;
         activityBtn.onclick = function () {
@@ -59,6 +68,7 @@ function drawButtons() {
         };
         activityDiv.appendChild(activityBtn);
     }
+    // Disable the 'Find Activities!' button.
     document.getElementById("getActivitiesBtn").disabled = true;
 }
 
@@ -67,6 +77,7 @@ function addActivity(activityName) {
     // Add to current activities
     currentActivities.push(activityName);
     deactivateButton(activityName);
+    // Redraw the cards of activities.
     drawActivities();
 }
 
@@ -77,45 +88,45 @@ function removeActivity(activityName) {
     if (activityIndex !== -1) {
         currentActivities.splice(activityIndex, 1);
     }
+    // Reactivate that activity's button, and redraw all activities.
     activateButton(activityName);
     drawActivities();
 }
 
 // Draw activities as Bootstrap cards
 function drawActivities() {
-    // Create Bootstrap for card
+    // Create Bootstrap div to contain cards.
     var cardsDiv = document.getElementById('cardsDiv');
     // Clear div
     cardsDiv.innerHTML = "";
-
+    // Iterate over the currentActivities list and get all data.
     for (i = 0; i < currentActivities.length; i++) {
         var cardBreak = document.createElement('br');
         var activityName = currentActivities[i];
-        var activityDuration = activityDict[activityName];
-        // Create new card
+        // BOOTSTRAP Create new Bootstrap card
         var card = document.createElement('div');
         card.className = "card md-3";
 
-        // Image (TODO)
-        // Card body
+        // Image TODO
+        // BOOTSTRAP Create the Bootstrap card-body div.
         var cardBody = document.createElement('div');
         cardBody.className = "card-body";
-        // Title
+        // BOOTSTRAP Create the Bootstrap card-title h4.
         var cardTitle = document.createElement('h4');
         cardTitle.className = "card-title";
         cardTitle.innerText = activityName;
-        // Text
+        // BOOTSTRAP Create the Bootstrap card-text p.
         var cardText = document.createElement('p');
         cardText.className = "card-text";
         cardText.innerText = activityDict[activityName][2];
-            // Time
+        // BOOTSTRAP Create a Bootstrap list-group containing the duration of the activity.
         var cardTimeList = document.createElement('ul');
         cardTimeList.className = "list-group list-group-flush";
         var cardTimeElement = document.createElement('li');
         cardTimeElement.className = "list-group-item";
         cardTimeElement.innerText = "Duration: " + activityDict[activityName][0] + " hours.";
         cardTimeList.appendChild(cardTimeElement);
-        // Remove Button
+        // BOOTSTRAP Append the Bootstrap btn-danger remove button.
         var buttonDiv = document.createElement('div');
         buttonDiv.className = "card-body";
         var removeBtn = document.createElement('button');
@@ -125,7 +136,7 @@ function drawActivities() {
             removeActivity(this.innerText.substr(7));
         };
         buttonDiv.appendChild(removeBtn);
-        // Append all
+        // Append all of these components.
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardText);
         card.appendChild(cardBody);
@@ -138,6 +149,7 @@ function drawActivities() {
 
 // Activate activity button
 function activateButton(activityName) {
+    // Loop through the list of activity buttons and activate the one that matches the specified parameter.
     var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
     for (i = 0; i < buttonList.length; i++) {
         if (buttonList[i].innerText === activityName) {
@@ -148,6 +160,7 @@ function activateButton(activityName) {
 
 // Deactivate activity button
 function deactivateButton(activityName) {
+    // Loop through the list of activity buttons and deactivate the one that matches the specified parameter.
     var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
     for (i = 0; i < buttonList.length; i++) {
         if (buttonList[i].innerText === activityName) {
@@ -165,9 +178,13 @@ function getDays() {
 
 // The big boy.
 function optimiseJourney() {
+    // Var to allow / disallow optimisation
     var optimisable = true;
+    // Timetable dictionary storing data as Day : [Array containing activities]
     var timetableDict = {};
+    // Create a list of events to add.
     var timetableTodo = currentActivities;
+    // Dependent on the user's preferences.
     var maxLength;
 
     // Initialise totalTime as 1 hour for each activity
@@ -178,8 +195,7 @@ function optimiseJourney() {
     // Get days
     var totalDays = getDays();
     console.log(totalDays);
-    // Get day length
-    // Check if there is not enough time in the day
+    // Determine the day length
     if (document.getElementById('shortDay').checked) {
         maxLength = 4;
     } else if (document.getElementById('normalDay').checked) {
@@ -190,53 +206,67 @@ function optimiseJourney() {
         alert("Select a day length!");
         optimisable = false;
     }
+    // Check if there is not enough time in the day
     for (i = 0; i < currentActivities.length; i++) {
         if (parseFloat(activityDict[currentActivities[i]][0]) > maxLength - 1) {
             alert("One activity is too long.");
             optimisable = false;
         }
     }
+    // Check if user has selected the same day, or ending before the start.
     if (totalDays === 0 || totalDays < 0) {
         alert("Invalid range.");
         optimisable = false;
     }
-
+    // If average hours is greater than the maxLength, there is too much going on.
     if (totalTime / totalDays > maxLength) {
         alert("Too many activities per day.");
         optimisable = false;
     }
-
+    // If they have select only one or none.
     if (isNaN(getDays())) {
         alert("Select correct dates!");
         optimisable = false;
     }
-
+    // Finally if these conditions are met, begin the optimisation.
     if (optimisable) {
+        // Keeps track of how much time has been filled in a day.
         var filledTime = 0;
+        // Keeps track of the days.
         var day = 0;
+        // Stores the activities each day.
         var activitiesPerDay = [];
-        while (day <= totalDays && timetableTodo.length > 0) {
+        // While the day is less than total days, and the activity list still has items in it.
+        while (day < totalDays && timetableTodo.length > 0) {
             while (filledTime < maxLength) {
+                // Are there no more items left?
                 if (timetableTodo.length === 0) {
                     break;
                 }
+                // Get the last activity.
                 var activityName = timetableTodo[timetableTodo.length - 1];
-                var activityDuration = 1 + parseFloat(activityDict[activityName][0]);
-                filledTime += activityDuration;
+                filledTime++;
+                filledTime += parseFloat(activityDict[activityName][0]);
+                // If there is still time left.
                 if (filledTime <= maxLength) {
                     activitiesPerDay.push("Transit");
                     activitiesPerDay.push(activityName);
+                    // Remove the last element.
                     timetableTodo.pop();
                 }
             }
+            // Assign Key : Value pairs in the dictionary.
             timetableDict[day] = activitiesPerDay;
+            // Increment the day.
             day++;
+            // Reset filledTime and activitiesPerDay.
             filledTime = 0;
             activitiesPerDay = [];
         }
-        console.log(timetableDict);
+        // Draw the timetable.
         drawTimetable(timetableDict);
     } else {
+        // If the journey cannot be optimised, reset the form.
         resetJourney();
     }
 }
@@ -245,81 +275,97 @@ function optimiseJourney() {
 function drawTimetable(timetableDict) {
     // Get timetable list
     var timetableMainList = document.getElementById('timetableMain');
+    // Get the invoice list
     var timetableInvoiceList = document.getElementById('timetableInvoice');
-    // Grab activities and durations and append to timetable
+    // Grab activities and durations and append to timetableMainList
     for (var day in timetableDict) {
+        // Get the array of activities
         var activityList = timetableDict[day];
+        // Initialise the totalTime elapsed
         var totalTime = 0;
+        // Determine the amount to add to the totalTime
         for (i = 0; i < activityList.length; i++) {
             if (activityList[i] === "Transit") {
+                // Assume transit only takes 1 hour on average.
                 totalTime += 1;
             } else {
                 totalTime += parseFloat(activityDict[activityList[i]][0]);
             }
         }
+        // BOOTSTRAP Create a new container for each day.
         var dayContainer = document.createElement('div');
         dayContainer.className = "container";
-
+        // BOOTSTRAP Create the day heading.
         var dayLabel = document.createElement('h4');
+        // Get the start date of the trip
         var currentDay = new Date(document.getElementById('startDate').value);
+        // Add the right number of days to the date
         currentDay.setDate(currentDay.getDate() + parseInt(day));
+        // Format it nicely
         currentDay = currentDay.toLocaleDateString('en-AU');
+        // Assign the text of the dayLabel
         dayLabel.innerText = currentDay + ", " + totalTime + " hours.";
         dayContainer.appendChild(dayLabel);
 
-        // Create table day for invoice.
+        // BOOTSTRAP Create day heading for invoice.
         var invoiceDayHeading = document.createElement('h4');
         invoiceDayHeading.innerText = dayLabel.innerText;
         timetableInvoiceList.appendChild(invoiceDayHeading);
+        // BOOTSTRAP Create table for holding activity information
         var invoiceDayTable = document.createElement('table');
         var invoiceHeadingRow = document.createElement('tr');
         invoiceHeadingRow.innerHTML = "<th>Activity</th><th>Duration</th>";
         invoiceDayTable.appendChild(invoiceHeadingRow);
-
+        // Loop through the activityList, creating cards or table rows.
         for (i = 0; i < activityList.length; i++) {
             var activityName = activityList[i];
             var activityDuration;
-
+            // BOOTSTRAP Create the card div.
             var activityContainer = document.createElement('div');
             activityContainer.className = "card";
             var activityHeader = document.createElement('div');
+            // BOOTSTRAP Create the card-header
             activityHeader.className = "card-header";
             activityHeader.innerHTML = "<h5>Activity: " + activityName + "</h5>";
-
+            // BOOTSTRAP Create the list-group to house the activity information.
             var activityInformation = document.createElement('ul');
             activityInformation.className = "list-group list-group-flush";
-
+            // Determine the duration of the activity.
             if (activityName !== "Transit") {
                 activityDuration = activityDict[activityName][0];
             } else {
                 activityDuration = 1;
             }
-
+            // BOOTSTRAP Create list-group-item to go in activityInformation.
             var activityTime = document.createElement('li');
             activityTime.className = "list-group-item";
             activityTime.innerText = "Duration: " + activityDuration + " hours.";
+            // Create a break for good measure.
             var elementBreak = document.createElement('br');
-
+            // Append all this stuff.
             activityContainer.appendChild(activityHeader);
             activityInformation.appendChild(activityTime);
             activityContainer.appendChild(activityInformation);
             dayContainer.appendChild(activityContainer);
             dayContainer.appendChild(elementBreak);
-
+            // BOOTSTRAP Create a table row for the invoice.
             var invoiceEventRow = document.createElement('tr');
             invoiceEventRow.innerHTML = "<td>" + activityName + "</td><td>" + activityDuration + "</td>";
             invoiceDayTable.appendChild(invoiceEventRow);
         }
+        // Append all the items.
         timetableInvoiceList.appendChild(invoiceDayTable);
         var tableBreak = document.createElement('br');
         timetableInvoiceList.appendChild(tableBreak);
         timetableMainList.appendChild(dayContainer);
     }
+    // Enable the printing button.
     document.getElementById('printBtn').disabled = false;
 }
 
 // Reset journey
 function resetJourney() {
+    // Reset all possible data stores.
     currentActivities = [];
     activityDict = {};
     document.getElementById('startDate').value = "";
@@ -333,6 +379,7 @@ function resetJourney() {
 
 // Reset status of all buttons
 function resetButtons() {
+    // Reset the buttons, enable all activity buttons, and disable all buttons that must be disabled.
     var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
     var printBtn = document.getElementById('printBtn');
     var activityBtn = document.getElementById('getActivitiesBtn');
@@ -353,6 +400,7 @@ function trim(s) {
 
 // Functionality to print the timetable.
 function printTimetable() {
+    // Get the invoiceList that will contain all the personal details of the customer.
     var invoiceInfo = document.getElementById('invoiceList');
     var nameField = document.createElement('li');
     var locationField = document.createElement('li');
@@ -369,15 +417,15 @@ function printTimetable() {
     dateField.innerText = startDate + " to " + endDate;
     nameField.innerText = "John Smith";
     locationField.innerText = tripDestination;
-
+    // Append all the personal information.
     invoiceInfo.appendChild(nameField);
     invoiceInfo.appendChild(dateField);
     invoiceInfo.appendChild(locationField);
-
+    // Get the div content.
     var prtContent = document.getElementById('dvContainer');
-
+    // Open the new print window
     var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-    WinPrint.document.write('<html><head><title>Journey Planner</title><link rel="stylesheet" href="./css/bootstrap.css">');
+    WinPrint.document.write('<html><head><title>Journey Planner</title>');
     WinPrint.document.write('</head><body>');
     WinPrint.document.write(prtContent.innerHTML);
     WinPrint.document.write('</body></html>');
