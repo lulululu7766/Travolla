@@ -6,6 +6,8 @@
     	$dbname = "travolla_main";
     	$table = "activities";
 
+    	$cityid =  $_REQUEST['cityid'];
+
     	$activitylist = array();
 
 		$mysqli = mysqli_connect($servername, $username, $passworddb, $dbname);
@@ -14,7 +16,7 @@
 	    	die("Connection failed: " . $mysqli->connect_error);
 		}
 
-		$activityquery = $mysqli->query("SELECT name, estimated_time FROM $table WHERE city_id = 5120");
+		$activityquery = $mysqli->query("SELECT name, estimated_time, subtitle, description, category, cost, comment FROM $table WHERE city_id LIKE $cityid");
 
 		while($row = $activityquery->fetch_assoc()){
 			$activitylist[] = $row;

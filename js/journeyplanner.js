@@ -1,6 +1,5 @@
 window.onload = function() {
-    getActivites()
-    drawButtons()
+
 }
 
 var activityDict = {};
@@ -8,29 +7,33 @@ var activityDict = {};
 var currentActivities = [];
 
 // Get list of all activities in area
-function getActivites() {
-    // Get activites from DB and add to activityDict
-
+function getActivities(cityId) {
+    // Get activities from DB and add to activityDict
     $.ajax({
         type:"POST",
-        url:"./js/helpers/journeyplannerhelper.php",
+        url:"./js/helpers/journeyplannerhelper.php?cityid=" + cityId,
         success:function(data) {
 
             var object = JSON.parse(data);
             for (var i = 0; i < object["ACTIVITIES"].length; i++) {
                 var activityName = object["ACTIVITIES"][i]['name'];
-                var activityTime = parseInt(object["ACTIVITIES"][i]['estimated_time']);
-                activityDict[activityName] = activityTime;
+                var activityDuration = parseInt(object["ACTIVITIES"][i]['estimated_time']);
+                var activitySubtitle = object["ACTIVITIES"][i]['subtitle'];
+                var activityDesc = object["ACTIVITIES"][i]['description'];
+                var activityCat = object["ACTIVITIES"][i]['category'];
+                var activityCost = parseFloat(object["ACTIVITIES"][i]['cost']);
+                var activityComment = parseFloat(object["ACTIVITIES"][i]['comment']);
+
+                activityDict[activityName] = [activityDuration, activitySubtitle, activityDesc, activityCat, activityCost, activityComment];
             }
-            console.log(activityDict);
         }
     });
 }
 
 // Draw buttons of all activities
 function drawButtons() {
-    console.log(activityDict);
     // Get div to place buttons in
+    console.log(activityDict);
     var activityDiv = document.getElementById('activityDiv');
 
     // Create buttons
@@ -38,11 +41,12 @@ function drawButtons() {
         var activityBtn = document.createElement('button');
         activityBtn.className = "activityBtn btn btn-secondary";
         activityBtn.innerText = activity;
-        activityBtn.onclick = function() {
+        activityBtn.onclick = function () {
             addActivity(this.innerText);
         }
         activityDiv.appendChild(activityBtn);
     }
+    document.getElementById("activityBtn").disabled = true;
 }
 
 // Add activity
@@ -90,13 +94,13 @@ function drawActivities() {
         // Text
         var cardText = document.createElement('p');
         cardText.className = "card-text";
-        cardText.innerText = "Text that describes this activity."
+        cardText.innerText = activityDict[activityName][2];
             // Time
         var cardTimeList = document.createElement('ul');
         cardTimeList.className = "list-group list-group-flush";
         var cardTimeElement = document.createElement('li');
         cardTimeElement.className = "list-group-item";
-        cardTimeElement.innerText = "Duration: " + activityDuration + " hours.";
+        cardTimeElement.innerText = "Duration: " + activityDict[activityName][0] + " hours.";
         cardTimeList.appendChild(cardTimeElement);
         // Remove Button
         var buttonDiv = document.createElement('div');

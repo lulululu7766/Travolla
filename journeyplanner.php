@@ -27,12 +27,23 @@
 					</div>
 					<input id="endDate" type="date" name="datePicker">
 				</div>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Location
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="getActivities(5120)">Dalian, China</a>
+                    </div>
+                </div>
+
+                <button onclick="drawButtons()" class="getActivitiesBtn btn btn-success" id="activityBtn">Get Activities!</button>
 				
 				<div id="locationDiv">
 					
 				</div>
 				
-				<div id="activityDiv" class="btn-group">
+				<div id="activityDiv" class="container">
 					
 				</div>
 				
@@ -64,7 +75,7 @@
 				
 				<br> <!-- This is gross I know, but hey it works -->
 				
-				<button onclick="drawButtons()" class="optimiseBtn btn btn-success" id="optimiseBtn">Optimise Journey!</button>
+				<button onclick="optimiseJourney()" class="optimiseBtn btn btn-success" id="optimiseBtn">Optimise Journey!</button>
 				<button onclick="resetJourney()" class="optimiseBtn btn btn-success" id="optimiseBtn">Reset</button>
 				
 			</div>
