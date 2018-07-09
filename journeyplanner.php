@@ -86,25 +86,23 @@
 		<br>
 		<div id="timetableContainer" class="container">
             <h4>Your Timetable</h4>
-            <div id="timetableParent1" class="container">
+            <div id="timetableMain" class="container">
             </div>
             <button onclick="printTimetable()" class="printBtn btn btn-success" id="printBtn">Print Timetable</button>
         </div>
 
         <div id="dvContainer" style="display: none;">
-
-            <section style="font-family: 'Open Sans', sans-serif; text-align: center;">
-                <h1 style="color: #F47820; margin-top: 10%;font-family: 'Patua One',cursive;">Journey Planner</h1>
+            <section style="font-family: 'Open Sans', sans-serif;">
+                <h1 style="color: #F47820; margin-top: 10%;font-family: 'Patua One',cursive; text-align: center;">Journey Planner</h1>
                 <div style="margin-left: 5%;">
                     <ul style="list-style-type: none;" id="invoiceList">
                     </ul>
                 </div>
             </section>
             <section style="font-family: 'Open Sans', sans-serif;">
-                <div id="timetableParent2" style="margin-left: 10%;margin-right: 10%;" class="container">
+                <div id="timetableInvoice" style="margin-left: 10%;margin-right: 10%;" class="container">
 
                 </div>
-
                 <h1 style="color: #F47820; margin-top: 5%;font-family: 'Patua One',cursive; text-align: center;">Trip Invoice</h1>
                 <div style="margin-left: 10%; margin-right: 10%;">
                     <p>Activity Cost: <span id="activitycost" style="float: right;">$200</span></p>

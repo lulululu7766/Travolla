@@ -244,8 +244,8 @@ function optimiseJourney() {
 // Draw timetable
 function drawTimetable(timetableDict) {
     // Get timetable list
-    var timetableList1 = document.getElementById('timetableParent1');
-    var timetableList2 = document.getElementById('timetableParent2');
+    var timetableMainList = document.getElementById('timetableMain');
+    var timetableInvoiceList = document.getElementById('timetableInvoice');
     // Grab activities and durations and append to timetable
     for (var day in timetableDict) {
         var activityList = timetableDict[day];
@@ -266,6 +266,16 @@ function drawTimetable(timetableDict) {
         currentDay = currentDay.toLocaleDateString('en-AU');
         dayLabel.innerText = currentDay + ", " + totalTime + " hours.";
         dayContainer.appendChild(dayLabel);
+
+        // Create table day for invoice.
+        var invoiceDayHeading = document.createElement('h4');
+        invoiceDayHeading.innerText = dayLabel.innerText;
+        timetableInvoiceList.appendChild(invoiceDayHeading);
+        var invoiceDayTable = document.createElement('table');
+        var invoiceHeadingRow = document.createElement('tr');
+        invoiceHeadingRow.innerHTML = "<th>Activity</th><th>Duration</th>";
+        invoiceDayTable.appendChild(invoiceHeadingRow);
+
         for (i = 0; i < activityList.length; i++) {
             var activityName = activityList[i];
             var activityDuration;
@@ -295,9 +305,15 @@ function drawTimetable(timetableDict) {
             activityContainer.appendChild(activityInformation);
             dayContainer.appendChild(activityContainer);
             dayContainer.appendChild(elementBreak);
+
+            var invoiceEventRow = document.createElement('tr');
+            invoiceEventRow.innerHTML = "<td>" + activityName + "</td><td>" + activityDuration + "</td>";
+            invoiceDayTable.appendChild(invoiceEventRow);
         }
-        timetableList1.appendChild(dayContainer);
-        timetableList2.innerHTML = timetableList1.innerHTML;
+        timetableInvoiceList.appendChild(invoiceDayTable);
+        var tableBreak = document.createElement('br');
+        timetableInvoiceList.appendChild(tableBreak);
+        timetableMainList.appendChild(dayContainer);
     }
     document.getElementById('printBtn').disabled = false;
 }
@@ -310,8 +326,8 @@ function resetJourney() {
     document.getElementById('endDate').value = "";
     resetButtons();
     drawActivities();
-    document.getElementById('timetableParent1').innerHTML = "";
-    document.getElementById('timetableParent2').innerHTML = "";
+    document.getElementById('timetableMain').innerHTML = "";
+    document.getElementById('timetableInvoice').innerHTML = "";
     document.getElementById('locationH4').innerText = "No location selected!";
 }
 
@@ -358,13 +374,15 @@ function printTimetable() {
     invoiceInfo.appendChild(dateField);
     invoiceInfo.appendChild(locationField);
 
-    var divContents = document.getElementById('dvContainer').innerHTML;
-    var printWindow = window.open('', 'PRINT', 'height=400,width=800');
+    var prtContent = document.getElementById('dvContainer');
 
-    printWindow.document.write('<html><head><title>Journey Planner</title><link rel="stylesheet" href="./css/bootstrap.css">');
-    printWindow.document.write('</head><body>');
-    printWindow.document.write(divContents);
-    printWindow.document.write('</body></html>');
-    printWindow.print();
-    printWindow.document.close();
+    var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+    WinPrint.document.write('<html><head><title>Journey Planner</title><link rel="stylesheet" href="./css/bootstrap.css">');
+    WinPrint.document.write('</head><body>');
+    WinPrint.document.write(prtContent.innerHTML);
+    WinPrint.document.write('</body></html>');
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
 }
