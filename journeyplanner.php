@@ -59,14 +59,14 @@
 				<div class="paceDiv">
 					<h4>Day Length</h4>
 					<div id="paceBtnDiv" class="btn-group btn-group-toggle" data-toggle="buttons">
-						<label class="btn btn-secondary active">
+						<label class="btn btn-secondary">
 							<input type="radio" name="options" id="shortDay" autocomplete="off" checked>Short
 						</label>
-						<label class="btn btn-secondary">
+						<label class="btn btn-secondary active">
 							<input type="radio" name="options" id="normalDay" autocomplete="off">Normal
 						</label>
 						<label class="btn btn-secondary">
-							<input type="radio" name="options" id="option3" autocomplete="off">Long
+							<input type="radio" name="options" id="longDay" autocomplete="off">Long
 						</label>
 					</div>
 					

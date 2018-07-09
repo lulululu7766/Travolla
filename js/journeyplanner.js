@@ -175,11 +175,11 @@ function optimiseJourney() {
     console.log(totalDays);
     // Get day length
     // Check if there is not enough time in the day
-    if ((document.getElementById('shortDay')).checked) {
+    if (document.getElementById('shortDay').checked) {
         maxLength = 4;
-    } else if ((document.getElementById('normalDay')).checked) {
+    } else if (document.getElementById('normalDay').checked) {
         maxLength = 6;
-    } else if (document.getElementById('longDay').checked){
+    } else if (document.getElementById('longDay').checked) {
         maxLength = 8;
     } else {
         alert("Select a day length!");
