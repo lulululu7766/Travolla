@@ -1,5 +1,5 @@
 window.onload = function() {
-
+    document.getElementById('getActivitiesBtn').disabled = true;
 }
 
 var activityDict = {};
@@ -28,6 +28,14 @@ function getActivities(cityId) {
             }
         }
     });
+    if (cityId === 5120) {
+        document.getElementById('locationH4').innerText = "Dalian, China";
+    } else {
+        document.getElementById('locationH4').innerText = "Brisbane, Australia";
+    }
+
+    document.getElementById('getActivitiesBtn').disabled = false;
+
 }
 
 // Draw buttons of all activities
@@ -43,10 +51,10 @@ function drawButtons() {
         activityBtn.innerText = activity;
         activityBtn.onclick = function () {
             addActivity(this.innerText);
-        }
+        };
         activityDiv.appendChild(activityBtn);
     }
-    document.getElementById("activityBtn").disabled = true;
+    document.getElementById("getActivitiesBtn").disabled = true;
 }
 
 // Add activity
@@ -110,7 +118,7 @@ function drawActivities() {
         removeBtn.innerText = "Remove " + activityName;
         removeBtn.onclick = function() {
             removeActivity(this.innerText.substr(7));
-        }
+        };
         buttonDiv.appendChild(removeBtn);
         // Append all
         cardBody.appendChild(cardTitle);
@@ -152,9 +160,11 @@ function getDays() {
 
 // The big boy.
 function optimiseJourney() {
+    var optimisable = false;
     var timetableDict = {};
     var timetableTodo = currentActivities;
     var maxLength;
+
     // Initialise totalTime as 1 hour for each activity
     var totalTime = currentActivities.length;
     for (i = 0; i < currentActivities.length; i++) {
@@ -169,45 +179,61 @@ function optimiseJourney() {
         maxLength = 4;
     } else if ((document.getElementById('normalDay')).checked) {
         maxLength = 6;
-    } else {
+    } else if (document.getElementById('longDay').checked){
         maxLength = 8;
-    }
-    if (totalDays === 0 || totalDays < 0) {
-        alert("Invalid range.");
+    } else {
+        alert("Select a day length!");
+        optimisable = false;
     }
     for (i = 0; i < currentActivities.length; i++) {
         if (parseFloat(activityDict[currentActivities[i]][0]) > maxLength - 1) {
             alert("One activity is too long.");
+            optimisable = false;
         }
     }
-    if (totalTime / totalDays > maxLength) {
-        alert("Too many activities per day.");
+    if (totalDays === 0 || totalDays < 0) {
+        alert("Invalid range.");
+        optimisable = false;
     }
 
-    var filledTime = 0;
-    var day = 1;
-    var activitiesPerDay = [];
-    while (day <= totalDays) {
-        while (filledTime < maxLength) {
-            if (timetableTodo.length === 0) {
-                break;
-            }
-            var activityName = timetableTodo[timetableTodo.length - 1];
-            var activityDuration = 1 + parseFloat(activityDict[activityName][0]);
-            filledTime += activityDuration;
-            if (filledTime <= maxLength) {
-                activitiesPerDay.push("Transit");
-                activitiesPerDay.push(activityName);
-                timetableTodo.pop();
-            }
-        }
-        timetableDict[day] = activitiesPerDay;
-        day++;
-        filledTime = 0;
-        activitiesPerDay = [];
+    if (totalTime / totalDays > maxLength) {
+        alert("Too many activities per day.");
+        optimisable = false;
     }
-    console.log(timetableDict);
-    drawTimetable(timetableDict);
+
+    if (isNaN(getDays())) {
+        alert("Select correct dates!");
+        optimisable = false;
+    }
+
+    if (optimisable) {
+        var filledTime = 0;
+        var day = 0;
+        var activitiesPerDay = [];
+        while (day <= totalDays && timetableTodo.length > 0) {
+            while (filledTime < maxLength) {
+                if (timetableTodo.length === 0) {
+                    break;
+                }
+                var activityName = timetableTodo[timetableTodo.length - 1];
+                var activityDuration = 1 + parseFloat(activityDict[activityName][0]);
+                filledTime += activityDuration;
+                if (filledTime <= maxLength) {
+                    activitiesPerDay.push("Transit");
+                    activitiesPerDay.push(activityName);
+                    timetableTodo.pop();
+                }
+            }
+            timetableDict[day] = activitiesPerDay;
+            day++;
+            filledTime = 0;
+            activitiesPerDay = [];
+        }
+        console.log(timetableDict);
+        drawTimetable(timetableDict);
+    } else {
+        resetJourney();
+    }
 }
 
 // Draw timetable
@@ -230,7 +256,10 @@ function drawTimetable(timetableDict) {
         dayContainer.className = "container";
 
         var dayLabel = document.createElement('h4');
-        dayLabel.innerText = "Day: " + day + ", " + totalTime + " hours.";
+        var currentDay = new Date(document.getElementById('startDate').value);
+        currentDay.setDate(currentDay.getDate() + parseInt(day));
+        currentDay = currentDay.toLocaleDateString('en-AU');
+        dayLabel.innerText = currentDay + ", " + totalTime + " hours.";
         dayContainer.appendChild(dayLabel);
         for (i = 0; i < activityList.length; i++) {
             var activityName = activityList[i];
@@ -275,14 +304,15 @@ function resetJourney() {
     resetButtons();
     drawActivities();
     document.getElementById('timetableParent').innerHTML = "<h4>Your Timetable</h4>";
+    document.getElementById('locationH4').innerText = "No location selected!";
 }
 
 // Reset status of all buttons
 function resetButtons() {
     var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
-    var activityBtn = document.getElementById('activityBtn');
+    var activityBtn = document.getElementById('getActivitiesBtn');
     var btnList = document.getElementById('activityDiv');
-    activityBtn.disabled = false;
+    activityBtn.disabled = true;
     btnList.innerHTML = "";
     for (i = 0; i < buttonList.length; i++) {
         buttonList[i].disabled = false;
