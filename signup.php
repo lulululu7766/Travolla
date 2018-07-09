@@ -9,7 +9,8 @@
 
  		//Connect to the database
  		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
-        
+        //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
+
 		//Get the string of the inputs in the form
 		$fullname = $mysqli->real_escape_string($_POST['fullname']);
 	 	$email = $mysqli->real_escape_string($_POST['email']);
@@ -19,7 +20,7 @@
 		$password = $mysqli->real_escape_string($_POST['password']);
         $plang = $mysqli->real_escape_string($_POST['plang']);
 		$slang = $mysqli->real_escape_string($_POST['slang']);        
-
+        
 		//Query the email string of the input in the database
 
 	  	$query = $mysqli->query("SELECT * FROM users WHERE email = '$email' ");
@@ -37,7 +38,7 @@
 	    	$salt = $encrypted['salt'];
 
 	    	//Insert the record
-	    	$insert = $mysqli->query("INSERT INTO users (email, name, password, salt, pri_lang, sec_lang, activity_level, user_mode) VALUES ('$email','$fullname','$password', '$salt', '$plang', '$slang', '$activity', '$type')");
+	    	$insert = $mysqli->query("INSERT INTO users (email, name, gender, password, salt, pri_lang, sec_lang, activity_level, user_mode) VALUES ('$email','$fullname', '$gender', '$password', '$salt', '$plang', '$slang', '$activity', '$type')");
 			if($insert != TRUE){
 				$output = "There was a problem <br />";
 				$output .= $mysqli->error;
@@ -90,7 +91,7 @@
             <a class="nav-link" href="index.php">Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="journeyplanner.html"> Journey Planner</a>
+            <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
           </li>
             <li class="nav-item">
                 <a class="nav-link" href="heatmap.html">  Heat Map </a>
@@ -122,16 +123,6 @@
                         <div id="signup1">
                         <label for="inputname" class="sr-only">Full Name</label>
                         <input type="text" id="inputName" class="form-control" placeholder="Full Name" name="fullname"  required autofocus>
-                        
-                        <!--<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom: 4%;">
-                          <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" > Male
-                          </label>
-                          <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Female
-                          </label>
-
-                        </div>-->
                             
                         <div class="form-group" style="margin-bottom: 4%;">
                                   <select id="inputgender" class="form-control" name="gender" >
@@ -166,18 +157,6 @@
                             <option>...</option>
                           </select>
                         </div>
-                        
-                        <!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
-                          <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked > Tourist
-                          </label>
-                          <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Guide
-                          </label>
-                          <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option3" autocomplete="off"> Both
-                          </label>
-                        </div>-->
                             
                             <div class="form-group" style="margin-bottom: 4%;">
                               <select id="inputtype" class="form-control" name="type" >
@@ -194,18 +173,6 @@
                         </div>
                         
                             <div id="signup2" >
-                             
-                               	<!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                  <label class="btn btn-secondary active">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" checked > Lazy
-                                  </label>
-                                  <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option2" autocomplete="off"> Active
-                                  </label>
-                                  <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option3" autocomplete="off"> Hyper Active
-                                  </label>
-                                </div><br>--> 
                                 
                                 <div class="form-group" style="margin-bottom: 4%;">
                                   <select id="inputactivity" class="form-control" name="activity" >
@@ -323,7 +290,6 @@
 					<a href = "http://www.facebook.com"><img src="css\images\facebook.svg" alt = "fb"></a>
 					<a href = "http://www.twitter.com"><img src="css\images\twitter.svg" alt = "twitter"></a>
 					<a href = "http://www.instagram.com"><img src="css\images\instagram.svg" alt = "instagram"></a><br>
-                     <!--<img id="team" src="css\images\teamlogo.png" alt = "teamlogo">-->
 				</div>
 
 				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
