@@ -51,11 +51,11 @@ window.onload = function () {
 
     var fire_btn = document.getElementsByClassName("fa-hotjar")[0];
     fire_btn.addEventListener('click', function () {
-        if (fire_btn.style.color == "lightcoral") {
+        if (fire_btn.style.color == "darkorange") {
             fire_btn.style.color = "black";
             heatmap.hide();
         } else {
-            fire_btn.style.color = "lightcoral";
+            fire_btn.style.color = "darkorange";
             heatmap.show();
         }
     })
@@ -100,25 +100,83 @@ window.onload = function () {
         locate_btn.addEventListener('click', function () {
             map.addControl(geolocation);
             geolocation.getCurrentPosition();
-            //  AMap.event.addListener(geolocation, 'complete', onComplete);
-            //  AMap.event.addListener(geolocation, 'error', onError);
+              AMap.event.addListener(geolocation, 'complete', onComplete);
+              AMap.event.addListener(geolocation, 'error', onError);
         })
     });
 
     // Analyze Results
-    // function onComplete(data) {
-    //     var str = ['Located Succeed!'];
-    //     str.push('Lng: ' + data.position.getLng());
-    //     str.push('Lat: ' + data.position.getLat());
-    //     if (data.accuracy) {
-    //         str.push('Accuracy:' + data.accuracy + ' m');
-    //     } //如为IP精确定位结果则没有精度信息
-    //     str.push('Offset: ' + (data.isConverted ? 'Yes' : 'No'));
-    //     document.getElementById('tip').innerHTML = str.join('<br>');
-    // }
-    // // Analyze Error
-    // function onError(data) {
-    //     document.getElementById('tip').innerHTML = 'Located Failed';
-    // }
+    function onComplete(data) {
+        var str = ['Located Succeed!'];
+        str.push('Lng: ' + data.position.getLng());
+        str.push('Lat: ' + data.position.getLat());
+        if (data.accuracy) {
+            str.push('Accuracy:' + data.accuracy + ' m');
+        } //如为IP精确定位结果则没有精度信息
+        str.push('Offset: ' + (data.isConverted ? 'Yes' : 'No'));
+        document.getElementById('tip').innerHTML = str.join('<br>');
+    }
+    // Analyze Error
+    function onError(data) {
+        document.getElementById('tip').innerHTML = 'Located Failed';
+    }
+
+    var info_btn = document.getElementsByClassName("fa-info-circle")[0];
+    info_btn.addEventListener('click', function () {
+        if (info_btn.style.color != "lightblue") {
+            info_btn.style.color = "lightblue";
+            document.getElementById("tip").style.visibility = "visible";
+        } else {
+            info_btn.style.color = "black";
+            document.getElementById("tip").style.visibility = "hidden";
+        }
+    })
+
+
+
+    // 4 - Road Condition Layer
+    var trafficLayer = new AMap.TileLayer.Traffic({
+        zIndex: 10
+    });
+    trafficLayer.setMap(map);
+    var road_btn = document.getElementsByClassName("fa-road")[0];
+	
+    var isVisible = false;
+    trafficLayer.hide();
+
+    AMap.event.addDomListener(road_btn, 'click', function() {
+        if (isVisible) {
+            trafficLayer.hide();
+            road_btn.style.color = "black";
+            isVisible = false;
+        } else {
+            trafficLayer.show();
+            road_btn.style.color = "red";
+            isVisible = true;
+        }
+    }, false);
+
+
+    // 5 - Satellite Layer
+
+    var satelliteLayer = new AMap.TileLayer.Satellite({
+        zIndex: 10
+    });
+    satelliteLayer.setMap(map);
+    var satellite_btn = document.getElementsByClassName("fa-globe-americas")[0];
+	
+    var isVisible = false;
+    satelliteLayer.hide();
+    AMap.event.addDomListener(satellite_btn, 'click', function() {
+        if (isVisible) {
+            satelliteLayer.hide();
+            satellite_btn.style.color = "black";
+            isVisible = false;
+        } else {
+            satelliteLayer.show();
+            satellite_btn.style.color = "red";
+            isVisible = true;
+        }
+    }, false);
 
 }

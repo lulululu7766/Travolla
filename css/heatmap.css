@@ -1,27 +1,27 @@
-.fa-hotjar:hover {
-    color: lightcoral;
-}
-
-.fa-location-arrow:hover {
-    color: lightgrey;
-}
-
-.fa-search:hover {
-    color: lightblue;
+.fa-hotjar:hover,
+.fa-location-arrow:hover,
+.fa-search:hover,
+.fa-info-circle:hover,
+.fa-road:hover,
+.fa-globe-americas:hover,
+.fa-info-circle:hover,
+.fa-compass:hover {
+    color: wheat;
 }
 
 #myPageTop {
     width: fit-content;
-    background-color:rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    
 }
 
 #myPageTop {
     visibility: hidden;
 }
 
-/* .fa-road {}
-.fa-video {}
-.fa-info-circle{}
-.fa-compass{} */
+#tip {
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    visibility: hidden;
+}
