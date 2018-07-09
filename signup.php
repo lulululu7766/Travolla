@@ -102,7 +102,7 @@
     
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " >
-            <h1 id="title"> Sign Up </h1>
+            <h1 id="toptitle"> Sign Up </h1>
             
             <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%"></div>
@@ -179,7 +179,7 @@
                                     <option selected>Activity Level</option>
                                     <option>Lazy</option>
                                     <option>Active</option>
-                                    <option>Hyper Active</option>
+                                    <option>Hyperactive</option>
                                   </select>
                                 </div>
                              
