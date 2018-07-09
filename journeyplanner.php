@@ -6,6 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="./css/bootstrap.css">
+        <link rel="shortcut icon" href="css/images/weblogo.png"/>
+        <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 		<title>Travello - Optimised Journey Planner</title>
 	</head>
@@ -81,13 +84,46 @@
 		</div>
 		
 		<br>
-		
-		<div id="timetableParent" class="container">
-			<h4>Your Timetable</h4>
-		</div>
-		
-		
-		<!-- Optional JavaScript -->
+		<div id="timetableContainer" class="container">
+            <h4>Your Timetable</h4>
+            <div id="timetableParent1" class="container">
+            </div>
+            <button onclick="printTimetable()" class="printBtn btn btn-success" id="printBtn">Print Timetable</button>
+        </div>
+
+        <div id="dvContainer" style="display: none;">
+
+            <section style="font-family: 'Open Sans', sans-serif; text-align: center;">
+                <h1 style="color: #F47820; margin-top: 10%;font-family: 'Patua One',cursive;">Journey Planner</h1>
+                <div style="margin-left: 5%;">
+                    <ul style="list-style-type: none;" id="invoiceList">
+                    </ul>
+                </div>
+            </section>
+            <section style="font-family: 'Open Sans', sans-serif;">
+                <div id="timetableParent2" style="margin-left: 10%;margin-right: 10%;" class="container">
+
+                </div>
+
+                <h1 style="color: #F47820; margin-top: 5%;font-family: 'Patua One',cursive; text-align: center;">Trip Invoice</h1>
+                <div style="margin-left: 10%; margin-right: 10%;">
+                    <p>Activity Cost: <span id="activitycost" style="float: right;">$200</span></p>
+                    <p>Guide Cost: <span id="guidecost" style="float: right;"> $30/hour </span></p>
+                    <p>Day Duration: <span id="duration" style="float: right;">6 hours</span></p>
+                    <hr style="width=75%;">
+                    <p>Total Cost: <span id="total" style="float: right;"> $380</span></p>
+                </div>
+
+                <div style="margin-left: 10%;margin-right: 10%;">
+                    <p style=" margin-top: 25%;color:#F47820; font-weight: bold; text-align: center; font-size: 30px; font-family: 'Patua One',cursive;">Thank you for using Travolla and wish you a happy holiday!</p>
+                    <img src="css/images/weblogo.png" style="margin-left: 35%; height: 100px;position: absolute;">
+
+                </div>
+            </section>
+        </div>
+
+
+        <!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="./js/bootstrap.bundle.js"></script>

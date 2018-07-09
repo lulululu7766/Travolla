@@ -1,10 +1,13 @@
 window.onload = function() {
     document.getElementById('getActivitiesBtn').disabled = true;
+    document.getElementById('printBtn').disabled = true;
 }
 
 var activityDict = {};
 
 var currentActivities = [];
+
+var tripDestination;
 
 // Get list of all activities in area
 function getActivities(cityId) {
@@ -30,8 +33,10 @@ function getActivities(cityId) {
     });
     if (cityId === 5120) {
         document.getElementById('locationH4').innerText = "Dalian, China";
+        tripDestination = "Dalian, China";
     } else {
         document.getElementById('locationH4').innerText = "Brisbane, Australia";
+        tripDestination = "Brisbane, Australia";
     }
 
     document.getElementById('getActivitiesBtn').disabled = false;
@@ -160,7 +165,7 @@ function getDays() {
 
 // The big boy.
 function optimiseJourney() {
-    var optimisable = false;
+    var optimisable = true;
     var timetableDict = {};
     var timetableTodo = currentActivities;
     var maxLength;
@@ -239,8 +244,8 @@ function optimiseJourney() {
 // Draw timetable
 function drawTimetable(timetableDict) {
     // Get timetable list
-    var timetableList = document.getElementById('timetableParent');
-    timetableList.innerHTML = "<h4>Your Timetable</h4>";
+    var timetableList1 = document.getElementById('timetableParent1');
+    var timetableList2 = document.getElementById('timetableParent2');
     // Grab activities and durations and append to timetable
     for (var day in timetableDict) {
         var activityList = timetableDict[day];
@@ -291,8 +296,10 @@ function drawTimetable(timetableDict) {
             dayContainer.appendChild(activityContainer);
             dayContainer.appendChild(elementBreak);
         }
-        timetableList.appendChild(dayContainer);
+        timetableList1.appendChild(dayContainer);
+        timetableList2.innerHTML = timetableList1.innerHTML;
     }
+    document.getElementById('printBtn').disabled = false;
 }
 
 // Reset journey
@@ -303,16 +310,19 @@ function resetJourney() {
     document.getElementById('endDate').value = "";
     resetButtons();
     drawActivities();
-    document.getElementById('timetableParent').innerHTML = "<h4>Your Timetable</h4>";
+    document.getElementById('timetableParent1').innerHTML = "";
+    document.getElementById('timetableParent2').innerHTML = "";
     document.getElementById('locationH4').innerText = "No location selected!";
 }
 
 // Reset status of all buttons
 function resetButtons() {
     var buttonList = document.getElementsByClassName('activityBtn btn btn-secondary');
+    var printBtn = document.getElementById('printBtn');
     var activityBtn = document.getElementById('getActivitiesBtn');
     var btnList = document.getElementById('activityDiv');
     activityBtn.disabled = true;
+    printBtn.disabled = true;
     btnList.innerHTML = "";
     for (i = 0; i < buttonList.length; i++) {
         buttonList[i].disabled = false;
@@ -323,4 +333,38 @@ function resetButtons() {
 // General function to trim trailing whitespace from strings.
 function trim(s) {
     return (s || '').replace(/^\s+|\s+$/g, '');
+}
+
+// Functionality to print the timetable.
+function printTimetable() {
+    var invoiceInfo = document.getElementById('invoiceList');
+    var nameField = document.createElement('li');
+    var locationField = document.createElement('li');
+    var dateField = document.createElement('li');
+
+    var startDate = new Date(document.getElementById('startDate').value);
+    var endDate = new Date(document.getElementById('endDate').value);
+
+    startDate.setDate(startDate.getDate());
+    endDate.setDate(endDate.getDate());
+    startDate = startDate.toLocaleDateString('en-AU');
+    endDate = endDate.toLocaleDateString('en-AU');
+
+    dateField.innerText = startDate + " to " + endDate;
+    nameField.innerText = "John Smith";
+    locationField.innerText = tripDestination;
+
+    invoiceInfo.appendChild(nameField);
+    invoiceInfo.appendChild(dateField);
+    invoiceInfo.appendChild(locationField);
+
+    var divContents = document.getElementById('dvContainer').innerHTML;
+    var printWindow = window.open('', 'PRINT', 'height=400,width=800');
+
+    printWindow.document.write('<html><head><title>Journey Planner</title><link rel="stylesheet" href="./css/bootstrap.css">');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(divContents);
+    printWindow.document.write('</body></html>');
+    printWindow.print();
+    printWindow.document.close();
 }
