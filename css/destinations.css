@@ -1,0 +1,25 @@
+hr{
+    size: 2px;
+    background-color: #F47820;
+}
+
+#toptitle{
+    margin-bottom: 3%;
+    text-align: center;
+    font-family: 'Patua One',cursive;
+    font-size: 3em;
+    color: #F47820;
+
+}
+
+h2{
+    margin-bottom: 3%;
+}
+
+.container-fluid .section{
+    margin-top: 3%;
+}
+
+.thumbpic{
+    height: 26.5%;
+}

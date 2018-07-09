@@ -18,10 +18,14 @@ body{
     height: 5vh;
 }
 
-/*.container-fluid {
-    margin-top: 7%;
-}*/
+#toptitle{
+    margin-bottom: 3%;
+    text-align: center;
+    font-family: 'Patua One',cursive;
+    font-size: 3em;
+    color: #F47820;
 
+}
 
 /*Footer*/
 

@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Travolla</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="shortcut icon" href="css/images/weblogo.png"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css\pdf.css">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    
+<script type="text/javascript">
+        $("#btnPrint").live("click", function () {
+            var divContents = $("#dvContainer").html();
+            var printWindow = window.open('', 'PRINT', 'height=400,width=800');
+            printWindow.document.write('<html><head><title>Journey Planner</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.print();
+            printWindow.document.close();
+        });
+    </script>
+</head>
+<body>
+    <form id="form1">
+    <div id="dvContainer" style="display: none;">    
+
+        <section style="font-family: 'Open Sans', sans-serif;">
+            <h1 style="color: #F47820; margin-top: 10%;font-family: 'Patua One',cursive; text-align: center;">Journey Planner</h1>
+            <div style="margin-left: 5%;">
+                <ul style="list-style-type: none;">
+                    <li>John Smith</li>
+                    <li>Dalian Trip</li>
+                    <li>09/07/2018 - 11/07/2018</li>
+                </ul>
+            </div>
+        </section>
+        <section style="font-family: 'Open Sans', sans-serif;">
+            <div style="margin-left: 10%;margin-right: 10%;">
+                <p>Insert from the javascript: the cards of the different activities</p>
+            </div>
+            
+            <h1 style="color: #F47820; margin-top: 5%;font-family: 'Patua One',cursive; text-align: center;">Trip Invoice</h1>
+            <div style="margin-left: 10%; margin-right: 10%;">
+                <p>Activity Cost: <span id="activitycost" style="float: right;">$200</span></p>
+                <p>Guide Cost: <span id="guidecost" style="float: right;"> $30/hour </span></p>
+                <p>Day Duration: <span id="duration" style="float: right;">6 hours</span></p>
+                <hr style="width=75%;">
+                <p>Total Cost: <span id="total" style="float: right;"> $380</span></p>
+            </div>
+            
+            <div style="margin-left: 10%;margin-right: 10%;">
+                <p style=" margin-top: 25%;color:#F47820; font-weight: bold; text-align: center; font-size: 30px; font-family: 'Patua One',cursive;">Thank you for using Travolla and wish you a happy holiday!</p>
+                <img src="css/images/weblogo.png" style="margin-left: 35%; height: 100px;position: absolute;">
+
+            </div>
+        </section>
+    </div>  
+    <input type="button" value="Print PDF" id="btnPrint" />
+
+    </form>
+ 
+
+	
+</body>
+</html>
