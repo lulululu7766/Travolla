@@ -1,24 +1,35 @@
 window.onload = function() {
     getActivites()
+    drawButtons()
 }
 
-var activityDict = {
-    "DNUI": 1,
-    "Dalian Modern Museum": 1,
-    "Salmon Restaurant": 2,
-    "Wanda Plaza": 3
-};
+var activityDict = {};
 
 var currentActivities = [];
 
 // Get list of all activities in area
 function getActivites() {
     // Get activites from DB and add to activityDict
-    drawButtons(activityDict);
+
+    $.ajax({
+        type:"POST",
+        url:"./js/helpers/journeyplannerhelper.php",
+        success:function(data) {
+
+            var object = JSON.parse(data);
+            for (var i = 0; i < object["ACTIVITIES"].length; i++) {
+                var activityName = object["ACTIVITIES"][i]['name'];
+                var activityTime = parseInt(object["ACTIVITIES"][i]['estimated_time']);
+                activityDict[activityName] = activityTime;
+            }
+            console.log(activityDict);
+        }
+    });
 }
 
 // Draw buttons of all activities
-function drawButtons(activityList) {
+function drawButtons() {
+    console.log(activityDict);
     // Get div to place buttons in
     var activityDiv = document.getElementById('activityDiv');
 
@@ -61,7 +72,7 @@ function drawActivities() {
     cardsDiv.innerHTML = "";
 
     for (i = 0; i < currentActivities.length; i++) {
-    	var cardBreak = document.createElement('br');
+        var cardBreak = document.createElement('br');
         var activityName = currentActivities[i];
         var activityDuration = activityDict[activityName];
         // Create new card
@@ -129,7 +140,7 @@ function deactivateButton(activityName) {
 }
 
 // Get total number of days from date pickers
-function getDays(){
+function getDays() {
     var start = new Date(document.getElementById('startDate').value);
     var end = new Date(document.getElementById('endDate').value);
     return parseInt((end - start) / (24 * 3600 * 1000));
@@ -157,7 +168,7 @@ function optimiseJourney() {
         maxLength = 8;
     }
     if (totalDays === 0 || totalDays < 0) {
-    	alert("Invalid range.");
+        alert("Invalid range.");
     }
     for (i = 0; i < currentActivities.length; i++) {
         if (activityDict[currentActivities[i]] > maxLength - 1) {
@@ -197,57 +208,57 @@ function optimiseJourney() {
 
 // Draw timetable
 function drawTimetable(timetableDict) {
-	// Get timetable list
+    // Get timetable list
     var timetableList = document.getElementById('timetableParent');
     timetableList.innerHTML = "<h4>Your Timetable</h4>";
     // Grab activities and durations and append to timetable
     for (var day in timetableDict) {
-    	var activityList = timetableDict[day];
-    	var totalTime = 0;
-    	for (i = 0; i < activityList.length; i++) {
-    		if (activityList[i] === "Transit") {
-    			totalTime += 1;
-    		} else {
-    			totalTime += activityDict[activityList[i]];
-    		}
-    	}
-    	var dayContainer = document.createElement('div');
-    	dayContainer.className = "container";
+        var activityList = timetableDict[day];
+        var totalTime = 0;
+        for (i = 0; i < activityList.length; i++) {
+            if (activityList[i] === "Transit") {
+                totalTime += 1;
+            } else {
+                totalTime += activityDict[activityList[i]];
+            }
+        }
+        var dayContainer = document.createElement('div');
+        dayContainer.className = "container";
 
-    	var dayLabel = document.createElement('h4');
-    	dayLabel.innerText = "Day: " + day + ", " + totalTime + " hours.";
-    	dayContainer.appendChild(dayLabel);
-    	for (i = 0; i < activityList.length; i++) {
-    		var activityName = activityList[i];
-	    	var activityDuration;
+        var dayLabel = document.createElement('h4');
+        dayLabel.innerText = "Day: " + day + ", " + totalTime + " hours.";
+        dayContainer.appendChild(dayLabel);
+        for (i = 0; i < activityList.length; i++) {
+            var activityName = activityList[i];
+            var activityDuration;
 
-	    	var activityContainer = document.createElement('div');
-	    	activityContainer.className = "card";
-	    	var activityHeader = document.createElement('div');
-	    	activityHeader.className = "card-header";
-	    	activityHeader.innerHTML = "<h5>Activity: " + activityName + "</h5>";
+            var activityContainer = document.createElement('div');
+            activityContainer.className = "card";
+            var activityHeader = document.createElement('div');
+            activityHeader.className = "card-header";
+            activityHeader.innerHTML = "<h5>Activity: " + activityName + "</h5>";
 
-	    	var activityInformation = document.createElement('ul');
-	    	activityInformation.className = "list-group list-group-flush";
+            var activityInformation = document.createElement('ul');
+            activityInformation.className = "list-group list-group-flush";
 
-	    	if (activityName !== "Transit") {
-	    		activityDuration = activityDict[activityName];
-	    	} else {
-	    		activityDuration = 1;
-	    	}
+            if (activityName !== "Transit") {
+                activityDuration = activityDict[activityName];
+            } else {
+                activityDuration = 1;
+            }
 
-	    	var activityTime = document.createElement('li');
-	    	activityTime.className = "list-group-item";
-	    	activityTime.innerText = "Duration: " + activityDuration + " hours.";
-	    	var elementBreak = document.createElement('br');
+            var activityTime = document.createElement('li');
+            activityTime.className = "list-group-item";
+            activityTime.innerText = "Duration: " + activityDuration + " hours.";
+            var elementBreak = document.createElement('br');
 
-	    	activityContainer.appendChild(activityHeader);
-	    	activityInformation.appendChild(activityTime);
-	    	activityContainer.appendChild(activityInformation);
-	    	dayContainer.appendChild(activityContainer);
-	    	dayContainer.appendChild(elementBreak);
-    	}
-    	timetableList.appendChild(dayContainer);   	
+            activityContainer.appendChild(activityHeader);
+            activityInformation.appendChild(activityTime);
+            activityContainer.appendChild(activityInformation);
+            dayContainer.appendChild(activityContainer);
+            dayContainer.appendChild(elementBreak);
+        }
+        timetableList.appendChild(dayContainer);
     }
 }
 
@@ -267,7 +278,7 @@ function resetButtons() {
     for (i = 0; i < buttonList.length; i++) {
         buttonList[i].disabled = false;
     }
-    
+
 }
 
 // General function to trim trailing whitespace from strings.
