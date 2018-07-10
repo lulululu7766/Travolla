@@ -8,6 +8,9 @@ window.onload = function() {
 // Stores activities in the format Activity Name : [Array of Activity attributes]
 var activityDict = {};
 
+// Timetable dictionary storing data as Day : [Array containing activities]
+var timetableDict = {};
+
 // An array containing the current selected activities.
 var currentActivities = [];
 
@@ -180,8 +183,7 @@ function getDays() {
 function optimiseJourney() {
     // Var to allow / disallow optimisation
     var optimisable = true;
-    // Timetable dictionary storing data as Day : [Array containing activities]
-    var timetableDict = {};
+
     // Create a list of events to add.
     var timetableTodo = currentActivities;
     // Dependent on the user's preferences.
@@ -265,6 +267,7 @@ function optimiseJourney() {
         }
         // Draw the timetable.
         drawTimetable(timetableDict);
+
     } else {
         // If the journey cannot be optimised, reset the form.
         resetJourney();
@@ -400,6 +403,33 @@ function trim(s) {
 
 // Functionality to print the timetable.
 function printTimetable() {
+    var activityCost = 0;
+    var totalHours = 0;
+    for (var day in timetableDict) {
+        // Get the array of activities
+        var activityList = timetableDict[day];
+        // Determine the amount to add to the totalTime
+        for (i = 0; i < activityList.length; i++) {
+            if (activityList[i] === "Transit") {
+                // Assume transit only takes 1 hour on average.
+                totalHours += 1;
+            } else {
+                totalHours += parseFloat(activityDict[activityList[i]][0]);
+                activityCost += parseFloat(activityDict[activityList[i]][4]);
+            }
+        }
+    }
+    var guideCost = 30 * totalHours;
+    console.log(guideCost);
+    var totalCost = activityCost + guideCost;
+    var activityCostSpan = document.getElementById('activitycost');
+    activityCostSpan.innerText = "$" + activityCost;
+    var guideCostSpan = document.getElementById('guidecost');
+    guideCostSpan.innerText = "$" + guideCost;
+    var durationSpan = document.getElementById('duration');
+    durationSpan.innerText = totalHours + " hours.";
+    var totalCostSpan = document.getElementById('total');
+    totalCostSpan.innerText = "$" + totalCost;
     // Get the invoiceList that will contain all the personal details of the customer.
     var invoiceInfo = document.getElementById('invoiceList');
     var nameField = document.createElement('li');

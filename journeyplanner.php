@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-		<title>Travello - Optimised Journey Planner</title>
+		<title>Travolla - Optimised Journey Planner</title>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -100,7 +100,7 @@
         <div id="dvContainer" style="display: none;">
             <section style="font-family: 'Open Sans', sans-serif;">
                 <h1 style="color: #F47820; margin-top: 10%;font-family: 'Patua One',cursive; text-align: center;">Journey Planner</h1>
-                <div style="margin-left: 5%;">
+                <div style="margin-left: 30%;">
                     <!-- Personal details go here -->
                     <ul style="list-style-type: none;" id="invoiceList">
                     </ul>
@@ -108,7 +108,7 @@
             </section>
             <section style="font-family: 'Open Sans', sans-serif;">
                 <!-- Events go here -->
-                <div id="timetableInvoice" style="margin-left: 10%;margin-right: 10%;" class="container">
+                <div id="timetableInvoice" style="margin-left: 35%;margin-right: 10%;" class="container">
                 </div>
                 <h1 style="color: #F47820; margin-top: 5%;font-family: 'Patua One',cursive; text-align: center;">Trip Invoice</h1>
                 <div style="margin-left: 10%; margin-right: 10%;">
