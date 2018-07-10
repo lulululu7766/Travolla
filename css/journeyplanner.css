@@ -1,4 +1,10 @@
-#journeyPlanner button{
+#journeyPlannerMaster button {
+    background-color: #F47820;
+    border: none;
+    margin: 5px;
+}
+
+#timetableContainer button {
     background-color: #F47820;
     border: none;
     margin: 5px;

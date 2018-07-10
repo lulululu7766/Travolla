@@ -3,6 +3,7 @@ window.onload = function() {
     document.getElementById('getActivitiesBtn').disabled = true;
     // Disable the 'Print Timetable' button.
     document.getElementById('printBtn').disabled = true;
+    document.getElementById('selectBtn').disabled = true;
 }
 
 // Stores activities in the format Activity Name : [Array of Activity attributes]
@@ -16,9 +17,11 @@ var currentActivities = [];
 
 // Stores the destination of the traveller.
 var tripDestination;
+var destinationId;
 
 // Get list of all activities in area
 function getActivities(cityId) {
+    destinationId = cityId;
     // Get activities from DB and add to activityDict
     $.ajax({
         // Using a POST request
@@ -125,7 +128,7 @@ function drawActivities() {
         // BOOTSTRAP Create a Bootstrap list-group containing the duration of the activity.
         var cardTimeList = document.createElement('p');
         cardTimeList.className = "card-text";
-        cardTimeList.innerText = "Duration: " + activityDict[activityName][0] + " hours.";
+        cardTimeList.innerHTML = "Duration: <b>" + activityDict[activityName][0] + "</b> hours.";
         // BOOTSTRAP Append the Bootstrap btn-danger remove button.
         var buttonDiv = document.createElement('div');
         buttonDiv.className = "card-body";
@@ -361,6 +364,7 @@ function drawTimetable(timetableDict) {
     }
     // Enable the printing button.
     document.getElementById('printBtn').disabled = false;
+    document.getElementById('selectBtn').disabled = false;
 }
 
 // Reset journey
@@ -460,4 +464,10 @@ function printTimetable() {
     WinPrint.focus();
     WinPrint.print();
     WinPrint.close();
+}
+
+// Goto guide matching
+function guideMatch() {
+    var url = "guideMatch.php?cityId=" + destinationId;
+    location.href = url;
 }

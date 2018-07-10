@@ -39,7 +39,7 @@
             </div>
         </nav>
 
-		<div class="container-fluid" style="padding-top: 5%">
+		<div class="container-fluid" style="padding-top: 5%" id="journeyPlannerMaster">
             <h1 id="toptitle">My Journey</h1>
 			<!-- Top Journey Planner container -->
 			<div id="journeyPlanner" class="container">
@@ -121,6 +121,7 @@
             </div>
             <!-- Timetable print button -->
             <button onclick="printTimetable()" class="printBtn btn btn-primary" id="printBtn">Print Timetable</button>
+            <button onclick="guideMatch()" class="printBtn btn btn-primary" id="selectBtn">Select Guide</button>
         </div>
 
         <!-- Print template container -->
