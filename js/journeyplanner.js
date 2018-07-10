@@ -44,10 +44,10 @@ function getActivities(cityId) {
     });
     // Handle different cityIds
     if (cityId === 5120) {
-        document.getElementById('locationH4').innerText = "Dalian, China";
+        document.getElementById('dropdownMenuButton').innerText = "Dalian, China";
         tripDestination = "Dalian, China";
     } else {
-        document.getElementById('locationH4').innerText = "Brisbane, Australia";
+        document.getElementById('dropdownMenuButton').innerText = "Brisbane, Australia";
         tripDestination = "Brisbane, Australia";
     }
     // Enable the 'Find Activities!' button after query is complete.
@@ -64,7 +64,7 @@ function drawButtons() {
     for (var activity in activityDict) {
         var activityBtn = document.createElement('button');
         // BOOTSTRAP Create a BootStrap btn-secondary button.
-        activityBtn.className = "activityBtn btn btn-secondary";
+        activityBtn.className = "activityBtn btn btn-primary";
         activityBtn.innerText = activity;
         activityBtn.onclick = function () {
             addActivity(this.innerText);
@@ -123,12 +123,9 @@ function drawActivities() {
         cardText.className = "card-text";
         cardText.innerText = activityDict[activityName][2];
         // BOOTSTRAP Create a Bootstrap list-group containing the duration of the activity.
-        var cardTimeList = document.createElement('ul');
-        cardTimeList.className = "list-group list-group-flush";
-        var cardTimeElement = document.createElement('li');
-        cardTimeElement.className = "list-group-item";
-        cardTimeElement.innerText = "Duration: " + activityDict[activityName][0] + " hours.";
-        cardTimeList.appendChild(cardTimeElement);
+        var cardTimeList = document.createElement('p');
+        cardTimeList.className = "card-text";
+        cardTimeList.innerText = "Duration: " + activityDict[activityName][0] + " hours.";
         // BOOTSTRAP Append the Bootstrap btn-danger remove button.
         var buttonDiv = document.createElement('div');
         buttonDiv.className = "card-body";
@@ -142,8 +139,8 @@ function drawActivities() {
         // Append all of these components.
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardText);
+        cardBody.appendChild(cardTimeList);
         card.appendChild(cardBody);
-        card.appendChild(cardTimeList);
         card.appendChild(buttonDiv);
         cardsDiv.appendChild(cardBreak);
         cardsDiv.append(card);
