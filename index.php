@@ -10,9 +10,9 @@
     if (isset($_POST['submit'])) {
 
  		//Connect to the database
- 		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+ 		//$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
         
-        //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
+        $mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
         
         //Retrieve the string of email and password inputs
 
@@ -90,8 +90,22 @@
           <li class="nav-item active">
             <a class="nav-link" href="index.php">Home </a>
           </li>
+            
+            <?php
+        if(isset($login_session)){
+            $box1 = " <li class=\"nav-item\">
+            <a class=\"nav-link\" href=\"destinations.php\"> My Destinations</a>
+          </li>";
+            echo $box1;
+        }
+        
+        
+        ?>
             <li class="nav-item">
                 <a class="nav-link" href="heatmap.html">  Heat Map </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.php">  About </a>
             </li>
         </ul>
       </div>

@@ -6,8 +6,8 @@
     //session_start(); 
 
     //Connect to the database
-    $mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
-    //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');   
+    //$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+    $mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');   
     
     echo $output;
     echo $output2;
@@ -54,11 +54,17 @@
           <li class="nav-item active">
             <a class="nav-link" href="index.php">Home </a>
           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="destinations.php"> My Destinations</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
           </li>
             <li class="nav-item">
                 <a class="nav-link" href="heatmap.html">  Heat Map </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.php">  About </a>
             </li>
         </ul>
       </div>
@@ -170,7 +176,7 @@
                                         echo "<script type='text/javascript'>alert('Please log in before payment.');window.location.href = \"index.php\";</script>"; 
                                         $box = " <button class=\"subscribe btn btn-success btn-lg btn-block\" onclick=\"location.href='index.php'\" type=\"button\">Pay Now</button>" ;
                                     }else{
-                                        $box=" <button class=\"subscribe btn btn-success btn-lg btn-block\" onclick=\"location.href='journeyplanner.php'\" type=\"button\">Pay Now</button>";
+                                        $box=" <button class=\"subscribe btn btn-success btn-lg btn-block\" onclick=\"location.href='successful_pay.php'\" type=\"button\">Pay Now</button>";
                                     }
 
                                     echo $box;
