@@ -37,8 +37,11 @@
           <li class="nav-item active">
             <a class="nav-link" href="index.php">Home </a>
           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="destinations.php"> My Destinations</a>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" href="journeyplanner.html"> Journey Planner</a>
+            <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
           </li>
             <li class="nav-item">
                 <a class="nav-link" href="heatmap.html">  Heat Map </a>
@@ -48,21 +51,33 @@
             </li>
         </ul>
       </div>
+        
+        <?php
+        if(!isset($login_session)){
+            $box = " <ul class='nav navbar-nav navbar-right'>
+                        <li>
+                            <a href='index.php'>Log in</a>
+                        </li>
+                     </ul>";
+        }else{
+            $box =  " <ul class='nav navbar-nav navbar-right'>
+                        <li>
+                            <span style='color: white;'>".$_SESSION['user']."</span> <a href='logout1.php'> | Log out</a>
+                        </li>
+                     </ul>"; 
+        }
+        echo $box;
+        ?>
     </nav>
     
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " >
-            <h1 id="toptitle"> Log out </h1>
+            <h1 id="toptitle"> Successful Epayment </h1>
             
             <?php
                 echo "<h1 style= \" margin-bottom: 2%; margin-top: 5%; font-size: 2em; font-family: 'Patua One',cursive; color:#F47820; text-align: center;\">Thank you " . $_SESSION['user'] ." for using Travolla.</h1>";
                 //print_r($_SESSION);
-                $output = " <h1 style=\" font-size: 2em; font-family: 'Patua One',cursive; color: #F47820;text-align: center;\"> We hope to see you soon !<h1>";
-                $_SESSION['loggedin'] = FALSE;
-                //print_r($_SESSION);
-                session_destroy();
-                $_SESSION = [];
-                //echo"session is destroyed";
+                $output = " <h1 style=\" font-size: 2em; font-family: 'Patua One',cursive; color: #F47820;text-align: center;\"> We hope you enjoy your trip !<h1>";
                 //print_r($_SESSION);
                 echo $output;
             ?>

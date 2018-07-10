@@ -90,11 +90,11 @@
           <li class="nav-item active">
             <a class="nav-link" href="index.php">Home </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
-          </li>
             <li class="nav-item">
                 <a class="nav-link" href="heatmap.html">  Heat Map </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.php">  About </a>
             </li>
         </ul>
       </div>
