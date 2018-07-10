@@ -1,14 +1,15 @@
 <?php 
 
-	/*$servername = "localhost";
+	$servername = "travolla.hm";
 	$username = "travolla";
 	$passworddb = "SeaBoat909";
-    $dbname = "travolla_main";*/
+    	$dbname = "travolla_main";
 
-    $servername = "localhost";
+	// Lea's local DB connection
+/*      $servername = "localhost";
 	$username = "travolla_main";
 	$passworddb = "travolla_main";
-    $dbname = "travolla_main";
+  	$dbname = "travolla_main"; */
     //Create connection to the database;
 	$mysqli = new MySQLi($servername, $username, $passworddb, $dbname);
 

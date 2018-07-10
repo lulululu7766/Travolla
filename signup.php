@@ -2,13 +2,13 @@
     include('session.php');
     require('encryption1.php');
     $output = NULL;
- 	$output2 = NULL;
-    session_start(); 
+    $output2 = NULL;
+    //session_start(); 
 
  	if(isset($_POST['submit'])){
 
  		//Connect to the database
- 		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+ 		//$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
         //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
 
 		//Get the string of the inputs in the form
@@ -18,6 +18,7 @@
         $type = $mysqli->real_escape_string($_POST['type']);        
         $activity = $mysqli->real_escape_string($_POST['activity']);        
 		$password = $mysqli->real_escape_string($_POST['password']);
+		$city_id = $mysqli->real_escape_string($_POST['city_id']);
         $plang = $mysqli->real_escape_string($_POST['plang']);
 		$slang = $mysqli->real_escape_string($_POST['slang']);        
         
@@ -31,14 +32,14 @@
 	    	$output = "Sorry, this email address is already registered";
   		}else{
 
-  			//Encrypts the password
+  		//Encrypts the password
 	    	$encrypted = encryption1($password);
 	    	$password = $encrypted["password"];
 
 	    	$salt = $encrypted['salt'];
 
 	    	//Insert the record
-	    	$insert = $mysqli->query("INSERT INTO users (email, name, gender, password, salt, pri_lang, sec_lang, activity_level, user_mode) VALUES ('$email','$fullname', '$gender', '$password', '$salt', '$plang', '$slang', '$activity', '$type')");
+	    	$insert = $mysqli->query("INSERT INTO users (email, name, gender, password, salt, home_city_id, pri_lang, sec_lang, activity_level, user_mode) VALUES ('$email','$fullname', '$gender', '$password', '$salt', '$city_id', '$plang', '$slang', '$activity', '$type')");
 			if($insert != TRUE){
 				$output = "There was a problem <br />";
 				$output .= $mysqli->error;
@@ -137,6 +138,41 @@
 
                         <label for="inputPassword" class="sr-only">Password</label>
                         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+
+                        <div class="form-group" style="margin-bottom: 4%;">
+                                  <select id="inputcountry" class="form-control" name="country" >
+                                    <option selected>Country</option>
+				    <?php
+ 					$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+
+					$country_query = $mysqli->query("SELECT name FROM countries ORDER by name");
+
+					if($country_query->num_rows != 0) {
+					  while($country_row = mysqli_fetch_assoc($country_query)) {
+                    			    echo "<option>" . $country_row["name"]. "</option><br>\n";
+            				  }
+					}
+				    ?>
+                                        </select>
+                                </div>
+
+                        <div class="form-group" style="margin-bottom: 4%;">
+                                  <select id="inputcity" class="form-control" name="city_id" >
+                                    <option selected>City</option>
+				    <?php
+			 		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+
+					$city_query = $mysqli->query("SELECT city_name, city_id FROM cities ORDER by city_name");					 
+
+					if($city_query->num_rows != 0) {
+					  while($city_row = mysqli_fetch_assoc($city_query)) {
+                    			    echo "<option value=\"$city_row[city_id]\">" . $city_row["city_name"]. "</option><br>\n";
+            				  }
+					}
+				    ?>
+                                  </select>
+                                </div>
+
                         
                         <div class="form-group" style="margin-bottom: 4%;">
                           <select id="inputflang" class="form-control" name="plang" >
