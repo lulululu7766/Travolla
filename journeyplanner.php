@@ -17,9 +17,10 @@
 			<div id="heading" class="container">
 				<h2>My Journey</h2>
 			</div>
-			
+			<!-- Top Journey Planner container -->
 			<div id="journeyPlanner" class="container">
 				<h4>When are you visiting?</h4>
+                <!-- Start / End date pickers -->
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="basic-addon1">Start</span>
@@ -30,7 +31,7 @@
 					</div>
 					<input id="endDate" type="date" name="datePicker">
 				</div>
-
+                <!-- Location selection div -->
 				<div id="locationDiv">
                     <h4 id="locationH4">No location selected!</h4>
                     <div class="dropdown">
@@ -44,21 +45,20 @@
                     </div>
                     <button onclick="drawButtons()" class="getActivitiesBtn btn btn-success" id="getActivitiesBtn">Find Activities!</button>
 				</div>
-				
+
+                <!-- Container to display the list of activity buttons -->
 				<div id="activityDiv" class="container">
 					
 				</div>
-				
+
+                <!-- Container to hold the cards of the activities -->
 				<div id="cardsDiv" class="container">
 					
 				</div>
 				
-				<div id="timeDiv" class="container">
-					
-				</div>
-				
 				<br>
-				
+
+                <!-- Select the pace -->
 				<div class="paceDiv">
 					<h4>Day Length</h4>
 					<div id="paceBtnDiv" class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -76,7 +76,8 @@
 				</div>
 				
 				<br> <!-- This is gross I know, but hey it works -->
-				
+
+                <!-- Optimise and reset buttons -->
 				<button onclick="optimiseJourney()" class="optimiseBtn btn btn-success" id="optimiseBtn">Optimise Journey!</button>
 				<button onclick="resetJourney()" class="resetBtn btn btn-success" id="resetBtn">Reset</button>
 				
@@ -84,24 +85,30 @@
 		</div>
 		
 		<br>
+
+        <!-- Top Container to hold the timetable -->
 		<div id="timetableContainer" class="container">
             <h4>Your Timetable</h4>
+            <!-- Main container to hold events -->
             <div id="timetableMain" class="container">
             </div>
+            <!-- Timetable print button -->
             <button onclick="printTimetable()" class="printBtn btn btn-success" id="printBtn">Print Timetable</button>
         </div>
 
+        <!-- Print template container -->
         <div id="dvContainer" style="display: none;">
             <section style="font-family: 'Open Sans', sans-serif;">
                 <h1 style="color: #F47820; margin-top: 10%;font-family: 'Patua One',cursive; text-align: center;">Journey Planner</h1>
                 <div style="margin-left: 5%;">
+                    <!-- Personal details go here -->
                     <ul style="list-style-type: none;" id="invoiceList">
                     </ul>
                 </div>
             </section>
             <section style="font-family: 'Open Sans', sans-serif;">
+                <!-- Events go here -->
                 <div id="timetableInvoice" style="margin-left: 10%;margin-right: 10%;" class="container">
-
                 </div>
                 <h1 style="color: #F47820; margin-top: 5%;font-family: 'Patua One',cursive; text-align: center;">Trip Invoice</h1>
                 <div style="margin-left: 10%; margin-right: 10%;">
@@ -111,15 +118,12 @@
                     <hr style="width=75%;">
                     <p>Total Cost: <span id="total" style="float: right;"> $380</span></p>
                 </div>
-
                 <div style="margin-left: 10%;margin-right: 10%;">
                     <p style=" margin-top: 25%;color:#F47820; font-weight: bold; text-align: center; font-size: 30px; font-family: 'Patua One',cursive;">Thank you for using Travolla and wish you a happy holiday!</p>
                     <img src="css/images/weblogo.png" style="margin-left: 35%; height: 100px;position: absolute;">
-
                 </div>
             </section>
         </div>
-
 
         <!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->

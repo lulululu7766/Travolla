@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-        <title>Travello - HeatMap</title>
+        <title>Travolla - HeatMap</title>
     </head>
     <body>
         <div class="container-fluid" style="height: 90vh; width: 90vw">
