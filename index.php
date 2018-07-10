@@ -30,7 +30,7 @@
         	while($row = mysqli_fetch_assoc($query)) {
                 $db_salt = $row['salt'];
                 $db_password = $row['password'];
-                echo $db_password;
+                //echo $db_password;
 
             }if(function_exists('hash_equals')){
                 $output2 = "it exists";
@@ -44,7 +44,7 @@
 				$user_query = $mysqli->query ("SELECT name FROM users WHERE email='$email'");
 				while($row = mysqli_fetch_assoc($user_query)) {
 					$db_fullname = $row['name'];
-					//header("Location: index_loggedin.php");
+					header('Location: destinations.php');
 				}
 			    $_SESSION['user'] = $db_fullname;
 			}else{
@@ -54,9 +54,9 @@
 		  }  
 	}
 
-    print_r($output);
-	echo $output2;
-	echo $output3;
+    //print_r($output);
+	//echo $output2;
+	//echo $output3;
 
 ?>
 
@@ -95,9 +95,20 @@
                     <form id="homeform" method ="post" action="">
                         
                         <!--Buttons-->
-                        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='signup.php';">Sign Up</button>
-                        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='logout1.php'">Log out</button>
-                            <button id="loginbutton" class="btn btn-lg btn-primary btn-block" >Log in</button>                        
+                        <?php
+                            if(!isset($login_session)){
+                                $box = " <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='signup.php';\">Sign Up</button> 
+                                <button id='loginbutton' class='btn btn-lg btn-primary btn-block' >Log in</button>";
+                            }else{
+                                $box=" <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='destinations.php';\" > Get Started </button>";
+                            }
+                            
+                            echo $box;
+                        ?>
+                        
+                        
+                        <!--<button class="btn btn-lg btn-primary btn-block" onclick="location.href='logout1.php'">Log out</button>-->
+                                                    
                             <!--Login panel that will appear when Login button clicked-->
 
                             <div id="loginpanel">
@@ -106,8 +117,8 @@
 
                                 <label for="inputPassword" class="sr-only">Password</label>
                                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-                                <input type="submit" name ="submit" >
-                                    <img src="css\images\loginarrow.png" alt = "loginarrow">
+                                <input type="submit" name ="submit">
+                                    <!--<img src="css\images\loginarrow.png" alt = "loginarrow">-->
                             </div>
                     </form>
                 </div>

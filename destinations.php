@@ -86,6 +86,23 @@
             </li>
         </ul>
       </div>
+        
+        <?php
+        if(!isset($login_session)){
+            $box = " <ul class='nav navbar-nav navbar-right'>
+                        <li>
+                            <a href='index.php'>Log in</a>
+                        </li>
+                     </ul>";
+        }else{
+            $box =  " <ul class='nav navbar-nav navbar-right'>
+                        <li>
+                            <span style='color: white;'>".$_SESSION['user']."</span> <a href='logout1.php'> | Log out</a>
+                        </li>
+                     </ul>"; 
+        }
+        echo $box;
+        ?>
     </nav>
     
     <div class="container-fluid">

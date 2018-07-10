@@ -49,12 +49,12 @@
     
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " >
-            <h1 id="title"> Log out </h1>
+            <h1 id="toptitle"> Log out </h1>
             
             <?php
-                echo "<h1 style=' margin-bottom: 2%; margin-top: 5%; font-size: 2em; font-family: 'Patua One',cursive;'>Thank you " . $_SESSION['user'] ." for using Travolla.</h1>";
+                echo "<h1 style= \" margin-bottom: 2%; margin-top: 5%; font-size: 2em; font-family: 'Patua One',cursive; color:#F47820; text-align: center;\">Thank you " . $_SESSION['user'] ." for using Travolla.</h1>";
                 //print_r($_SESSION);
-                $output = " <h1 style=' font-size: 2em; font-family: 'Patua One',cursive;'> We hope to see you soon !<h1>";
+                $output = " <h1 style=\" font-size: 2em; font-family: 'Patua One',cursive; color: #F47820;text-align: center;\"> We hope to see you soon !<h1>";
                 $_SESSION['loggedin'] = FALSE;
                 //print_r($_SESSION);
                 session_destroy();
