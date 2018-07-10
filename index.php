@@ -10,7 +10,7 @@
     if (isset($_POST['submit'])) {
 
  	//Connect to the database
- 	//$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+ 	$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
 
 	// Lea's hack for local db access 
         //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');

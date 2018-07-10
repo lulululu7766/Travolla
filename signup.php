@@ -8,7 +8,7 @@
  	if(isset($_POST['submit'])){
 
  		//Connect to the database
- 		//$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+ 		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
         //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');
 
 		//Get the string of the inputs in the form
@@ -81,7 +81,7 @@
 
 <body  onload="displayWindowSize()" onresize="displayWindowSize()">	  
     
-    <nav class="navbar navbar-expand-md fixed-top bg-dark">
+   <nav class="navbar navbar-expand-md fixed-top bg-dark">
       <a class="navbar-brand" href="index.php"><img src="css/images/teamlogo.png"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

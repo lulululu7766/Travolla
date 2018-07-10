@@ -2,50 +2,18 @@
     include('session.php');
     $output = NULL;
  	$output2 = NULL;
-    session_start(); 
+    //session_start(); 
 
- 	if(isset($_POST['submit'])){
-
+ 	
  		//Connect to the database
- 		//$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
-        $mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');   
+ 		$mysqli = new MySQLi('travolla.hm', 'travolla', 'SeaBoat909', 'travolla_main');
+        //$mysqli = new MySQLi('localhost', 'travolla_main', 'travolla_main', 'travolla_main');   
         
-		//Query the email string of the input in the database
-
-	  	$query = $mysqli->query("SELECT * FROM users WHERE email = '$email' ");
-        
-	  	//Check if the email already exists in the database
-	  	
-		if($query->num_rows != 0) {
-	    	$output = "Sorry, this email address is already registered";
-  		}else{
-
-  			//Encrypts the password
-	    	$encrypted = encryption1($password);
-	    	$password = $encrypted["password"];
-
-	    	$salt = $encrypted['salt'];
-
-	    	//Insert the record
-	    	$insert = $mysqli->query("INSERT INTO users (email, name, gender, password, salt, pri_lang, sec_lang, activity_level, user_mode) VALUES ('$email','$fullname', '$gender', '$password', '$salt', '$plang', '$slang', '$activity', '$type')");
-			if($insert != TRUE){
-				$output = "There was a problem <br />";
-				$output .= $mysqli->error;
-			}else{
-        		//Display Welcome to the specific customer + Logout button
-        		//header('Location: index.html');
-				$output = "You have been successfully registered!";
-			}
-		}
-        
-            echo $output;
-            echo $output2;
             // Check connection
             if ($mysqli->connect_error) {
                 die("Connection failed: " . $mysqli->connect_error);
             } else{echo "Connected successfully";}
-            echo $fullname;
-    }
+    
 ?>
 
 <!DOCTYPE html>
