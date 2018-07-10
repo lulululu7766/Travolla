@@ -5,18 +5,42 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="./css/bootstrap.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
         <link rel="shortcut icon" href="css/images/weblogo.png"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css\main.css">
+        <link rel="stylesheet" type="text/css" href="css\signup.css">
+        <link rel="stylesheet" type="text/css" href="css\index.css">
+        <link rel="stylesheet" type="text/css" href="css\journeyplanner.css">
         <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-		<title>Travello - Optimised Journey Planner</title>
+		<title>Travolla - Optimised Journey Planner</title>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<div id="heading" class="container">
-				<h2>My Journey</h2>
-			</div>
+        <nav class="navbar navbar-expand-md fixed-top bg-dark">
+            <a class="navbar-brand" href="index.php"><img src="css/images/teamlogo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> Journey Planner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="heatmap.php">  Heat Map </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+		<div class="container-fluid" style="padding-top: 5%" id="journeyPlannerMaster">
+            <h1 id="toptitle">My Journey</h1>
 			<!-- Top Journey Planner container -->
 			<div id="journeyPlanner" class="container">
 				<h4>When are you visiting?</h4>
@@ -33,23 +57,26 @@
 				</div>
                 <!-- Location selection div -->
 				<div id="locationDiv">
-                    <h4 id="locationH4">No location selected!</h4>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Location
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" onclick="getActivities(5120)">Dalian, China</a>
-                            <a class="dropdown-item" href="#" onclick="getActivities(8120)">Brisbane, Australia</a>
+                    <h4 id="locationH4">Select your destination!</h4>
+                    <div class="input-group mb-3">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Location
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#" onclick="getActivities(5120)">Dalian, China</a>
+                                <a class="dropdown-item" href="#" onclick="getActivities(8120)">Brisbane, Australia</a>
+                            </div>
                         </div>
+                        <button onclick="drawButtons()" class="getActivitiesBtn btn btn-primary" id="getActivitiesBtn">Find Activities!</button>
                     </div>
-                    <button onclick="drawButtons()" class="getActivitiesBtn btn btn-success" id="getActivitiesBtn">Find Activities!</button>
 				</div>
 
                 <!-- Container to display the list of activity buttons -->
-				<div id="activityDiv" class="container">
-					
-				</div>
+                <h5>Activities:</h5>
+                <div id="activityDiv" class="container">
+
+                </div>
 
                 <!-- Container to hold the cards of the activities -->
 				<div id="cardsDiv" class="container">
@@ -78,8 +105,8 @@
 				<br> <!-- This is gross I know, but hey it works -->
 
                 <!-- Optimise and reset buttons -->
-				<button onclick="optimiseJourney()" class="optimiseBtn btn btn-success" id="optimiseBtn">Optimise Journey!</button>
-				<button onclick="resetJourney()" class="resetBtn btn btn-success" id="resetBtn">Reset</button>
+				<button onclick="optimiseJourney()" class="optimiseBtn btn btn-primary" id="optimiseBtn">Optimise Journey!</button>
+				<button onclick="resetJourney()" class="resetBtn btn btn-primary" id="resetBtn">Reset</button>
 				
 			</div>
 		</div>
@@ -93,14 +120,15 @@
             <div id="timetableMain" class="container">
             </div>
             <!-- Timetable print button -->
-            <button onclick="printTimetable()" class="printBtn btn btn-success" id="printBtn">Print Timetable</button>
+            <button onclick="printTimetable()" class="printBtn btn btn-primary" id="printBtn">Print Timetable</button>
+            <button onclick="guideMatch()" class="printBtn btn btn-primary" id="selectBtn">Select Guide</button>
         </div>
 
         <!-- Print template container -->
         <div id="dvContainer" style="display: none;">
             <section style="font-family: 'Open Sans', sans-serif;">
                 <h1 style="color: #F47820; margin-top: 10%;font-family: 'Patua One',cursive; text-align: center;">Journey Planner</h1>
-                <div style="margin-left: 5%;">
+                <div style="margin-left: 30%;">
                     <!-- Personal details go here -->
                     <ul style="list-style-type: none;" id="invoiceList">
                     </ul>
@@ -108,7 +136,7 @@
             </section>
             <section style="font-family: 'Open Sans', sans-serif;">
                 <!-- Events go here -->
-                <div id="timetableInvoice" style="margin-left: 10%;margin-right: 10%;" class="container">
+                <div id="timetableInvoice" style="margin-left: 35%;margin-right: 10%;" class="container">
                 </div>
                 <h1 style="color: #F47820; margin-top: 5%;font-family: 'Patua One',cursive; text-align: center;">Trip Invoice</h1>
                 <div style="margin-left: 10%; margin-right: 10%;">
