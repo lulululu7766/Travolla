@@ -471,3 +471,8 @@ function guideMatch() {
     var url = "guideMatch.php?cityId=" + destinationId;
     location.href = url;
 }
+
+// Get the time between two latitudes and longitudes.
+function getTime([lat1, long1], [lat2, long2]) {
+
+}
