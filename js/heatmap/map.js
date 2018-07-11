@@ -11,3 +11,8 @@
         var toolBar = new AMap.ToolBar();
         map.addControl(toolBar);
     });
+    
+    // Change Theme of the Map
+    function refresh(enName) {
+        map.setMapStyle('amap://styles/'+enName);
+    }

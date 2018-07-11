@@ -21,24 +21,36 @@
     <div id="container" class="map" tabindex="0"></div>
     <div class="button-group" style="width: fit-content; background-color:rgba(0,0,0,0.5); border-radius: 10px">
         <i class="fab fa-hotjar fa-2x" style="color: darkorange; margin: 3px"></i>
-        <i class="fas fa-location-arrow fa-2x" style="margin: 3px"></i>
+        <i class="fas fa-compass fa-2x" style="margin: 3px"></i>
         <i class="fas fa-search fa-2x" style="margin: 3px"></i>
         <i class="fas fa-road fa-2x" style="margin: 3px"></i>
         <i class="fas fa-globe-americas fa-2x" style="margin: 3px"></i>
         <i class="fas fa-info-circle fa-2x" style="margin: 3px"></i>
-        <i class="far fa-compass fa-2x" style="margin: 3px"></i>
+        <i class="fas fa-feather fa-2x" style="margin: 3px"></i>
     </div>
+    <div class='button-group' id="mapTheme" style="background-color:rgba(0,0,0,0.5); border-radius: 10px">
+        <input type='radio' onclick='refresh(this.value)' checked name='mapStyle' value='normal'>Classic
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='dark'>Dark
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='light'>Silver
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='fresh'>Green
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='grey'>Grey
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='graffiti'>Doodle<br>
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='whitesmoke'>Whitesmoke
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='macaron'>Macaron
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='blue'>Azure
+        <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='darkblue'>Midnight
+         <input type='radio' onclick='refresh(this.value)' name='mapStyle' value='wine'>Wine
     <div id="tip"></div>
     <div id="myPageTop">
         <table>
             <tr>
                 <td>
-                    <label style="color: whitesmoke">G'Day! Tell me some places~</label>
+                    <label style="color: whitesmoke; align-content: center"> 👋 G'Day, mate!<br> Tell some places u're intersted in ❤️</label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input style="border-radius: 5px; border: 0px; background-color: grey" id="tipinput" />
+                    <input style="border-radius: 5px; border: 0px; background-color: grey; width: 100%;" id="tipinput" />
                 </td>
             </tr>
         </table>

@@ -64,8 +64,8 @@ window.onload = function () {
 
     var search_btn = document.getElementsByClassName("fa-search")[0];
     search_btn.addEventListener('click', function () {
-        if (search_btn.style.color != "lightblue") {
-            search_btn.style.color = "lightblue";
+        if (search_btn.style.color != "white") {
+            search_btn.style.color = "white";
             document.getElementById("myPageTop").style.visibility = "visible";
         } else {
             search_btn.style.color = "black";
@@ -96,7 +96,7 @@ window.onload = function () {
             zoomToAccuracy: true, //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
         });
 
-        var locate_btn = document.getElementsByClassName("fa-location-arrow")[0];
+        var locate_btn = document.getElementsByClassName("fa-compass")[0];
         locate_btn.addEventListener('click', function () {
             map.addControl(geolocation);
             geolocation.getCurrentPosition();
@@ -123,8 +123,8 @@ window.onload = function () {
 
     var info_btn = document.getElementsByClassName("fa-info-circle")[0];
     info_btn.addEventListener('click', function () {
-        if (info_btn.style.color != "lightblue") {
-            info_btn.style.color = "lightblue";
+        if (info_btn.style.color != "white") {
+            info_btn.style.color = "white";
             document.getElementById("tip").style.visibility = "visible";
         } else {
             info_btn.style.color = "black";
@@ -151,7 +151,7 @@ window.onload = function () {
             isVisible = false;
         } else {
             trafficLayer.show();
-            road_btn.style.color = "red";
+            road_btn.style.color = "white";
             isVisible = true;
         }
     }, false);
@@ -174,9 +174,26 @@ window.onload = function () {
             isVisible = false;
         } else {
             satelliteLayer.show();
-            satellite_btn.style.color = "red";
+            satellite_btn.style.color = "white";
             isVisible = true;
         }
     }, false);
 
+
+    // 6 - Change Theme (Accessibility for Color Blindness)
+    var theme_btn = document.getElementsByClassName("fa-feather")[0];
+    var theme_window = document.getElementById("mapTheme");
+	
+    var isVisible = false;
+    AMap.event.addDomListener(theme_btn, 'click', function() {
+        if (isVisible) {
+            theme_window.style.visibility = "hidden";
+            theme_btn.style.color = "black";
+            isVisible = false;
+        } else {
+            theme_window.style.visibility = "visible";
+            theme_btn.style.color = "white";
+            isVisible = true;
+        }
+    }, false);
 }

@@ -1,22 +1,30 @@
 .fa-hotjar:hover,
-.fa-location-arrow:hover,
 .fa-search:hover,
 .fa-info-circle:hover,
 .fa-road:hover,
 .fa-globe-americas:hover,
 .fa-info-circle:hover,
-.fa-compass:hover {
+.fa-compass:hover,
+.fa-feather:hover {
     color: wheat;
+}
+
+#mapTheme {
+    color: whitesmoke;
+    margin-bottom: 60px;
+    visibility: hidden;
 }
 
 #myPageTop {
     width: fit-content;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
-}
-
-#myPageTop {
     visibility: hidden;
+    position: fixed;
+    right: 25px;
+    z-index: 100;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8;
 }
 
 #tip {
@@ -24,4 +32,8 @@
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     visibility: hidden;
+    width: fit-content;
+    position: fixed;
+    right: 25px;
+    z-index: 100;
 }
