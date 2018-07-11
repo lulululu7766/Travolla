@@ -133,10 +133,11 @@ function drawActivities() {
         var buttonDiv = document.createElement('div');
         buttonDiv.className = "card-body";
         var removeBtn = document.createElement('button');
+        removeBtn.id = activityName;
         removeBtn.className = "removeBtn btn btn-danger";
-        removeBtn.innerText = "Remove Activity" + activityName;
+        removeBtn.innerText = "Remove Activity";
         removeBtn.onclick = function() {
-            removeActivity(this.innerText.substr(7));
+            removeActivity(this.id);
         };
         buttonDiv.appendChild(removeBtn);
         // Append all of these components.
