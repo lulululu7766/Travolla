@@ -10,6 +10,9 @@
 		<title>Travello - Review <?php echo $_GET['guideName'];?></title>
 	</head>
 	<body style="text-align: center;">
+    <?php
+    include('header.php');
+    ?>
 		<div id="parent" class="container">
 			<div id="reviewHeader" class="container">
 				<h1>Review your guide <?php echo $_GET['guideName'];?>!</h1>
