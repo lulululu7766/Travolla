@@ -31,7 +31,7 @@ if ($mysqli->connect_error) {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="header.php">  Heat Map </a>
+                <a class="nav-link" href="heatmap.php">  Heat Map </a>
             </li>
             <?php
             if ( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) && 
