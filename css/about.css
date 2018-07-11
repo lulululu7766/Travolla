@@ -7,6 +7,22 @@
     margin-top: 9%;
 }
 
+h2.AboutHeaders {
+    text-align: center;
+    padding-top: 8%
+}
+
+h3.FAQ {
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: justify;
+    color: #F47820;
+}
+
+p.FAQ {
+    text-align: justify;
+}
+
 h3.card-title {
     margin-top: 15%;
     text-align: center;
@@ -20,10 +36,9 @@ p.card-text {
 }
 
 img.round {
-    height: 130px;
-    width: 130px;
-    object-fit: cover;
-    border-radius: 50%;
+    height: auto;
+    width: 100%;
+    clip-path: circle(38% at center);
     margin-top: 15%;
 }
 
