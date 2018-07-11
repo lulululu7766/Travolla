@@ -80,48 +80,13 @@
 
 </head>
 
-<body onload="displayWindowSize()" onresize="displayWindowSize()">	     
-    <nav class="navbar navbar-expand-md fixed-top bg-dark">
-      <a class="navbar-brand" href="index.php"><img src="css/images/teamlogo.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home </a>
-          </li>
-            
-            <?php
-        if(isset($login_session)){
-            $box1 = "<li class='nav-item'>
-            <a class='nav-link' href='destinations.php'> My Destinations</a>
-          </li>";
-            echo $box1;
-        }
-        
-        
-        ?>
-            <li class="nav-item">
-                <a class="nav-link" href="heatmap.php">  Heat Map </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about.php">  About </a>
-            </li>
-        </ul>
-      </div>
-    <?php
-        //if (isset($_SESSION) && //($_SESSION['loggedin'] == TRUE)) {
-        if(isset($login_session)){
-            $box = " <ul class='nav navbar-nav navbar-right'>
-                        <li>
-                            <span style='color: white;'>".$_SESSION['user']."</span> <a href='logout1.php'> | Log out</a>
-                        </li>
-                     </ul>";
-            echo $box;
-        }
-        ?>
-    </nav>
+<body onload="displayWindowSize()" onresize="displayWindowSize()">	 
+    
+<?php
+    include('header.php');
+?>    
+    
+
     <div class="cover-container" >
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 landing" >
             <h1 id="title"> Welcome to Travolla </h1>

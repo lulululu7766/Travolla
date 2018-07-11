@@ -34,7 +34,8 @@ if ($mysqli->connect_error) {
                 <a class="nav-link" href="heatmphpap.">  Heat Map </a>
             </li>
             <?php
-            if ((isset($_SESSION) && ($_SESSION['loggedin'] == TRUE))) {
+            if ( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) && 
+	         ($_SESSION['loggedin'] == TRUE) ) {
                 $box = '<li class="nav-item">
                             <a class="nav-link" href="destinations.php"> My Destinations</a>
                         </li>
@@ -52,7 +53,9 @@ if ($mysqli->connect_error) {
 
     <?php
 
-    if (!(isset($_SESSION) && ($_SESSION['loggedin'] == TRUE))) {
+    //if (!(isset($_SESSION) && ($_SESSION['loggedin'] == TRUE))) {
+        if (!( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) && 
+	     ($_SESSION['loggedin'] == TRUE) )) {
         //if(!isset($login_session)){
         $box = " <ul class='nav navbar-nav navbar-right'>
                         <li>
