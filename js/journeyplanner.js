@@ -6,22 +6,31 @@ window.onload = function() {
     document.getElementById('selectBtn').disabled = true;
 }
 
-// Stores activities in the format Activity Name : [Array of Activity attributes]
-var activityDict = {};
-
 // Timetable dictionary storing data as Day : [Array containing activities]
 var timetableDict = {};
+
+// Store the activities.
+var activityDict = {};
 
 // An array containing the current selected activities.
 var currentActivities = [];
 
 // Stores the destination of the traveller.
 var tripDestination;
-var destinationId;
 
 // Get list of all activities in area
 function getActivities(cityId) {
-    destinationId = cityId;
+    activityDict = {};
+    currentActivities = [];
+    if (cityId === 5120) {
+        document.getElementById('dropdownMenuButton').innerText = "Dalian, China";
+        tripDestination = "Dalian, China";
+    } else {
+        document.getElementById('dropdownMenuButton').innerText = "Brisbane, Australia";
+        tripDestination = "Brisbane, Australia";
+    }
+    var buttonDiv = document.getElementById('activityDiv');
+    buttonDiv.innerHTML = "";
     // Get activities from DB and add to activityDict
     $.ajax({
         // Using a POST request
@@ -45,17 +54,8 @@ function getActivities(cityId) {
             }
         }
     });
-    // Handle different cityIds
-    if (cityId === 5120) {
-        document.getElementById('dropdownMenuButton').innerText = "Dalian, China";
-        tripDestination = "Dalian, China";
-    } else {
-        document.getElementById('dropdownMenuButton').innerText = "Brisbane, Australia";
-        tripDestination = "Brisbane, Australia";
-    }
-    // Enable the 'Find Activities!' button after query is complete.
+    // Enable the 'Find Activities!' button.
     document.getElementById('getActivitiesBtn').disabled = false;
-
 }
 
 // Draw buttons of all activities
@@ -120,7 +120,7 @@ function drawActivities() {
         // BOOTSTRAP Create the Bootstrap card-title h4.
         var cardTitle = document.createElement('h4');
         cardTitle.className = "card-title";
-        cardTitle.innerText = activityName;
+        cardTitle.innerHTML = activityName;
         // BOOTSTRAP Create the Bootstrap card-text p.
         var cardText = document.createElement('p');
         cardText.className = "card-text";
@@ -307,7 +307,7 @@ function drawTimetable(timetableDict) {
         // Format it nicely
         currentDay = currentDay.toLocaleDateString('en-AU');
         // Assign the text of the dayLabel
-        dayLabel.innerText = currentDay + ", " + totalTime + " hours.";
+        dayLabel.innerHTML = currentDay + ", <b>" + totalTime + "</b> hours.";
         dayContainer.appendChild(dayLabel);
 
         // BOOTSTRAP Create day heading for invoice.
@@ -329,7 +329,7 @@ function drawTimetable(timetableDict) {
             var activityHeader = document.createElement('div');
             // BOOTSTRAP Create the card-header
             activityHeader.className = "card-header";
-            activityHeader.innerHTML = "<h5>Activity: " + activityName + "</h5>";
+            activityHeader.innerHTML = "<h5>Activity: <b>" + activityName + "</b></h5>";
             // BOOTSTRAP Create the list-group to house the activity information.
             var activityInformation = document.createElement('ul');
             activityInformation.className = "list-group list-group-flush";
@@ -342,7 +342,7 @@ function drawTimetable(timetableDict) {
             // BOOTSTRAP Create list-group-item to go in activityInformation.
             var activityTime = document.createElement('li');
             activityTime.className = "list-group-item";
-            activityTime.innerText = "Duration: " + activityDuration + " hours.";
+            activityTime.innerHTML = "Duration: <b>" + activityDuration + "</b> hours.";
             // Create a break for good measure.
             var elementBreak = document.createElement('br');
             // Append all this stuff.
