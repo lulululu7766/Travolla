@@ -39,23 +39,9 @@
             <div id="guideParent" class="container">
                 <h1 id="toptitle">Available Guides in <?php echo $_REQUEST['cityId'] ?></h1>
                 <div id="guideList" class="container">
-
                 </div>
             </div>
         </div>
-
-        <!------------------
-         DISPLAY GUIDES ----->
-        <div id="main" 
-        class="container-fluid"
-        style="padding-top: 5%">
-            <div id="guideEntry"
-            class="container">
-            getGuides(cityId)
-            </div>
-        </div>
-        <!------------------
-         END DISPLAY GUIDES ----->
         
         <footer class="container-fluid text-center">
             <div class="row">
