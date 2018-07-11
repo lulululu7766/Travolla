@@ -62,7 +62,9 @@
       </div>
         
         <?php
-        if(!isset($login_session)){
+        
+        if (!(isset($_SESSION) && ($_SESSION['loggedin'] == TRUE))) {
+        //if(!isset($login_session)){
             $box = " <ul class='nav navbar-nav navbar-right'>
                         <li>
                             <a href='index.php'>Log in</a>
