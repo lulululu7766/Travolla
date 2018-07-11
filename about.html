@@ -34,6 +34,23 @@
             return;
         }
     </script>
+    
+    <!-- Script for interactive card
+    <script> 
+        $(document).ready(function() {
+            $(".rounded-rectangle3").mouseover(function() {
+                $(".slidingPanel").animate({height:'350px'});
+                $("img.round2").animate({width:'350%'});
+                $("p.slidingPanelText").animate({opacity: 1});
+            });
+            $(".rounded-rectangle3").mouseout(function() {
+                $(".slidingPanel").animate({height:'100px'});
+                $("img.round2").animate({width:'300%'});
+                $("p.slidingPanelText").animate({opacity: 0});
+            });
+        });
+    </script> 
+    -->
 
 </head>
 
@@ -188,19 +205,27 @@
             
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         </div>
-        <!--
+        
+        <!-- content for interactive card
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="text-center rounded-rectangle2">
-                    <div>
+                    <div class="rounded-rectangle3"></div>
+                    <div style="position: absolute; top: 0">
                         <img src="css/images/bg.jpg" alt = welcomepic class="round2">
                     </div>
-                    <h3 class="card-title">Lorem Ipsum</h3>
-                    <p class="rounded-center card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                    <div class="slidingPanel">
+                        <h3 class="card-title2">Lorem Ipsum</h3>
+                        <p class="rounded-center card-text2 slidingPanelText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                    </div>
+                    
                 </div>
             </div>
         </div>
+        
         -->
+        
+        
     </div>
     
     

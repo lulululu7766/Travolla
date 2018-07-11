@@ -50,8 +50,12 @@ img.round {
 }
 
 
+/* Styling for interactive card
 
-/*
+h3.card-title2 {
+    text-align: center;
+}
+
 p.card-text2 {
     text-align: center;
     padding-left: 10%;
@@ -61,12 +65,39 @@ p.card-text2 {
 
 img.round2 {
     height: auto;
-    width: 100%;
-    border-radius: 2rem 2rem 0 0;
+    width: 300%;
+    transform: translate(-50%);
 }
 
 .rounded-rectangle2 {
     border-radius:2rem;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2);
+    height: 500px;
+    overflow: hidden;
+    position: relative;
 }
+
+.rounded-rectangle3 {
+    border-radius:2rem;
+    height: 500px;
+    position: relative;
+    background-color: transparent;
+    z-index: 1000;
+    bottom: 0;
+}
+
+.slidingPanel {
+    border-radius: 0 0 2rem 2rem;
+    position: absolute;
+    height: 30%;
+    width: auto;
+    bottom: 0;
+    background-color: white;
+}
+
+p.slidingPanelText {
+    position: relative;
+    opacity: 0;
+}
+
 */
