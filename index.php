@@ -1,5 +1,5 @@
 <?php
-//    include('session.php');
+    include('session.php');
     require('encryption1.php');
     $output = NULL;
  	$output2 = NULL;
@@ -111,6 +111,7 @@
         </ul>
       </div>
     <?php
+        //if (isset($_SESSION) && //($_SESSION['loggedin'] == TRUE)) {
         if(isset($login_session)){
             $box = " <ul class='nav navbar-nav navbar-right'>
                         <li>

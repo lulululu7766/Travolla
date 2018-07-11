@@ -44,6 +44,19 @@
             </div>
         </div>
 
+        <!------------------
+         DISPLAY GUIDES ----->
+        <div id="main" 
+        class="container-fluid"
+        style="padding-top: 5%">
+            <div id="guideEntry"
+            class="container">
+            getGuides(cityId)
+            </div>
+        </div>
+        <!------------------
+         END DISPLAY GUIDES ----->
+        
         <footer class="container-fluid text-center">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 socialm">
@@ -97,6 +110,12 @@
             </div>
         </footer>
 
+        <!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="./js/guideMatch.js"></script>
     </body>
 </html>
 
