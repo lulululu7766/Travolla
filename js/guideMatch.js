@@ -1,10 +1,12 @@
 var guideDict = [];
 
-var cityId = $_GET['cityId'];
+//var cityId = $_POST['cityId'];
+var urlParams = new URLSearchParams(window.location.search);
+var cityId = urlParams.get(cityId);
 
 window.onload = function () {
     getGuides();
-    stuffGuidesToHTML();
+    stuffGuidesToHTML(guideDict);
 }
 
 function getGuides() {
@@ -27,13 +29,38 @@ function getGuides() {
                 var activityLevel = object["GUIDES"][i]['activity_level'];
                 var mobilityLevel = object["GUIDES"][i]['mobility_level'];
                 var dietaryRestrictions = object["GUIDES"][i]['dietary_restrictions'];
-                guideDict[guideId] = [guideName, guideHome, imagePath, gender, activityLevel, mobilityLevel, dietaryRestructions];
+                guideDict[guideId] = [guideName, guideHome, imagePath, gender, activityLevel, mobilityLevel, dietaryRestrictions];
             }
         }
     });
-    
-    
-function stuffGuidesToHTML() {
-    //guideList
 }
+
+// Display guides to browser
+function stuffGuidesToHTML(guideDict) {
+    // Insert guide list at 
+    // div id="guideList"
+    var guideMainList = document.getElementById('guideList');
+
+    // Grab guide details and display
+    for (var guide in guideDict) {
+
+        // BOOTSTRAP Create a new container for each guide.
+        var guideContainer = document.createElement('div');
+        guideContainer.className = "container";
+        // BOOTSTRAP Create the guide heading.
+        var guideName = document.createElement('h4');
+        guideName.innerText = guideDict[guide][0];
+        
+        console.log("Guide name: ");
+        console.log(guideDict[guide][0]);
+        guideContainer.appendChild(guideName);
+
+         // Append to page
+        guideMainList.appendChild(guideContainer);
+        
+    }    
+   
+
+
+
 }
