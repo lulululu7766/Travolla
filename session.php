@@ -18,7 +18,10 @@
 	    die("Connection failed: " . $mysqli->connect_error);
 	} 
 	//echo "Connected successfully";
-	session_start();
+
+	if (!isset($_SESSION)) {
+		session_start();
+	}
 
 	if(isset($_SESSION['loggedin'])){
 		$user_check = $_SESSION['user'];
