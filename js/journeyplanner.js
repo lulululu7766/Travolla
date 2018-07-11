@@ -134,7 +134,7 @@ function drawActivities() {
         buttonDiv.className = "card-body";
         var removeBtn = document.createElement('button');
         removeBtn.className = "removeBtn btn btn-danger";
-        removeBtn.innerText = "Remove " + activityName;
+        removeBtn.innerText = "Remove Activity" + activityName;
         removeBtn.onclick = function() {
             removeActivity(this.innerText.substr(7));
         };

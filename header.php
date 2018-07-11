@@ -16,8 +16,8 @@ if ($mysqli->connect_error) {
 
 ?>
 
-<nav class="navbar navbar-expand-md fixed-top bg-dark">
-    <a class="navbar-brand" href="index.php"><img src="css/images/teamlogo.png"></a>
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.php"><img src="css/images/weblogo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,20 +26,20 @@ if ($mysqli->connect_error) {
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="about.php">  About </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="heatmap.php">  Heat Map </a>
             </li>
             <?php
             if ( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) && 
 	         ($_SESSION['loggedin'] == TRUE) ) {
-                $box = '<li class="nav-item">
+                $box = '<li class="nav-item active">
                             <a class="nav-link" href="destinations.php"> My Destinations</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
                         </li>
                         ';

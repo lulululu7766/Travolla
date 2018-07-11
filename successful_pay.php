@@ -37,61 +37,9 @@ include('header.php');
             <button class='btn btn-lg btn-primary btn-block'onclick="location.href='index.php';" style="margin-left: 30%; width: 40vw; background-color: #F47820; font-weight: bold; border: none; margin-top: 5%;">Return to Home Page</button>
             </div>
         </div>
-        
-        
-	  <footer class="container-fluid text-center">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 socialm">
-                    <h3>Social Media</h3>
 
-					<br>
 
-					<a href = "http://www.facebook.com"><img src="css\images\facebook.svg" alt = "fb"></a>
-					<a href = "http://www.twitter.com"><img src="css\images\twitter.svg" alt = "twitter"></a>
-					<a href = "http://www.instagram.com"><img src="css\images\instagram.svg" alt = "instagram"></a><br>
-                     <!--<img id="team" src="css\images\teamlogo.png" alt = "teamlogo">-->
-				</div>
-
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-					<h3>Contact Us</h3>
-					<br>
-                    <div id="contactus">
-                        <ul>
-                            <li>
-                                <img src="css\images\tel.svg" alt = "tel">
-                                <a href="tel:+61123456789">
-                                    +(61) 123 456 789 </a>
-                            </li>
-                            <li>
-                                <img src="css\images\email.svg" alt = "email"> 
-                                <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top"> travolla@innstation.com </a>
-                            </li>
-                            <li>&#9400; Travolla, Designed by innStation, 2018</li>
-                           
-                        </ul>
-                    </div>
-				</div>
-
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					<h3>Address</h3>
-					<br>
-                    <div id="address">
-
-                        <ul>
-                            <li>
-                                <img src="css\images\adress.svg" alt = "address"> The University Of Queensland
-                            </li>
-                            <li> St Lucia, Brisbane, QLD 4067, Australia</li>
-                            <li>
-                                <img src="css\images\adress.svg" alt = "address"> The Dalian Neusoft University of Information 
-                            </li>
-                            <li> Dalian, Liyaoning, China </li>
-                        </ul>
-                        
-                    </div>
-				</div>
-			</div>
-	  </footer>
+<?php include('footer.php') ?>
     
     <!--Responsiveness--> 
     

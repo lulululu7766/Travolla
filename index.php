@@ -88,8 +88,9 @@
     
 
     <div class="cover-container" >
+        <h1 id="title"> Welcome to Travolla </h1>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 landing" >
-            <h1 id="title"> Welcome to Travolla </h1>
+
             
             <div class="row">
                 
@@ -127,13 +128,15 @@
                                     <!--<img src="css\images\loginarrow.png" alt = "loginarrow">-->
                             </div>
                     </form>
+                    <a class="ct-btn-scroll ct-js-btn-scroll" href="#container-fluid" style="margin-top: 10%;"><img id="arrow" alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
                 </div>
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
                 </div>
+
                 
             </div>
-            <a class="ct-btn-scroll ct-js-btn-scroll" href="#container-fluid" style="margin-top: 10%;"><img id="arrow" alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"></a>
+
         </div>
     </div>
 	  
@@ -179,64 +182,13 @@
         </div>
 	</div>
 
-	  <footer class="container-fluid text-center">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 socialm">
-                    <h3>Social Media</h3>
-
-					<br>
-
-					<a href = "http://www.facebook.com"><img src="css\images\facebook.svg" alt = "fb"></a>
-					<a href = "http://www.twitter.com"><img src="css\images\twitter.svg" alt = "twitter"></a>
-					<a href = "http://www.instagram.com"><img src="css\images\instagram.svg" alt = "instagram"></a><br>
-                     <!--<img id="team" src="css\images\teamlogo.png" alt = "teamlogo">-->
-				</div>
-
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-					<h3>Contact Us</h3>
-					<br>
-                    <div id="contactus">
-                        <ul>
-                            <li>
-                                <img src="css\images\tel.svg" alt = "tel">
-                                <a href="tel:+61123456789">
-                                    +(61) 123 456 789 </a>
-                            </li>
-                            <li>
-                                <img src="css\images\email.svg" alt = "email"> 
-                                <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top"> travolla@innstation.com </a>
-                            </li>
-                            <li>&#9400; Travolla, Designed by innStation, 2018</li>
-                           
-                        </ul>
-                    </div>
-				</div>
-
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					<h3>Address</h3>
-					<br>
-                    <div id="address">
-
-                        <ul>
-                            <li>
-                                <img src="css\images\adress.svg" alt = "address"> The University Of Queensland
-                            </li>
-                            <li> St Lucia, Brisbane, QLD 4067, Australia</li>
-                            <li>
-                                <img src="css\images\adress.svg" alt = "address"> The Dalian Neusoft University of Information 
-                            </li>
-                            <li> Dalian, Liyaoning, China </li>
-                        </ul>
-                    </div>
-				</div>
-			</div>
-	  </footer>
+    <?php include('footer.php') ?>
     
     <!--Responsiveness--> 
     
     <script>
         function displayWindowSize() {
-            
+
             //Retrieve the screen height of the user
 
             var screenheight = window.innerHeight;
