@@ -103,11 +103,12 @@
                         
                         <!--Buttons-->
                         <?php
-                            if(!isset($login_session)){
+                            if( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) &&
+                                ($_SESSION['loggedin'] == TRUE) ){
+                                $box=" <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='destinations.php';\" > Get Started </button>";
+                            }else{
                                 $box = " <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='signup.php';\">Sign Up</button> 
                                 <button id='loginbutton' class='btn btn-lg btn-primary btn-block' >Log in</button>";
-                            }else{
-                                $box=" <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='destinations.php';\" > Get Started </button>";
                             }
                             
                             echo $box;
@@ -148,9 +149,9 @@
 
 	  	<div class="row">
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
-      			<h3> Match with a local guide to take you around </h3>
+      			<h3> Local Tour Guide Matching </h3>
                 
-      			<p> Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles.</p>
+      			<p> So you’ve made it! You’re in a foreign country and are ready to soak in the culture. There are just two problems: you don’t speak the local language, and you have no way to get around. Travolla has your back. We’ll automatically match you up with a local based on your timetable and personal preferences, so that you can not only navigate through your destination more efficiently, but also learn the local culture from those who know it best: locals (again, not middle-aged travel bloggers). </p>
     		</div>
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     			<img src="css\images\bg.jpg" alt = "Welcomepic" style=" width: 85%; margin-bottom: 10%;">
@@ -163,9 +164,9 @@
     			     <img src="css\images\bg.jpg" alt = "Welcomepic" style=" width: 85%; margin-bottom: 10%;">
                 </div>
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
-      			<h3> Match with a local guide to take you around </h3>
+      			<h3> Optimised Journey Planner </h3>
                
-      			<p> Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles.</p>
+      			<p>When you’re holidaying in Hawaii, you don’t want to be sitting in your hotel room finding activities and organising transport. You want to be sitting on the beach, getting your tan on. When you’re honeymooning in Paris, you’d rather be eating your way through a baguette than eating away your time finding the best restaurant. Catering to single travellers, students, the elderly, and those with a disability, Travolla devises a travel schedule that is uniquely suited to users’ personal preferences and characteristics. Optimisation algorithms ensure a jam-packed schedule for the energetic and curious, or a laid-back getaway for those looking to escape the pressures of daily life, helping users to experience other cultures in a way that suits them.</p>
     		</div>
         </div>
         
@@ -173,10 +174,10 @@
 
         <div class="row">
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
-      			<h3> Match with a local guide to take you around </h3>
-      			<p> Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles.</p>
-    		</div>
-    		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      			<h3> Heatmap - Travolla handles the heat so you don’t have to </h3>
+                <p>Don’t like crowds? No problem - Travolla has you covered. Love the vibe of thousands of people all sharing the one moment? We can help you there too. With Travolla’s interactive heatmap, you can view crowd statistics at your destination in real-time. In this way, we can recommend activities based on what’s ACTUALLY popular, and not based on what some middle-aged blogger thinks is ‘hip’.</p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     			<img src="css\images\bg.jpg" alt = "Welcomepic" style=" width: 85%; margin-bottom: 10%;">
     		</div>
         </div>
