@@ -67,30 +67,30 @@ include('header.php');
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <h3 class="FAQ"> Lorem Ipsum dolor sit amet, consectetur?</h3>
+            <h3 class="FAQ"> Who is Travolla for?</h3>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-            <p class="FAQ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus.</p>
+            <p class="FAQ">Travolla has been designed from the ground-up to be accessible for all users. It provides experiences that are cheap enough for a broke student, and luxurious enough for a well-off businessman. We have also taken special care to cater for the elderly, and for people with a disability. Our platform can filter out activities that aren’t suitable for some people, and can provide customised results based on how active our users are.</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <h3 class="FAQ"> Lorem Ipsum dolor sit amet, consectetur?</h3>
+            <h3 class="FAQ"> Which destinations are supported by Travolla?</h3>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-            <p class="FAQ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus.</p>
+            <p class="FAQ">In our initial release, Dalian, China and Brisbane, Australia are the two cities that are available through our platform. It won’t be this way for long, though. Travolla will be constantly and rapidly updated with new locations, enabling users to experience our platform at all popular destinations globally.</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <h3 class="FAQ"> Lorem Ipsum dolor sit amet, consectetur?</h3>
+            <h3 class="FAQ"> How can I stay safe using Travolla?</h3>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-            <p class="FAQ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus.</p>
+            <p class="FAQ">Safety while travelling abroad is always a concern. Travolla has features to help users, both travellers and guides, to stay safe while using our services. Two-way user reviews allow both our team and individual users to evaluate the trustworthiness of other users. This also helps filter out unsavoury users from our system.</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
     </div>
@@ -108,10 +108,10 @@ include('header.php');
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
                 <div>
-                    <img src="css/images/bg.jpg" alt = welcomepic class="round">
+                    <img src="css/images/mmexport1531361065664.jpg" alt = adaprofile class="round">
                 </div>
-                <h3 class="card-title">Lorem Ipsum</h3>
-                <p class="rounded-center card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                <h3 class="card-title">Ada Rao</h3>
+                <p class="rounded-center card-text">Programmer - Database/Backend, Local Tour Guide Matching System, Content Provider - Keeps Ed in check. She’s the reason we can give you recommendations on where to go</p>
             </div>
         </div>
 
@@ -120,10 +120,10 @@ include('header.php');
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
                 <div>
-                    <img src="css/images/bg.jpg" alt = welcomepic class="round">
+                    <img src="css/images/Ed-linkedinphoto.jpg" alt = edprofile class="round">
                 </div>
-                <h3 class="card-title">Lorem Ipsum</h3>
-                <p class="rounded-center card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                <h3 class="card-title">Edward Sweeney</h3>
+                <p class="rounded-center card-text">Programmer - Database/Backend, Local Tour Guide Matching System, Quality Process Engineer - You can thank him for hooking you up with that great local guide</p>
             </div>
         </div>
 
@@ -132,10 +132,10 @@ include('header.php');
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
                 <div>
-                    <img src="css/images/bg.jpg" alt = welcomepic class="round">
+                    <img src="css/images/DSC_9359.jpg" alt = erikprofile class="round">
                 </div>
-                <h3 class="card-title">Lorem Ipsum</h3>
-                <p class="rounded-center card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                <h3 class="card-title">Erik Brand</h3>
+                <p class="rounded-center card-text">Technical/User Documentation, UI/UX Assistant - Just. So. Many. Words.</p>
             </div>
         </div>
 
@@ -147,10 +147,10 @@ include('header.php');
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
                 <div>
-                    <img src="css/images/bg.jpg" alt = welcomepic class="round">
+                    <img src="css/images/Henry Profile.jpg" alt = henryprofile class="round">
                 </div>
-                <h3 class="card-title">Lorem Ipsum</h3>
-                <p class="rounded-center card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                <h3 class="card-title">Henry Burgess</h3>
+                <p class="rounded-center card-text">System Architect, Programmer - Optimised Journey Planner Logic. You can thank him for your perfectly organised holidays </p>
             </div>
         </div>
 
@@ -159,10 +159,10 @@ include('header.php');
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
                 <div>
-                    <img src="css/images/bg.jpg" alt = welcomepic class="round">
+                    <img src="css/images/mmexport1531361644616.jpg" alt = jasonprofile class="round">
                 </div>
-                <h3 class="card-title">Lorem Ipsum</h3>
-                <p class="rounded-center card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                <h3 class="card-title">Jason Zhang</h3>
+                <p class="rounded-center card-text">Programmer - Heat map Logic, Content Provider. Mapping wizard - nobody knows how he does it </p>
             </div>
         </div>
 
@@ -171,10 +171,10 @@ include('header.php');
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
                 <div>
-                    <img src="css/images/bg.jpg" alt = welcomepic class="round">
+                    <img src="css/images/tbp-144308-7609.jpg" alt = leaprofile class="round">
                 </div>
-                <h3 class="card-title">Lorem Ipsum</h3>
-                <p class="rounded-center card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at magna in velit auctor lacinia ut et leo. Donec tempus accumsan nulla at tempor. Duis efficitur ullamcorper nibh sit amet pharetra. Quisque sit amet cursus risus. </p>
+                <h3 class="card-title">Léa Laï Van</h3>
+                <p class="rounded-center card-text">Project Manager, UI/UX Designer. Basically the design legend of the company</p>
             </div>
         </div>
 
