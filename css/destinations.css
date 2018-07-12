@@ -13,6 +13,11 @@ hr{
 
 }
 
+.interestBtn button {
+    background-color: #F47820;
+    border: none;
+}
+
 
 .container-fluid .section{
     margin-top: 3%;
