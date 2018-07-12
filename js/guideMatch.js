@@ -48,13 +48,13 @@ function getGuides() {
             guideContainer.className = "container";
             // BOOTSTRAP Create the guide heading.
             var guideName = document.createElement('h4');
-            var guideGender = document.createElement('h4');
-            var guideActivityLevel = document.createElement('h4');
-            var guideMobilityLevel = document.createElement('h4');
-            //var guideImage = document.createElement('h4');
+            var guideGender = document.createElement('text');
+            var guideActivityLevel = document.createElement('text');
+            var guideMobilityLevel = document.createElement('text');
+            var guideImage = document.createElement('h4');
                 
             // Guide ID
-            guideId.innerText = guideDict[i][0];
+            //guideId.innerText = guideDict[i][0];
             
             // Guide Name
             guideName.innerText = guideDict[i][1];
@@ -67,13 +67,15 @@ function getGuides() {
                 
             // Guide Mobility Level
             guideMobilityLevel.innerText = guideDict[i][6];
+            guideMobilityLevel.innerText = guideDict[i][6];
             
-            //guideImage.innerHTML = "<IMG SRC=guideDict[i][3] ALT=guideDict[i][1] photo>"
+            guideImage.innerHTML = "<IMG SRC='guideDict[i][3]' ALT='guideDict[i][1]'>"
                 
             guideContainer.appendChild(guideName);
             guideContainer.appendChild(guideGender);
             guideContainer.appendChild(guideActivityLevel);
             guideContainer.appendChild(guideMobilityLevel);
+            guideContainer.appendChild(guideImage);
 
             // Append to page
             guideMainList.appendChild(guideContainer);
