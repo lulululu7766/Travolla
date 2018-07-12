@@ -103,7 +103,7 @@ include('header.php');
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
         <h2 class="AboutHeaders"> About the Developers </h2>
     </div>
-    <div class="row">
+    <div class="row" style="display:table; width:100%;">
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
@@ -142,7 +142,7 @@ include('header.php');
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
     </div>
 
-    <div class="row">
+    <div class="row" style="display:table; width:100%;">
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <div class="text-center rounded-rectangle">
