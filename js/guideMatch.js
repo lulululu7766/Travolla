@@ -41,56 +41,54 @@ function getGuides() {
                 
                 // Calculate guide's age, by getting current time & 
                 // subtracting guide's D.O.B. from current_time
-                var current_date = new Date();
+                //var current_date = new Date();
+                //epoch_time = (current_date.getTime() / 1000);
+                //guide_age = epoch_time - current_date;
+                //console.log("guide_age for guideName is: " + guide_age);
                 
-                epoch_time = (current_date.getTime() / 1000);
-                
-                guide_age = epoch_time - current_date;
-                
-                console.log("guide_age for guideName is: " + guide_age);
-                
-            // Display guide details to browser
-            // Insert guide list at 
-            // div id="guideList"
-                
-            var guideMainList = document.getElementById('guideList');
+                // Display guide details to browser
+                // Insert guide list at 
+                // div id="guideList"
+                var guideMainList = document.getElementById('guideList');
                     
-            // BOOTSTRAP Create a new container for each guide.
-            var guideContainer = document.createElement('div');
-            guideContainer.className = "container";
-            // BOOTSTRAP Create the guide heading.
-            var guideName = document.createElement('h4');
-            var guideGender = document.createElement('text');
-            var guideActivityLevel = document.createElement('text');
-            var guideMobilityLevel = document.createElement('text');
-            var guideImage = document.createElement('h4');
+                //var guideAttributes = document.getElementById('guideAttributes');
                 
-            // Guide ID
-            //guideId.innerText = guideDict[i][0];
+                // BOOTSTRAP Create a new container for each guide.
+                var guideContainer = document.createElement('div');
+                guideContainer.className = "container";
+                // BOOTSTRAP Create the guide heading.
+                var guideName = document.createElement('h4');
+                var guideGender = document.createElement('text');
+                var guideActivityLevel = document.createElement('text');
+                var guideMobilityLevel = document.createElement('text');
+                var guideImage = document.createElement('h4');
+                
+                // Guide ID
+                //guideId.innerText = guideDict[i][0];
             
-            // Guide Name
-            guideName.innerText = guideDict[i][1];
+                // Guide Name
+                guideName.innerText = guideDict[i][1];
         
-            // Guide Gender
-            guideGender.innerText = guideDict[i][4];
+                // Guide Gender
+                guideGender.innerText = guideDict[i][4];
 
-            // Guide Activity Level
-            guideActivityLevel.innerText = guideDict[i][5];
+                // Guide Activity Level
+                guideActivityLevel.innerText = guideDict[i][5];
                 
-            // Guide Mobility Level
-            guideMobilityLevel.innerText = guideDict[i][6];
-            guideMobilityLevel.innerText = guideDict[i][6];
+                // Guide Mobility Level
+                guideMobilityLevel.innerText = guideDict[i][6];
+                guideMobilityLevel.innerText = guideDict[i][6];
             
-            guideImage.innerHTML = "<IMG SRC='guideDict[i][3]' ALT='guideDict[i][1]'>"
+                guideImage.innerHTML = "<IMG SRC='guideDict[i][3]' ALT='guideDict[i][1]'>"
                 
-            guideContainer.appendChild(guideName);
-            guideContainer.appendChild(guideGender);
-            guideContainer.appendChild(guideActivityLevel);
-            guideContainer.appendChild(guideMobilityLevel);
-            guideContainer.appendChild(guideImage);
+                guideContainer.appendChild(guideName);
+                guideContainer.appendChild(guideGender);
+                guideContainer.appendChild(guideActivityLevel);
+                guideContainer.appendChild(guideMobilityLevel);
+                guideContainer.appendChild(guideImage);
 
-            // Append to page
-            guideMainList.appendChild(guideContainer);
+                // Append to page
+                guideMainList.appendChild(guideContainer);
                     
             }  
         }     
