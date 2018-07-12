@@ -51,7 +51,7 @@
                             </li>
                             <li>
                                 <img src="css\images\email.svg" alt = "email">
-                                <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top"> travolla@innstation.com </a>
+                                <a href="mailto:info@travolla.hm?Subject=Hello%20again" target="_top"> info@travolla.hm </a>
                             </li>
                             <li>&#9400; Travolla, Designed by innStation, 2018</li>
 
