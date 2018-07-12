@@ -141,7 +141,6 @@
                                     }else{
                                         $box=" <button class=\"subscribe btn btn-success btn-lg btn-block\" onclick=\"location.href='successful_pay.php'\" type=\"button\">Pay Now</button>";
                                     }
-
                                     echo $box;
                                 ?>
                             </div>
