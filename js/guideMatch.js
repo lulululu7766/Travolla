@@ -29,6 +29,7 @@ function getGuides() {
                 var guideHome = parseInt(object["GUIDES"][i]['home_city_id']);
                 var imagePath = object["GUIDES"][i]['image_path'];
                 var gender = object["GUIDES"][i]['gender'];
+                var dob = object["GUIDES"][i]['date_of_birth'];
                 var activityLevel = object["GUIDES"][i]['activity_level'];
                 var mobilityLevel = object["GUIDES"][i]['mobility_level'];
                 var dietaryRestrictions = object["GUIDES"][i]['dietary_restrictions'];
@@ -36,7 +37,18 @@ function getGuides() {
                 //guideDict.push([guideId, guideName, guideHome, imagePath, gender, activityLevel, mobilityLevel, dietaryRestrictions]);
                 
                 guideDict.push([guideId, guideName, guideHome, imagePath, gender, activityLevel, mobilityLevel]);
-                   
+
+                
+                // Calculate guide's age, by getting current time & 
+                // subtracting guide's D.O.B. from current_time
+                var current_date = new Date();
+                
+                epoch_time = (current_date.getTime() / 1000);
+                
+                guide_age = epoch_time - current_date;
+                
+                console.log("guide_age for guideName is: " + guide_age);
+                
             // Display guide details to browser
             // Insert guide list at 
             // div id="guideList"
