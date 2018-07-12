@@ -9,7 +9,7 @@ window.onload = function () {
     
 function getGuides() {
 
-    guideDict = [];  
+    var guideDict = [];
     
     // Get activities from DB and add to activityDict
     $.ajax({
@@ -33,7 +33,8 @@ function getGuides() {
                 var activityLevel = object["GUIDES"][i]['activity_level'];
                 var mobilityLevel = object["GUIDES"][i]['mobility_level'];
                 var dietaryRestrictions = object["GUIDES"][i]['dietary_restrictions'];
-                
+                // var cityName = object["GUIDES"][i]['city_name'];
+
                 //guideDict.push([guideId, guideName, guideHome, imagePath, gender, activityLevel, mobilityLevel, dietaryRestrictions]);
                 
                 guideDict.push([guideId, guideName, guideHome, imagePath, gender, activityLevel, mobilityLevel]);
@@ -55,43 +56,76 @@ function getGuides() {
                 
                 // BOOTSTRAP Create a new container for each guide.
                 var guideContainer = document.createElement('div');
-                guideContainer.className = "container";
+                guideContainer.className = "card";
+                var guideBody = document.createElement('div');
+                guideBody.className = "card-body";
                 // BOOTSTRAP Create the guide heading.
-                var guideName = document.createElement('h4');
-                var guideGender = document.createElement('text');
-                var guideActivityLevel = document.createElement('text');
-                var guideMobilityLevel = document.createElement('text');
-                var guideImage = document.createElement('h4');
-                
+                var guideName = document.createElement('h5');
+                guideName.className = "card-title";
+                var infoList = document.createElement('ul');
+                infoList.className = "list-group list-group-flush";
+                var guideGender = document.createElement('li');
+                guideGender.className = "list-group-item";
+                var guideActivityLevel = document.createElement('li');
+                guideActivityLevel.className = "list-group-item";
+                var guideMobilityLevel = document.createElement('li');
+                guideMobilityLevel.className = "list-group-item";
+                var guideBtnGroup = document.createElement('li');
+                guideBtnGroup.className = "list-group-item";
+
+                var guideBreak = document.createElement('br');
+
+                var acceptBtn = document.createElement('button');
+                acceptBtn.className = "btn btn-success";
+                acceptBtn.innerText = "Request";
+                acceptBtn.style.marginRight = "2%";
+                acceptBtn.onclick = function() {
+                    gotoPayment()
+                };
+
+                var declineBtn = document.createElement('button');
+                declineBtn.className = "btn btn-danger";
+                declineBtn.innerText = "Dismiss";
+                acceptBtn.style.marginRight = "2%";
+
+                guideBtnGroup.appendChild(acceptBtn);
+                guideBtnGroup.appendChild(declineBtn);
+
                 // Guide ID
                 //guideId.innerText = guideDict[i][0];
             
                 // Guide Name
-                guideName.innerText = guideDict[i][1];
+                var guideImagePath = guideDict[i][3];
+
+                guideName.innerHTML = "<img width='75px' height='75px' style='margin-right: 2%' class='rounded-circle' src=\'" + guideImagePath + "\' alt=\'" + guideDict[i][1] + "\'>" + guideDict[i][1];
         
                 // Guide Gender
-                guideGender.innerText = guideDict[i][4];
+                guideGender.innerHTML = "<b>Gender: </b>" + guideDict[i][4];
 
                 // Guide Activity Level
-                guideActivityLevel.innerText = guideDict[i][5];
+                guideActivityLevel.innerHTML = "<b>Activity Level: </b>" + guideDict[i][5];
                 
                 // Guide Mobility Level
-                guideMobilityLevel.innerText = guideDict[i][6];
-                guideMobilityLevel.innerText = guideDict[i][6];
-            
-                guideImage.innerHTML = "<IMG SRC='guideDict[i][3]' ALT='guideDict[i][1]'>"
+                guideMobilityLevel.innerHTML = "<b>Mobility Level: </b>" + guideDict[i][6];
                 
-                guideContainer.appendChild(guideName);
-                guideContainer.appendChild(guideGender);
-                guideContainer.appendChild(guideActivityLevel);
-                guideContainer.appendChild(guideMobilityLevel);
-                guideContainer.appendChild(guideImage);
+                infoList.appendChild(guideGender);
+                infoList.appendChild(guideActivityLevel);
+                infoList.appendChild(guideMobilityLevel);
+                infoList.appendChild(guideBtnGroup);
+                guideBody.appendChild(guideName);
+
+                guideContainer.appendChild(guideBody);
+                guideContainer.appendChild(infoList);
 
                 // Append to page
                 guideMainList.appendChild(guideContainer);
-                    
+                guideMainList.appendChild(guideBreak);
+
             }  
         }     
     });
-     
+}
+
+function gotoPayment() {
+    window.location = "epay.php";
 }

@@ -29,6 +29,7 @@ function getActivities(cityId) {
         document.getElementById('dropdownMenuButton').innerText = "Brisbane, Australia";
         tripDestination = "Brisbane, Australia";
     }
+    destinationId = cityId;
     var buttonDiv = document.getElementById('activityDiv');
     buttonDiv.innerHTML = "";
     // Get activities from DB and add to activityDict
@@ -466,11 +467,11 @@ function printTimetable() {
 
 // Goto guide matching
 function guideMatch() {
-    var url = "guideMatch.php?cityId=" + destinationId;
-    location.href = url;
-}
+    if (tripDestination === "Dalian, China") {
+        var url = "guideMatch.php?cityId=5120";
+    } else {
+        var url = "guideMatch.php?cityId=8120";
+    }
 
-// Get the time between two latitudes and longitudes.
-function getTime([lat1, long1], [lat2, long2]) {
-
+    window.location = url;
 }

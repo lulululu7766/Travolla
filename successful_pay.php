@@ -34,7 +34,7 @@ include('header.php');
                 echo $output;
             ?>
             
-            <button class='btn btn-lg btn-primary btn-block'onclick="location.href='index.php';" style="margin-left: 30%; width: 40vw; background-color: #F47820; font-weight: bold; border: none; margin-top: 5%;">Return to Home Page</button>
+            <button class='btn btn-lg btn-primary btn-block' onclick="location.href='index.php';" style="margin-left: 30%; width: 40vw; background-color: #F47820; border: none; margin-top: 5%;">Home</button>
             </div>
         </div>
 
