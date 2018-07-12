@@ -32,6 +32,8 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css\main.css">
     <link rel="stylesheet" type="text/css" href="css\epay.css">
+    <link rel="stylesheet" type="text/css" href="css\index.css">
+    <link rel="stylesheet" type="text/css" href="css\about.css">
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!-- Vendor libraries -->
@@ -44,51 +46,12 @@
 
 <body  onload="displayWindowSize()" onresize="displayWindowSize()">	  
     
-    <nav class="navbar navbar-expand-md fixed-top bg-dark">
-      <a class="navbar-brand" href="index.php"><img src="css/images/teamlogo.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home </a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link" href="destinations.php"> My Destinations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
-          </li>
-            <li class="nav-item">
-                <a class="nav-link" href="heatmap.html">  Heat Map </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about.php">  About </a>
-            </li>
-        </ul>
-      </div>
-    <?php
-        if(!isset($login_session)){
-            $box = " <ul class='nav navbar-nav navbar-right'>
-                        <li>
-                            <a href='index.php'>Log in</a>
-                        </li>
-                     </ul>";
-        }else{
-            $box =  " <ul class='nav navbar-nav navbar-right'>
-                        <li>
-                            <span style='color: white;'>".$_SESSION['user']."</span> <a href='logout1.php'> | Log out</a>
-                        </li>
-                     </ul>"; 
-        }
-        echo $box;
-        ?>
-    </nav>
+    <?php include('header.php') ?>
     
     <div class="container-fluid">
+        <h1 id="toptitle"> Epayment </h1>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " >
-            <h1 id="toptitle"> Epayment </h1>
+
         </div> 
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
@@ -172,7 +135,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <!--Redirections-->
                                 <?php
-                                    if(!isset($login_session)){
+                                    if(!isset($_SESSION)){
                                         echo "<script type='text/javascript'>alert('Please log in before payment.');window.location.href = \"index.php\";</script>"; 
                                         $box = " <button class=\"subscribe btn btn-success btn-lg btn-block\" onclick=\"location.href='index.php'\" type=\"button\">Pay Now</button>" ;
                                     }else{
