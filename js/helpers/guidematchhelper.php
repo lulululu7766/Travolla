@@ -15,7 +15,7 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$activityquery = $mysqli->query("SELECT name, home_city_id, image_path, gender, activity_level, mobility_level, dietary_restrictions FROM $table WHERE (user_mode LIKE 'Guide' OR user_mode LIKE 'Both') AND home_city_id LIKE '$cityid'");
+$activityquery = $mysqli->query("SELECT user_id, name, home_city_id, image_path, gender, activity_level, mobility_level, dietary_restrictions FROM $table WHERE (user_mode LIKE 'Guide' OR user_mode LIKE 'Both') AND home_city_id LIKE '$cityid'");
 
 while($row = $activityquery->fetch_assoc()){
     $activitylist[] = $row;
