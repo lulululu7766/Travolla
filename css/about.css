@@ -41,12 +41,20 @@ img.round {
     margin-top: 15%;
 }
 
+.rounded-center{
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 30vh;
+    margin-top: 5%;
+
+}
+
 .rounded-rectangle {
     border-radius:2rem;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2);
     margin-bottom: 5%;
     margin-top: 5%;
-    display: table-cell;
+    display: inline-block;
 }
 
 
