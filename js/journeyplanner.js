@@ -434,23 +434,20 @@ function printTimetable() {
     totalCostSpan.innerText = "$" + totalCost;
     // Get the invoiceList that will contain all the personal details of the customer.
     var invoiceInfo = document.getElementById('invoiceList');
-    var nameField = document.createElement('li');
     var locationField = document.createElement('li');
     var dateField = document.createElement('li');
 
     var startDate = new Date(document.getElementById('startDate').value);
     var endDate = new Date(document.getElementById('endDate').value);
 
-    startDate.setDate(startDate.getDate());
-    endDate.setDate(endDate.getDate());
+    startDate.setDate(startDate.getDate() + parseInt(1));
+    endDate.setDate(endDate.getDate() + parseInt(1));
     startDate = startDate.toLocaleDateString('en-AU');
     endDate = endDate.toLocaleDateString('en-AU');
 
     dateField.innerText = startDate + " to " + endDate;
-    nameField.innerText = "John Smith";
     locationField.innerText = tripDestination;
     // Append all the personal information.
-    invoiceInfo.appendChild(nameField);
     invoiceInfo.appendChild(dateField);
     invoiceInfo.appendChild(locationField);
     // Get the div content.

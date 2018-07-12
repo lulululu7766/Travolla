@@ -1,15 +1,22 @@
 #journeyPlannerMaster button {
     background-color: #F47820;
     border: none;
-    margin: 5px;
 }
 
 #timetableContainer button {
     background-color: #F47820;
     border: none;
-    margin: 5px;
 }
 
-.container {
-    padding: 10px;
+#printBtn, #selectBtn, #optimiseBtn, #resetBtn {
+    margin-right: 5%;
+}
+
+#getActivitiesBtn{
+    margin-left: 5%;
+}
+
+#activityDiv .btn-primary{
+    margin-right: 5%;
+    margin-top: 2%;
 }
