@@ -34,6 +34,7 @@ if ($mysqli->connect_error) {
             <?php
             if ( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) && 
 	         ($_SESSION['loggedin'] == TRUE) ) {
+                
                 $box = '<li class="nav-item active">
                             <a class="nav-link" href="destinations.php"> My Destinations</a>
                         </li>

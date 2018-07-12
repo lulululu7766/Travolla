@@ -42,12 +42,14 @@
 			if(hash_equals($db_password, $input)){
 				$output = $_SESSION;
 				$_SESSION['loggedin'] = TRUE;
-				$user_query = $mysqli->query ("SELECT name FROM users WHERE email='$email'");
+				$user_query = $mysqli->query ("SELECT name, email FROM users WHERE email='$email'");
 				while($row = mysqli_fetch_assoc($user_query)) {
+                    $db_email = $row['email'];
 					$db_fullname = $row['name'];
-					header('Location: destinations.php');
+					//header('Location: destinations.php');
 				}
 			    $_SESSION['user'] = $db_fullname;
+                $_SESSION['email'] = $db_email;
 			}else{
 				echo "<script>alert('Sorry, your password is incorrect');</script>"; 
 			    $output = "Sorry your password is incorrect";
@@ -88,7 +90,10 @@
     
 
     <div class="cover-container" >
-        <h1 id="title"> Welcome to Travolla </h1>
+        <h1 id="title"> Welcome to Travolla <?php
+                                print_r($_SESSION);
+
+            ?> </h1>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 landing" >
 
             
