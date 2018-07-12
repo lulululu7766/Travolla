@@ -26,9 +26,7 @@ if ($mysqli->connect_error) {
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home </a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="about.php">  About </a>
-            </li>
+            
 
             <li class="nav-item active">
                 <a class="nav-link" href="heatmap.php">  Heat Map </a>
@@ -48,6 +46,9 @@ if ($mysqli->connect_error) {
             }
             echo $box;
             ?>
+            <li class="nav-item active">
+                <a class="nav-link" href="about.php">  About </a>
+            </li>
         </ul>
     </div>
 

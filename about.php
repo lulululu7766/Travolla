@@ -103,78 +103,78 @@ include('header.php');
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
         <h2 class="AboutHeaders"> About the Developers </h2>
     </div>
-    <div class="row" style="display:table; width:100%;">
+    <div class="row" >
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="text-center rounded-rectangle">
+            <div class="rounded-rectangle">
                 <div>
                     <img src="css/images/mmexport1531361065664.jpg" alt = adaprofile class="round">
                 </div>
                 <h3 class="card-title">Ada Rao</h3>
-                <p class="rounded-center card-text">Programmer - Database/Backend, Local Tour Guide Matching System, Content Provider - Keeps Ed in check. She’s the reason we can give you recommendations on where to go</p>
+                <p class="rounded-center">Programmer - Database/Backend, Local Tour Guide Matching System, Content Provider - Keeps Ed in check. She’s the reason we can give you recommendations on where to go</p>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="text-center rounded-rectangle">
+            <div class="rounded-rectangle">
                 <div>
                     <img src="css/images/Ed-linkedinphoto.jpg" alt = edprofile class="round">
                 </div>
-                <h3 class="card-title">Edward Sweeney</h3>
-                <p class="rounded-center card-text">Programmer - Database/Backend, Local Tour Guide Matching System, Quality Process Engineer - You can thank him for hooking you up with that great local guide</p>
+                <h3 class="card-title">Ed Sweeney</h3>
+                <p class="rounded-center">Programmer - Database/Backend, Local Tour Guide Matching System, Quality Process Engineer - You can thank him for hooking you up with that great local guide</p>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="text-center rounded-rectangle">
+            <div class="rounded-rectangle">
                 <div>
                     <img src="css/images/DSC_9359.jpg" alt = erikprofile class="round">
                 </div>
                 <h3 class="card-title">Erik Brand</h3>
-                <p class="rounded-center card-text">Technical/User Documentation, UI/UX Assistant - Just. So. Many. Words.</p>
+                <p class="rounded-center">Technical/User Documentation, UI/UX Assistant - Just. So. Many. Words.</p>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
     </div>
 
-    <div class="row" style="display:table; width:100%;">
+    <div class="row" >
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="text-center rounded-rectangle">
+            <div class="rounded-rectangle">
                 <div>
                     <img src="css/images/Henry Profile.jpg" alt = henryprofile class="round">
                 </div>
                 <h3 class="card-title">Henry Burgess</h3>
-                <p class="rounded-center card-text">System Architect, Programmer - Optimised Journey Planner Logic. You can thank him for your perfectly organised holidays </p>
+                <p class="rounded-center">System Architect, Programmer - Optimised Journey Planner Logic. You can thank him for your perfectly organised holidays </p>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="text-center rounded-rectangle">
+            <div class="rounded-rectangle">
                 <div>
                     <img src="css/images/mmexport1531361644616.jpg" alt = jasonprofile class="round">
                 </div>
                 <h3 class="card-title">Jason Zhang</h3>
-                <p class="rounded-center card-text">Programmer - Heat map Logic, Content Provider. Mapping wizard - nobody knows how he does it </p>
+                <p class="rounded-center">Programmer - Heat map Logic, Content Provider. Mapping wizard - nobody knows how he does it </p>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="text-center rounded-rectangle">
+            <div class="rounded-rectangle">
                 <div>
                     <img src="css/images/tbp-144308-7609.jpg" alt = leaprofile class="round">
                 </div>
                 <h3 class="card-title">Léa Laï Van</h3>
-                <p class="rounded-center card-text">Project Manager, UI/UX Designer. Basically the design legend of the company</p>
+                <p class="rounded-center">Project Manager, UI/UX Designer. Basically the design legend of the company</p>
             </div>
         </div>
 

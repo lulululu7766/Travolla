@@ -45,8 +45,8 @@
 				$output .= $mysqli->error;
 			}else{
         		//Display Welcome to the specific customer + Logout button
-        		//header('Location: index.html');
-				$output = "You have been successfully registered!";
+        		header('Location: index.php');
+				//$output = "You have been successfully registered!";
 			}
 		}
         
