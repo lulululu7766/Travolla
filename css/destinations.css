@@ -1,6 +1,7 @@
 hr{
     size: 2px;
     background-color: #F47820;
+    margin-bottom: 3%;
 }
 
 #toptitle{
@@ -12,14 +13,23 @@ hr{
 
 }
 
-h2{
-    margin-bottom: 3%;
-}
 
 .container-fluid .section{
     margin-top: 3%;
 }
 
+.header2{
+    margin-bottom: 0;
+}
+
 .thumbpic{
-    height: 26.5%;
+    height: 25vh;
+}
+
+.card{
+    height: 40vh;
+}
+
+.card-body:hover{
+    text-decoration: none;
 }

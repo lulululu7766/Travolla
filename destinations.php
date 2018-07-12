@@ -10,8 +10,6 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css\main.css">
     <link rel="stylesheet" type="text/css" href="css\destinations.css">
-    <link rel="stylesheet" type="text/css" href="css\about.css">
-    <link rel="stylesheet" type="text/css" href="css\index.css">
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
@@ -37,14 +35,14 @@
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" >
                         
                         <div >
-                            <h2> Upcoming Trips </h2><hr>
+                            <h2 class="header2"> Upcoming Trips </h2><hr>
                             
                             <div class="row">
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
                                 <a href="journeyplanner.php">
                                   <div class="card mb-4 box-shadow ">
                                     <img class="card-img-top thumbpic" src="css/images/newtrip.png" alt="Card image cap">
-                                    <div class="card-body">
+                                    <div class="card-body" style="color: black;">
                                       <p class="card-text">New Trip</p>
                                       <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
@@ -58,9 +56,9 @@
                                 
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="card mb-4 box-shadow">
-                                    <img class="card-img-top thumbpic" src="css/images/bg.jpg" alt="Card image cap">
+                                    <img class="card-img-top thumbpic" src="css/images/dubai.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                      <p class="card-text">Dalian Trip</p>
+                                      <p class="card-text">Dubai Trip</p>
                                       <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -73,16 +71,16 @@
                               </div>
                                 
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <div class="card mb-4 box-shadow thumbpic">
-                                    <img class="card-img-top" src="css/images/bg.jpg" alt="Card image cap">
+                                <div class="card mb-4 box-shadow">
+                                    <img class="card-img-top thumbpic" src="css/images/paris.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                      <p class="card-text">Brisbane Trip</p>
+                                      <p class="card-text">Paris Trip</p>
                                       <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                                           <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                                         </div>
-                                        <small class="text-muted">9 mins</small>
+                                        <small class="text-muted">11/07/2018</small>
                                       </div>
                                     </div>
                                   </div>
@@ -105,20 +103,20 @@
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" >
                         
                         <div>
-                            <h2> Past Trips </h2><hr>
+                            <h2 class="header2"> Past Trips </h2><hr>
                         </div>
                     
                         <div class="row">
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="card mb-4 box-shadow">
-                                    <img class="card-img-top thumbpic" src="css/images/bg.jpg" alt="Card image cap">
+                                    <img class="card-img-top thumbpic" src="css/images/nc.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                      <p class="card-text">Paris Trip</p>
+                                      <p class="card-text">New Caledonia Trip</p>
                                       <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                                         </div>
-                                        <small class="text-muted">9 mins</small>
+                                    
                                       </div>
                                     </div>
                                   </div>
@@ -126,7 +124,7 @@
                                 
                               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="card mb-4 box-shadow thumbpic">
-                                    <img class="card-img-top" src="css/images/bg.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="css/images/nyc.jpg" alt="Card image cap">
                                     <div class="card-body">
                                       <p class="card-text"> New York Trip </p>
                                       <div class="d-flex justify-content-between align-items-center">
