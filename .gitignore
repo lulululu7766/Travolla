@@ -1,4 +1,4 @@
-# macOS / Windows generated files
+# macOS / Windows cache files
 #---------------------------------
 .DS_Store
 .DS_Store?
@@ -7,3 +7,21 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.tmp
+
+# Microsoft Office temporary files
+#----------------------------------
+# Word temporary
+~$*.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
+
+# PowerPoint temporary
+~$*.ppt*
+
+# Visio autosave temporary files
+*.~vsd*
