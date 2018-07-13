@@ -179,14 +179,14 @@
       			<p> So you’ve made it! You’re in a foreign country and are ready to soak in the culture. There are just two problems: you don’t speak the local language, and you have no way to get around. Travolla has your back. We’ll automatically match you up with a local based on your timetable and personal preferences, so that you can not only navigate through your destination more efficiently, but also learn the local culture from those who know it best: locals (again, not middle-aged travel bloggers). </p>
     		</div>
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    			<img src="css\images\bg.jpg" alt = "Welcomepic" style=" width: 85%; margin-bottom: 10%;">
+    			<img src="css\images\guidelocal.jpg" alt = "Welcomepic" style=" width: 100%; margin-bottom: 10%;height: 40vh;">
     		</div>
         </div>
         
         <!--Second Feature-->
         <div class="row">
              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    			     <img src="css\images\bg.jpg" alt = "Welcomepic" style=" width: 85%; margin-bottom: 10%;">
+    			     <img src="css\images\act.jpg" alt = "Welcomepic" style=" width: 100%; margin-bottom: 10%; height: 40vh;">
                 </div>
     		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
       			<h3> Optimised Journey Planner </h3>
@@ -203,7 +203,7 @@
                 <p>Don’t like crowds? No problem - Travolla has you covered. Love the vibe of thousands of people all sharing the one moment? We can help you there too. With Travolla’s interactive heatmap, you can view crowd statistics at your destination in real-time. In this way, we can recommend activities based on what’s ACTUALLY popular, and not based on what some middle-aged blogger thinks is ‘hip’.</p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    			<img src="css\images\bg.jpg" alt = "Welcomepic" style=" width: 85%; margin-bottom: 10%;">
+    			<img src="css\images\heat.png" alt = "Welcomepic" style=" width: 100%; margin-bottom: 10%;height: 40vh;">
     		</div>
         </div>
 	</div>

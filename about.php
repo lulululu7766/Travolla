@@ -106,36 +106,57 @@ include('header.php');
     <div class="row" >
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="rounded-rectangle">
+            <div class="rounded-rectangle" style="height: 74vh;">
                 <div>
                     <img src="css/images/mmexport1531361065664.jpg" alt = adaprofile class="round">
                 </div>
                 <h3 class="card-title">Ada Rao</h3>
-                <p class="rounded-center">Programmer - Database/Backend, Local Tour Guide Matching System, Content Provider - Keeps Ed in check. She’s the reason we can give you recommendations on where to go</p>
+                <ul style=" margin-top: 5%; margin-left: 7%; margin-right: 10%;">
+                    <li>Programmer</li>
+                    <li>Database/Backend</li>
+                    <li>Local Tour Guide Matching System</li>
+                    <li>She’s the reason we can give you recommendations on where to go</li>
+
+                </ul>
+                <!--<p class="rounded-center">Programmer - Database/Backend, , Content Provider - Keeps Ed in check. She’s the reason we can give you recommendations on where to go</p>-->
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="rounded-rectangle">
+            <div class="rounded-rectangle" style="height:74vh;">
                 <div>
                     <img src="css/images/Ed-linkedinphoto.jpg" alt = edprofile class="round">
                 </div>
                 <h3 class="card-title">Ed Sweeney</h3>
-                <p class="rounded-center">Programmer - Database/Backend, Local Tour Guide Matching System, Quality Process Engineer - You can thank him for hooking you up with that great local guide</p>
+                   <ul style=" margin-top: 5%; margin-left: 7%; margin-right: 10%;">
+                        <li>Programmer</li>
+                        <li>Database/Backend</li>
+                        <li>Local Tour Guide Matching System</li>
+                        <li>Quality Process Engineer</li>
+                        <li>You can thank him for hooking you up with that great local guide</li>
+
+                    </ul>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="rounded-rectangle">
+            <div class="rounded-rectangle" style="height: 74vh;">
                 <div>
                     <img src="css/images/DSC_9359.jpg" alt = erikprofile class="round">
                 </div>
                 <h3 class="card-title">Erik Brand</h3>
-                <p class="rounded-center">Technical/User Documentation, UI/UX Assistant - Just. So. Many. Words.</p>
+                <ul style=" margin-top: 5%; margin-left: 7%; margin-right: 10%;">
+                        <li>Programmer</li>
+                        <li>Technician</li>
+                        <li>User Documentation</li>
+                        <li>UI/UX Assisstant</li>
+                        <li>Content Provider</li>
+                        <li>The Writing Machine</li>
+                </ul>
             </div>
         </div>
 
@@ -145,36 +166,55 @@ include('header.php');
     <div class="row" >
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="rounded-rectangle">
+            <div class="rounded-rectangle" style="height: 74vh;">
                 <div>
                     <img src="css/images/Henry Profile.jpg" alt = henryprofile class="round">
                 </div>
                 <h3 class="card-title">Henry Burgess</h3>
-                <p class="rounded-center">System Architect, Programmer - Optimised Journey Planner Logic. You can thank him for your perfectly organised holidays </p>
+                
+                <ul style=" margin-top: 5%; margin-left: 7%; margin-right: 10%;">
+                        <li>Programmer</li>
+                        <li>System Architect</li>
+                        <li>Optimised Journey Planner Logic</li>
+                        <li>You can thank him for your perfectly organised holidays.</li>
+                </ul>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="rounded-rectangle">
+            <div class="rounded-rectangle" style="height: 74vh;">
                 <div>
                     <img src="css/images/mmexport1531361644616.jpg" alt = jasonprofile class="round">
                 </div>
                 <h3 class="card-title">Jason Zhang</h3>
-                <p class="rounded-center">Programmer - Heat map Logic, Content Provider. Mapping wizard - nobody knows how he does it </p>
+                
+                <ul style=" margin-top: 5%; margin-left: 7%; margin-right: 10%;">
+                        <li>Programmer</li>
+                        <li>Heat map Logic</li>
+                        <li>Content Provider</li>
+                        <li>Mapping wizard</li>
+                        <li>Nobody knows how he does it.</li>
+                </ul>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
 
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-            <div class="rounded-rectangle">
+            <div class="rounded-rectangle" style="height: 74vh;" >
                 <div>
                     <img src="css/images/tbp-144308-7609.jpg" alt = leaprofile class="round">
                 </div>
                 <h3 class="card-title">Léa Laï Van</h3>
-                <p class="rounded-center">Project Manager, UI/UX Designer. Basically the design legend of the company</p>
+                
+                <ul style=" margin-top: 5%; margin-left: 7%; margin-right: 10%;">
+                        <li>Project Manager</li>
+                        <li>UI/UX Designer</li>
+                        <li>Backend/Front-end Communication Logic</li>
+                        <li>Basically the design legend of the company.</li>
+                </ul>
             </div>
         </div>
 
