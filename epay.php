@@ -95,7 +95,6 @@
                                             name="cardNumber"
                                             placeholder="Valid Card Number"
                                             autocomplete="cc-number"
-                                            required autofocus 
                                             required
                                         />
                                     </div>

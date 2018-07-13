@@ -77,6 +77,8 @@
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="js\scroll.js"></script>
+    <script src="js\form.js"></script>
+
 
 
 </head>
@@ -108,7 +110,7 @@
             <h1 id="toptitle"> Sign Up </h1>
             
             <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%"></div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" id="bar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%"></div>
             </div>
             
             <div class="row">
