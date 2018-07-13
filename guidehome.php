@@ -53,25 +53,25 @@ $query = $mysqli->query($strsql);
                         <div class="col-sm">
                             <div class="card">
                                 <div class="card-body" style="text-align: center">
-                                    <img class="rounded-circle" src="<?php echo $row_user_from_users[image_path]; ?>" alt="Tourist" width="100" height="100" style="padding: 5px">
-                                    <h5 class="card-title"><?php echo $row_user_from_users[name]; ?></h5>
-                                    <p class="card-text"><b>Duration: </b><?php echo $row_user_from_guide[start_time]; ?> to <?php echo $row_user_from_guide[stop_time]; ?></p>
+                                    <img class="rounded-circle" src="<?php echo $row_user_from_users['image_path']; ?>" alt="Tourist" width="100" height="100" style="padding: 5px">
+                                    <h5 class="card-title"><?php echo $row_user_from_users['name']; ?></h5>
+                                    <p class="card-text"><b>Duration: </b><?php echo $row_user_from_guide['start_time']; ?> to <?php echo $row_user_from_guide[stop_time]; ?></p>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <b>Gender: </b><?php echo $row_user_from_users[gender]; ?>
+                                        <b>Gender: </b><?php echo $row_user_from_users['gender']; ?>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Country: </b><?php $countrt_sql = "select city_name from cities where city_id=$row_user_from_users[home_city_id]";
                                         $result = $mysqli->query($countrt_sql);
                                         $result_arr = mysqli_fetch_array($result);
-                                        echo $result_arr[city_name]; ?>
+                                        echo $result_arr['city_name']; ?>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Primary Language: </b><?php echo $row_user_from_users[pri_lang]; ?>
+                                        <b>Primary Language: </b><?php echo $row_user_from_users['pri_lang']; ?>
                                     </li>
                                     <li class="list-group-item">
-                                        <b><?php echo $row_user_from_users[name]; ?>'s Interests:</b>
+                                        <b><?php echo $row_user_from_users['name']; ?>'s Interests:</b>
                                         <div id="interestContainer" class="container">
                                             <?php
                                             $preference_array = ["Shopping", "Sports", "Hiking", "Food", "Museums", "Natural Sights", "Achitectural", "Animal", "Local Events"];
@@ -95,7 +95,7 @@ $query = $mysqli->query($strsql);
                                 <div class="timeline-item">
                                     <div class="timeline-icon"></div>
                                     <div class="timeline-content">
-                                        <h2 style="font-size: 20px">2018-8-20</h2>
+                                        <h2 style="font-size: 20px"><?php echo $row_user_from_guide['start_time']; ?></h2>
                                         <p>Location 1</p>
                                         <p>Location 2</p>
                                         <p>Location 3</p>
@@ -104,7 +104,7 @@ $query = $mysqli->query($strsql);
                                 <div class="timeline-item">
                                     <div class="timeline-icon"></div>
                                     <div class="timeline-content right">
-                                        <h2 style="font-size: 20px">2018-8-20</h2>
+                                        <h2 style="font-size: 20px"><?php echo $row_user_from_guide['stop_time']; ?></h2>
                                         <p>Location 1</p>
                                         <p>Location 2</p>
                                         <p>Location 3</p>
