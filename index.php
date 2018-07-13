@@ -42,11 +42,17 @@
 			if(hash_equals($db_password, $input)){
 				$output = $_SESSION;
 				$_SESSION['loggedin'] = TRUE;
-				$user_query = $mysqli->query ("SELECT name, email FROM users WHERE email='$email'");
+				$user_query = $mysqli->query ("SELECT name, email, user_mode FROM users WHERE email='$email'");
 				while($row = mysqli_fetch_assoc($user_query)) {
                     $db_email = $row['email'];
 					$db_fullname = $row['name'];
-					//header('Location: destinations.php');
+                    $db_mode = $row['user_mode'];
+                    
+                     if( $db_mode == "Tourist"){
+					   header('Location: destinations.php');
+                     }else{
+                       header('Location: guidehome.php');
+                     }
 				}
 			    $_SESSION['user'] = $db_fullname;
                 $_SESSION['email'] = $db_email;
@@ -90,13 +96,9 @@
     
 
     <div class="cover-container" >
-        <h1 id="title"> Welcome to Travolla <?php
-                                print_r($_SESSION);
-
-            ?> </h1>
+        <h1 id="title"> Welcome to Travolla</h1>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 landing" >
-
-            
+         
             <div class="row">
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
@@ -110,7 +112,25 @@
                         <?php
                             if( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) &&
                                 ($_SESSION['loggedin'] == TRUE) ){
-                                $box=" <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='destinations.php';\" > Get Started </button>";
+                                
+                                $email = $_SESSION['email'];
+                                //Query the email in the database
+                                $mode_query = $mysqli->query ("SELECT user_mode FROM users WHERE email='$email'");
+
+                                while($row = mysqli_fetch_assoc($mode_query)) {
+                                $db_mode = $row['user_mode'];
+                                //echo $db_mode;
+                                //print_r($_SESSION['email']);
+                                    if( $db_mode == "Tourist"){
+                                        $box=" <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='destinations.php';\" > Get Started </button>";
+                                       
+                                    }else{
+                                        $box=" <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='guidehome.php';\" > Get Started </button>";
+                                    }
+                                }
+                                //echo $box;
+                                
+                                
                             }else{
                                 $box = " <button class='btn btn-lg btn-primary btn-block' onclick=\"location.href='signup.php';\">Sign Up</button> 
                                 <button id='loginbutton' class='btn btn-lg btn-primary btn-block' >Log in</button>";

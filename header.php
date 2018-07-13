@@ -26,27 +26,45 @@ if ($mysqli->connect_error) {
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home </a>
             </li>
-            
-
-            <li class="nav-item active">
-                <a class="nav-link" href="heatmap.php">  Heat Map </a>
-            </li>
+    
             <?php
             if ( (isset($_SESSION)) && (isset($_SESSION['loggedin'])) && 
 	         ($_SESSION['loggedin'] == TRUE) ) {
+                $email = $_SESSION['email'];
+                //Query the email in the database
+                $mode_query = $mysqli->query ("SELECT user_mode FROM users WHERE email='$email'");
                 
-                $box = '<li class="nav-item active">
+                while($row = mysqli_fetch_assoc($mode_query)) {
+                $db_mode = $row['user_mode'];
+                //echo $db_mode;
+                //print_r($_SESSION['email']);
+                    if( $db_mode == "Tourist"){
+                        $box = '<li class="nav-item active">
                             <a class="nav-link" href="destinations.php"> My Destinations</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
                         </li>
                         ';
-            }else{
-                $box =  '';
+                    }else{
+                        $box = '<li class="nav-item active">
+                            <a class="nav-link" href="guidehome.php"> My Tours</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="journeyplanner.php"> Journey Planner</a>
+                        </li>
+                        ';
+                    }
+                }
+                echo $box;
+
             }
-            echo $box;
             ?>
+            
+              <li class="nav-item active">
+                <a class="nav-link" href="heatmap.php">  Heat Map </a>
+            </li>
+            
             <li class="nav-item active">
                 <a class="nav-link" href="about.php">  About </a>
             </li>
