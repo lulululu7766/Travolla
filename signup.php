@@ -279,9 +279,9 @@
                                 
                     <div class="row q3">
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
-                            <img src="css\images\interest\archi.jpg" >
+                            <img src="css\images\interest\archi.jpg">
                             <div class="subtitle">
-                                 <p> Architectural </p>
+                                 <p> Architecture </p>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
