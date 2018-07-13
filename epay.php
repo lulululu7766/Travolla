@@ -74,7 +74,8 @@
             
     <div class="row pay" style="margin-top: 3%;">
         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
-                </div>
+
+        </div>
         
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         
@@ -119,7 +120,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 pull-right">
                                 <div class="form-group">
                                     <label for="cardCVC">CVC Code</label>
-                                    <input                                             type="tel" 
+                                    <input type="tel"
                                         class="form-control"
                                         name="cardCVC"
                                         placeholder="CVC"
@@ -149,11 +150,11 @@
             </div>            
             <!-- CREDIT CARD FORM ENDS HERE -->
   
-            </div>  
+        </div>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" >
+
             </div>
-        
-    </div>
+        </div>
     </div>
 
     <?php include('footer.php') ?>
@@ -173,8 +174,6 @@
     </script>
     
     <!-- Optional JavaScript-->
-    
-    
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>

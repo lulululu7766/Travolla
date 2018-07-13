@@ -53,7 +53,7 @@ $query = $mysqli->query($strsql);
                         <div class="col-sm">
                             <div class="card">
                                 <div class="card-body" style="text-align: center">
-                                    <img class="rounded-circle" src="css/images/mmexport1531361644616.jpg" alt="Tourist" width="100" height="100" style="padding: 5px">
+                                    <img class="rounded-circle" src="<?php echo $row_user_from_users[image_path]; ?>" alt="Tourist" width="100" height="100" style="padding: 5px">
                                     <h5 class="card-title"><?php echo $row_user_from_users[name]; ?></h5>
                                     <p class="card-text"><b>Duration: </b><?php echo $row_user_from_guide[start_time]; ?> to <?php echo $row_user_from_guide[stop_time]; ?></p>
                                 </div>

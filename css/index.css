@@ -16,7 +16,6 @@
 #title{
     color: white;
     font-size: 4.5rem;
-    font-family: serif;
     text-align: center;
     padding-top:15%;
 }
@@ -85,7 +84,9 @@
     color: #F47820;
 }
 
-
+body {
+    font-family: 'Patua One',cursive;
+}
 
 /*Webkits*/
 
@@ -97,4 +98,3 @@
 		bottom:5%;
 	}
 }
-
